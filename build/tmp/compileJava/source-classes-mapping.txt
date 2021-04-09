@@ -1,0 +1,7 @@
+com/example/entitiyTest/Application.java
+ com.example.entitiyTest.Application
+com/example/entitiyTest/domain/BoardRepository.java
+ com.example.entitiyTest.domain.BoardRepository
+com/example/entitiyTest/domain/Board.java
+ com.example.entitiyTest.domain.Board
+ com.example.entitiyTest.domain.Board$BoardBuilder

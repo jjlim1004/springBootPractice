@@ -1,0 +1,2 @@
+com/example/entitiyTest/BoardRepositoryTest.java
+ com.example.entitiyTest.BoardRepositoryTest
