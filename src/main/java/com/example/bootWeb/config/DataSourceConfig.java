@@ -1,4 +1,4 @@
-package com.example.bootWeb.config.auth.dto;
+package com.example.bootWeb.config;
 
 import javax.sql.DataSource;
 

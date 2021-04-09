@@ -12,23 +12,23 @@ import javax.persistence.*;
 public class Member extends BaseTimeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long member_no;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long memberNo;
 
     @Column(nullable = false)
-    private String member_id;
+    private String memberId;
 
-    @Column
-    private String member_name;
+    @Column(nullable = false)
+    private String memberName;
 
-    @Column
-    private String member_gender;
+    @Column(nullable = false)
+    private String memberGender;
 
-    @Column
-    private String member_email;
+    @Column(nullable = false)
+    private String memberEmail;
 
-    @Column
-    private String member_age;
+    @Column(nullable = false)
+    private String memberAge;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -37,19 +37,19 @@ public class Member extends BaseTimeEntity {
     @Builder
     public Member(String member_id, String member_name,
                   String member_gender, String member_email, String member_age, Role role) {
-        this.member_id = member_id;
-        this.member_name = member_name;
-        this.member_gender = member_gender;
-        this.member_email = member_email;
-        this.member_age = member_age;
+        this.memberId = member_id;
+        this.memberName = member_name;
+        this.memberGender = member_gender;
+        this.memberEmail = member_email;
+        this.memberAge = member_age;
         this.role = role;
     }
 
-    public Member update(String member_name,String member_email,String member_gender, String member_age) {
-        this.member_name =member_name;
-        this.member_email =member_email;
-        this.member_gender =member_gender;
-        this.member_age =member_age;
+    public Member update(String member_name, String member_email, String member_gender, String member_age) {
+        this.memberName =member_name;
+        this.memberEmail =member_email;
+        this.memberGender =member_gender;
+        this.memberAge =member_age;
         return this;
     }
 

@@ -1,4 +1,4 @@
-package com.example.bootWeb.config.auth.dto;
+package com.example.bootWeb.config;
 
 // SessionMember 에는 인증된 사용자 정보만 필요하다.
 // 그 외의 정보는 필요 없으니 name, email, gender, age 필드로 선언한다.
@@ -24,9 +24,9 @@ public class SessionMember implements Serializable {
 
     @Builder
     public SessionMember(Member member) {
-        this.name = member.getMember_name();
-        this.email = member.getMember_email();
-        this.gender = member.getMember_gender();
-        this.age = member.getMember_age();
+        this.name = member.getMemberName();
+        this.email = member.getMemberEmail();
+        this.gender = member.getMemberGender();
+        this.age = member.getMemberAge();
         }
     }

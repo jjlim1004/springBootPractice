@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
 @EnableJpaAuditing
-@MapperScan(value = "com.example.bootWeb")
+@MapperScan(value = "com.example.bootWeb.mapper")
 //mybatis 사용을 하기 위해 자동 환경설정에서 제외
 //@EnableAutoConfiguration(exclude = { DataSourceTransactionManagerAutoConfiguration.class,
 //        DataSourceAutoConfiguration.class })

@@ -1,4 +1,4 @@
-package com.example.bootWeb.config.auth.dto;
+package com.example.bootWeb.config;
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @Configuration
-@MapperScan(basePackages = "com.example.bootWeb")
+@MapperScan(basePackages = "com.example.bootWeb.mapper")
 public class DataAccessConfig {
 
     @Bean

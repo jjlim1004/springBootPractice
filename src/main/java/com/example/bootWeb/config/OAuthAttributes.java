@@ -1,4 +1,4 @@
-package com.example.bootWeb.config.auth.dto;
+package com.example.bootWeb.config;
 
 import com.example.bootWeb.domain.Member;
 import com.example.bootWeb.domain.Role;
@@ -9,8 +9,6 @@ import java.util.Map;
 
 
 // of -> ofNaver -> OAuthAttributes 생성
-//
-//
 
 @Getter
 public class OAuthAttributes {

@@ -1,4 +1,4 @@
-package com.example.bootWeb.config.auth;
+package com.example.bootWeb.config;
 
 import com.example.bootWeb.domain.Role;
 import lombok.RequiredArgsConstructor;

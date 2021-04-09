@@ -1,7 +1,5 @@
-package com.example.bootWeb.config.auth;
+package com.example.bootWeb.config;
 
-import com.example.bootWeb.config.auth.dto.OAuthAttributes;
-import com.example.bootWeb.config.auth.dto.SessionMember;
 import com.example.bootWeb.domain.Member;
 import com.example.bootWeb.domain.MemberRepository;
 import lombok.RequiredArgsConstructor;
