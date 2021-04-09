@@ -7,7 +7,7 @@
     </select>
 
     <insert id="insert" parameterType="com.example.bootWeb.domain.TestVo">
-        <selectKey keyProperty="no" resultType="int" order="BEFORE">
+        <selectKey keyProperty="no" resultType="Long" order="BEFORE">
             SELECT testVo_seq.NEXTVAL FROM DUAL
         </selectKey>
         insert into testVo values(
