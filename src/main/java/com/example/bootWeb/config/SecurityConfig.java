@@ -2,6 +2,7 @@ package com.example.bootWeb.config;
 
 import com.example.bootWeb.domain.Role;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -9,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @RequiredArgsConstructor
 // spring security 설정들을 활성화시켜준다.
 @EnableWebSecurity
+//security 메인 페이지 수정 위한 추가 코드
+@EnableGlobalMethodSecurity(prePostEnabled = true) //컨트롤러 접근 전에 낚아챔
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final CustomOAuth2UserService customOAuth2UserService;
 
@@ -16,6 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // he-console 화면을 사용하기 위해서 해당 옵션들을 disable 한다.
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http
                 .csrf().disable()
                 .headers().frameOptions().disable()
@@ -26,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // antMatchers
                 // 권한 관리 대상을 지정하는 옵션이다.
                 // URL, HTTP 메소드별로 관리가 가능하다. 지정된 URL들은 permitAll() 옵션을 통해 전체 열람 관한을 준다.
-                .antMatchers("/","/css/**","/images/**","/js/**","/h2-console?**").permitAll()
+                .antMatchers("/","/**/**","/css/**","/images/**","/js/**","/h2-console?**").permitAll()
                 // "/api/v1/**" 주소를 가진 API는 USER 권한을 가진 사람만 가능하도록 한다.
                 .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                 // anyRequest
