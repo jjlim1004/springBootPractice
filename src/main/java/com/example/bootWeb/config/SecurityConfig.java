@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @RequiredArgsConstructor
-// @EnableWebSecurity
 // spring security 설정들을 활성화시켜준다.
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {

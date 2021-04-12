@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/test")
 public class TestController {
 
     private TestMapper mapper;
