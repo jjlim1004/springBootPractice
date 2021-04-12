@@ -70,10 +70,10 @@ public class OAuthAttributes {
     // 가입할 떄의 기본 권한을 GUEST로 주기 위해서 role 빌더 값에는 Role.GUEST를 설정한다.
     public Member toEntity() {
         return Member.builder()
-                .member_name(name)
-                .member_email(email)
-                .member_gender(gender)
-                .member_age(age)
+                .memberName(name)
+                .memberEmail(email)
+                .memberGender(gender)
+                .memberAge(age)
                 .role(Role.GUEST)
                 .build();
     }
