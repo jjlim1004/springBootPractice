@@ -14,6 +14,7 @@ import java.util.Map;
 public class OAuthAttributes {
     private Map<String,Object> attributes;
     private String nameAttributeKey;
+    private String id;
     private String name;
     private String email;
     private String gender;
@@ -21,10 +22,11 @@ public class OAuthAttributes {
 
     @Builder
     public OAuthAttributes(Map<String, Object> attributes,
-                           String nameAttributeKey, String age,
+                           String nameAttributeKey,String id, String age,
                            String name, String email, String gender) {
         this.attributes = attributes;
         this.nameAttributeKey = nameAttributeKey;
+        this.id = id;
         this.name = name;
         this.email = email;
         this.gender = gender;
@@ -55,6 +57,7 @@ public class OAuthAttributes {
         Map<String,Object> response = (Map<String, Object>) attributes.get("response");
 
         return OAuthAttributes.builder()
+                .id((String) response.get("id"))
                 .name((String) response.get("name"))
                 .email((String) response.get("email"))
                 .gender((String) response.get("gender"))
@@ -70,10 +73,11 @@ public class OAuthAttributes {
     // 가입할 떄의 기본 권한을 GUEST로 주기 위해서 role 빌더 값에는 Role.GUEST를 설정한다.
     public Member toEntity() {
         return Member.builder()
-                .member_name(name)
-                .member_email(email)
-                .member_gender(gender)
-                .member_age(age)
+                .memberId(id)
+                .memberName(name)
+                .memberEmail(email)
+                .memberGender(gender)
+                .memberAge(age)
                 .role(Role.GUEST)
                 .build();
     }

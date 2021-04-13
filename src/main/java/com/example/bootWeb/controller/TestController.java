@@ -11,23 +11,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/test")
 public class TestController {
 
     private TestMapper mapper;
 
-    @RequestMapping("/")
+    @RequestMapping("/test")
     public String testPage(){
         return "testPage";
     }
 
-    @PostMapping("/test")
+    @PostMapping("/test/result")
     public String test(TestVo testVo){
         mapper.insert(testVo);
         return "testResult";
     }
 
-    @RequestMapping("/login")
-    public String loginPage(){
-        return "index";
-    }
 }

@@ -35,21 +35,21 @@ public class Member extends BaseTimeEntity {
     private Role role;
 
     @Builder
-    public Member(String member_id, String member_name,
-                  String member_gender, String member_email, String member_age, Role role) {
-        this.memberId = member_id;
-        this.memberName = member_name;
-        this.memberGender = member_gender;
-        this.memberEmail = member_email;
-        this.memberAge = member_age;
+    public Member(String memberId, String memberName,
+                  String memberGender, String memberEmail, String memberAge, Role role) {
+        this.memberId = memberId;
+        this.memberName = memberName;
+        this.memberGender = memberGender;
+        this.memberEmail = memberEmail;
+        this.memberAge = memberAge;
         this.role = role;
     }
 
-    public Member update(String member_name, String member_email, String member_gender, String member_age) {
-        this.memberName =member_name;
-        this.memberEmail =member_email;
-        this.memberGender =member_gender;
-        this.memberAge =member_age;
+    public Member update(String memberName, String memberEmail, String memberGender, String memberAge) {
+        this.memberName =memberName;
+        this.memberEmail =memberEmail;
+        this.memberGender =memberGender;
+        this.memberAge =memberAge;
         return this;
     }
 
