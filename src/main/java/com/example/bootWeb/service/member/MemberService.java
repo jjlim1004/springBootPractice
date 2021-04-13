@@ -1,14 +1,12 @@
 package com.example.bootWeb.service.member;
 
 import com.example.bootWeb.domain.Member;
+import com.example.bootWeb.domain.dto.MemberJoinDTO;
 import org.springframework.stereotype.Service;
 
-@Service
+
 public interface MemberService {
 
-    public void join(Member member);
-
-
-
+    public void join(MemberJoinDTO memberJoinDTO);
 
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/test")
 public class TestController {
 
-    private MemberMapper mapper;
+//    private MemberMapper mapper;
 
     @RequestMapping("/test")
     public String testPage(){
@@ -25,3 +25,5 @@ public class TestController {
     }*/
 
 }
+
+

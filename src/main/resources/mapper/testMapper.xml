@@ -7,20 +7,23 @@
         select * from member where member_id = #{memberId}
     </select>
 
-    <insert id="insert" parameterType="com.example.bootWeb.domain.Member">
-        <selectKey keyProperty="no" resultType="Long" order="BEFORE">
-            SELECT member_seq.NEXTVAL FROM DUAL
-        </selectKey>
-        insert into member values(
-            #{no},
-            #{memberId},
-            #{memberPw},
-            #{memberName},
-            #{memberGender},
-            #{memberEmail},
-            #{memberAge},
-            user
-        )
-    </insert>
-</mapper>
+
+<!--    이거는 사용 못함. jpa 테이블 구성 칼럼 설저이 불가능 해서-->
+      <insert id="insert" parameterType="com.example.bootWeb.domain.dto.MemberJoinDTO">
+          <selectKey keyProperty="no" resultType="Long" order="BEFORE">
+              SELECT member_seq.NEXTVAL FROM DUAL
+          </selectKey>
+          insert into member values(
+              #{no},
+              #{memberId},
+              #{memberPw},
+              #{memberName},
+              #{memberGender},
+              #{memberEmail},
+              #{memberAge},
+              #{role}
+          )
+      </insert>
+
+  </mapper>
 

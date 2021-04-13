@@ -17,6 +17,7 @@ import java.io.Serializable;
 
 @Getter
 public class SessionMember implements Serializable {
+    private String id;
     private String name;
     private String email;
     private String gender;
@@ -24,6 +25,7 @@ public class SessionMember implements Serializable {
 
     @Builder
     public SessionMember(Member member) {
+        this.id = member.getMemberId();
         this.name = member.getMemberName();
         this.email = member.getMemberEmail();
         this.gender = member.getMemberGender();
