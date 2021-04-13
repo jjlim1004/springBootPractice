@@ -19,6 +19,9 @@ public class Member extends BaseTimeEntity {
     private String memberId;
 
     @Column(nullable = false)
+    private String memberPw;
+
+    @Column(nullable = false)
     private String memberName;
 
     @Column(nullable = false)
@@ -35,9 +38,10 @@ public class Member extends BaseTimeEntity {
     private Role role;
 
     @Builder
-    public Member(String memberId, String memberName,
+    public Member(String memberId, String memberPw, String memberName,
                   String memberGender, String memberEmail, String memberAge, Role role) {
         this.memberId = memberId;
+        this.memberPw = memberPw;
         this.memberName = memberName;
         this.memberGender = memberGender;
         this.memberEmail = memberEmail;
@@ -45,7 +49,8 @@ public class Member extends BaseTimeEntity {
         this.role = role;
     }
 
-    public Member update(String memberName, String memberEmail, String memberGender, String memberAge) {
+    public Member update(String memberPw, String memberName, String memberEmail, String memberGender, String memberAge) {
+        this.memberPw = memberPw;
         this.memberName =memberName;
         this.memberEmail =memberEmail;
         this.memberGender =memberGender;

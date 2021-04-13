@@ -1,14 +1,14 @@
-package com.example.bootWeb.service;
+package com.example.bootWeb.service.test;
 
 import com.example.bootWeb.domain.TestVo;
-import com.example.bootWeb.mapper.TestMapper;
+import com.example.bootWeb.mapper.MemberMapper;
 import lombok.AllArgsConstructor;
 
 
 @AllArgsConstructor
 public class TestServiceImpl implements TestService{
 
-    private TestMapper mapper;
+    private MemberMapper mapper;
 
     @Override
     public void insert() {

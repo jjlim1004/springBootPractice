@@ -1,37 +1,41 @@
 com/example/bootWeb/config/DataAccessConfig.java
  com.example.bootWeb.config.DataAccessConfig
-com/example/bootWeb/controller/TestController.java
- com.example.bootWeb.controller.TestController
-com/example/bootWeb/mapper/TestMapper.java
- com.example.bootWeb.mapper.TestMapper
-com/example/bootWeb/controller/loginController.java
- com.example.bootWeb.controller.loginController
+com/example/bootWeb/config/SessionMember.java
+ com.example.bootWeb.config.SessionMember
+ com.example.bootWeb.config.SessionMember$SessionMemberBuilder
+com/example/bootWeb/config/SecurityConfig.java
+ com.example.bootWeb.config.SecurityConfig
+com/example/bootWeb/domain/MemberRepository.java
+ com.example.bootWeb.domain.MemberRepository
 com/example/bootWeb/Application.java
  com.example.bootWeb.Application
 com/example/bootWeb/domain/TestVo.java
  com.example.bootWeb.domain.TestVo
-com/example/bootWeb/service/TestService.java
- com.example.bootWeb.service.TestService
 com/example/bootWeb/domain/Role.java
  com.example.bootWeb.domain.Role
-com/example/bootWeb/domain/Member.java
- com.example.bootWeb.domain.Member
- com.example.bootWeb.domain.Member$MemberBuilder
-com/example/bootWeb/domain/BaseTimeEntity.java
- com.example.bootWeb.domain.BaseTimeEntity
-com/example/bootWeb/config/SecurityConfig.java
- com.example.bootWeb.config.SecurityConfig
-com/example/bootWeb/config/DataSourceConfig.java
- com.example.bootWeb.config.DataSourceConfig
-com/example/bootWeb/service/TestServiceImpl.java
- com.example.bootWeb.service.TestServiceImpl
-com/example/bootWeb/domain/MemberRepository.java
- com.example.bootWeb.domain.MemberRepository
-com/example/bootWeb/config/SessionMember.java
- com.example.bootWeb.config.SessionMember
- com.example.bootWeb.config.SessionMember$SessionMemberBuilder
 com/example/bootWeb/config/CustomOAuth2UserService.java
  com.example.bootWeb.config.CustomOAuth2UserService
 com/example/bootWeb/config/OAuthAttributes.java
  com.example.bootWeb.config.OAuthAttributes
  com.example.bootWeb.config.OAuthAttributes$OAuthAttributesBuilder
+com/example/bootWeb/domain/BaseTimeEntity.java
+ com.example.bootWeb.domain.BaseTimeEntity
+com/example/bootWeb/config/DataSourceConfig.java
+ com.example.bootWeb.config.DataSourceConfig
+com/example/bootWeb/domain/Member.java
+ com.example.bootWeb.domain.Member
+ com.example.bootWeb.domain.Member$MemberBuilder
+com/example/bootWeb/controller/loginController.java
+ com.example.bootWeb.controller.loginController
+com/example/bootWeb/service/test/TestServiceImpl.java
+ com.example.bootWeb.service.test.TestServiceImpl
+com/example/bootWeb/controller/TestController.java
+ com.example.bootWeb.controller.TestController
+com/example/bootWeb/mapper/MemberMapper.java
+ com.example.bootWeb.mapper.MemberMapper
+com/example/bootWeb/service/member/MemberServiceImpl.java
+ com.example.bootWeb.service.member.MemberServiceImpl
+com/example/bootWeb/service/test/TestService.java
+ com.example.bootWeb.service.test.TestService
+com/example/bootWeb/service/member/MemberService.java
+ com.example.bootWeb.service.member.MemberService

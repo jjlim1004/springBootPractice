@@ -15,6 +15,7 @@ public class OAuthAttributes {
     private Map<String,Object> attributes;
     private String nameAttributeKey;
     private String id;
+    private String pw;
     private String name;
     private String email;
     private String gender;
@@ -72,13 +73,27 @@ public class OAuthAttributes {
     // OAuthAttributes 에서 엔티티를 생성하는 시점 == 처음 가입할 때
     // 가입할 떄의 기본 권한을 GUEST로 주기 위해서 role 빌더 값에는 Role.GUEST를 설정한다.
     public Member toEntity() {
+
+        //비밀번호 임의 생성
+        pw=randomPw(8);
+
         return Member.builder()
                 .memberId(id)
+                .memberPw(pw)
                 .memberName(name)
                 .memberEmail(email)
                 .memberGender(gender)
                 .memberAge(age)
-                .role(Role.GUEST)
+                .role(Role.USER)
                 .build();
+    }
+
+    public String randomPw(int itrCount){
+        String randomPw="";
+        for (int i = 0; i < itrCount; i++) {
+            int forStrNum = (int)(Math.random()*10);
+            randomPw += forStrNum;
+        }
+        return randomPw;
     }
 }

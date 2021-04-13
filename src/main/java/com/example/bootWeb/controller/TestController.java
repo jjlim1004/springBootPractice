@@ -1,12 +1,9 @@
 package com.example.bootWeb.controller;
 
-import com.example.bootWeb.domain.TestVo;
-import com.example.bootWeb.mapper.TestMapper;
+import com.example.bootWeb.mapper.MemberMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 
 @Controller
@@ -14,17 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
 
-    private TestMapper mapper;
+    private MemberMapper mapper;
 
     @RequestMapping("/test")
     public String testPage(){
         return "testPage";
     }
 
-    @PostMapping("/test/result")
+/*    @PostMapping("/test/result")
     public String test(TestVo testVo){
         mapper.insert(testVo);
         return "testResult";
-    }
+    }*/
 
 }
