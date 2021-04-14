@@ -9,7 +9,7 @@ package com.example.bootWeb.config;
 //이러한 이유로 인해 직렬화 기능을 갖은 세션 Dto를 하나 추가로 만드는게 유지보수에 도움이 된다.
 
 
-import com.example.bootWeb.domain.Member;
+import com.example.bootWeb.domain.vo.entity.Member;
 import lombok.Builder;
 import lombok.Getter;
 

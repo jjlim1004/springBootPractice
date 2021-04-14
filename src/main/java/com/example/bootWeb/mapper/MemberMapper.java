@@ -1,7 +1,6 @@
 package com.example.bootWeb.mapper;
 
-import com.example.bootWeb.domain.Member;
-import com.example.bootWeb.domain.TestVo;
+import com.example.bootWeb.domain.vo.entity.Member;
 import com.example.bootWeb.domain.dto.MemberJoinDTO;
 
 public interface MemberMapper {

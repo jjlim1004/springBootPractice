@@ -1,6 +1,6 @@
 package com.example.bootWeb.config;
 
-import com.example.bootWeb.domain.Member;
+import com.example.bootWeb.domain.vo.entity.Member;
 import com.example.bootWeb.domain.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -45,7 +45,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         // SessionMember
         // 세션에 사용자 정보를 저장하기 위한 따로 만든 Dto 클래스이다.
         Member member = saveOrUpdate(attributes);
-        httpSession.setAttribute("member", new SessionMember(member));
+        httpSession.setAttribute("socialMember", new SessionMember(member));
 
         return new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority(member.getRoleKey())),
@@ -56,7 +56,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
     private Member saveOrUpdate(OAuthAttributes attributes) {
         Member member = memberRepository.findByMemberEmail(attributes.getEmail())
-                .map(entity -> entity.update(attributes.getPw(),attributes.getName(),attributes.getEmail(),attributes.getGender(),attributes.getAge()))
+                .map(entity -> entity.update(attributes.getName(),attributes.getEmail(),attributes.getGender(),attributes.getAge()))
                 .orElse(attributes.toEntity());
 
         return memberRepository.save(member);

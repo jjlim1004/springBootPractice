@@ -1,4 +1,4 @@
-package com.example.bootWeb.domain;
+package com.example.bootWeb.domain.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

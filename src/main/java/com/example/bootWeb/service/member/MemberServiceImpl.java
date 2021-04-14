@@ -1,9 +1,7 @@
 package com.example.bootWeb.service.member;
 
-import com.example.bootWeb.domain.Member;
 import com.example.bootWeb.domain.MemberRepository;
 import com.example.bootWeb.domain.dto.MemberJoinDTO;
-import com.example.bootWeb.mapper.MemberMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

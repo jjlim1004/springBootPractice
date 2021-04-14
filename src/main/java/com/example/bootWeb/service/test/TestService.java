@@ -1,6 +1,6 @@
 package com.example.bootWeb.service.test;
 
-import com.example.bootWeb.domain.TestVo;
+import com.example.bootWeb.domain.vo.TestVo;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,8 +1,8 @@
 package com.example.bootWeb.domain.dto;
 
 
-import com.example.bootWeb.domain.Member;
-import com.example.bootWeb.domain.Role;
+import com.example.bootWeb.domain.vo.entity.Member;
+import com.example.bootWeb.domain.vo.Role;
 import lombok.Data;
 
 
@@ -26,7 +26,6 @@ public class MemberJoinDTO {
     public Member toEntity(){
         Member member = Member.builder()
                 .memberId(memberId)
-                .memberPw(memberPw)
                 .memberName(memberName)
                 .memberGender(memberGender)
                 .memberEmail(memberEmail)

@@ -1,7 +1,7 @@
 package com.example.bootWeb.config;
 
-import com.example.bootWeb.domain.Member;
-import com.example.bootWeb.domain.Role;
+import com.example.bootWeb.domain.vo.entity.Member;
+import com.example.bootWeb.domain.vo.Role;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -15,7 +15,6 @@ public class OAuthAttributes {
     private Map<String,Object> attributes;
     private String nameAttributeKey;
     private String id;
-    private String pw;
     private String name;
     private String email;
     private String gender;
@@ -78,11 +77,11 @@ public class OAuthAttributes {
     public Member toEntity() {
 
         //비밀번호 임의 생성
-        pw=randomPw(8);
+
 
         return Member.builder()
                 .memberId(id)
-                .memberPw(pw)
+
                 .memberName(name)
                 .memberEmail(email)
                 .memberGender(gender)
@@ -91,12 +90,12 @@ public class OAuthAttributes {
                 .build();
     }
 
-    public String randomPw(int itrCount){
-        String randomPw="";
-        for (int i = 0; i < itrCount; i++) {
-            int forStrNum = (int)(Math.random()*10);
-            randomPw += forStrNum;
-        }
-        return randomPw;
-    }
+//    public String randomPw(int itrCount){
+//        String randomPw="";
+//        for (int i = 0; i < itrCount; i++) {
+//            int forStrNum = (int)(Math.random()*10);
+//            randomPw += forStrNum;
+//        }
+//        return randomPw;
+//    }
 }
