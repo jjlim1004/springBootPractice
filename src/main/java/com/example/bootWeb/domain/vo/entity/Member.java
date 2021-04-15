@@ -36,6 +36,9 @@ public class Member extends BaseTimeEntity {
     @Column(nullable = false)
     private Role role;
 
+    @OneToOne(mappedBy = "memberId")
+    private Password password;
+
     @Builder
     public Member(String memberId, String memberName,
                   String memberGender, String memberEmail, String memberAge, Role role) {
