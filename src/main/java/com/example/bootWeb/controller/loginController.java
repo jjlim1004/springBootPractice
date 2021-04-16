@@ -75,10 +75,9 @@ public class loginController {
         return "redirect:login";
     }
 
-    @RequestMapping("/myPage")
-    public String myPage(Model model, HttpSession httpSession){
+    @GetMapping("/myPage")
+    public void myPage(Model model, HttpSession httpSession){
 
-        return "myPage";
     }
 
 }
