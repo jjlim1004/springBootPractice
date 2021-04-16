@@ -1,5 +1,6 @@
 package com.example.bootWeb.domain.vo.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -8,15 +9,23 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name="password")
+@SequenceGenerator(sequenceName = "passwordSeq",name="passwordSeq",initialValue = 1,allocationSize = 1)
 public class Password {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "passwordSeq")
     private Long pwId;
 
-    @OneToOne
-    @JoinColumn(name="memberId")
-    private Member memberId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn( name = "member_memberId")
+    private Member member;
 
+    @Column(nullable = false)
     private String pw;
+
+    @Builder
+    public Password(Member member, String pw) {
+        this.member = member;
+        this.pw = pw;
+    }
 }
-//https://medium.com/@SlackBeck/%EC%A4%91%EC%B2%A9%EB%90%9C-fk-foreign-key-%EB%A5%BC-jpa%EB%A1%9C-%EC%97%B0%EA%B4%80-%EA%B4%80%EA%B3%84-%EB%A7%A4%ED%95%91-%ED%95%98%EA%B8%B0-216ba5f2b8ed

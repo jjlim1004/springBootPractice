@@ -11,10 +11,11 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
+@SequenceGenerator(name="memberSeq",sequenceName ="memberSeq",initialValue = 1,allocationSize = 1)
 public class Member extends BaseTimeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="memberSeq")
     private Long memberNo;
 
     @Column(nullable = false)
@@ -35,9 +36,6 @@ public class Member extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
-
-    @OneToOne(mappedBy = "memberId")
-    private Password password;
 
     @Builder
     public Member(String memberId, String memberName,

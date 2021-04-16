@@ -11,8 +11,6 @@ public class MemberJoinDTO {
 
     private String memberId;
 
-    private String memberPw;
-
     private String memberName;
 
     private String memberGender;
