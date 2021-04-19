@@ -1,7 +1,7 @@
-package com.example.bootWeb.domain.vo.entity;
+package com.example.bootWeb.domain.entity;
 
 import com.example.bootWeb.domain.BaseTimeEntity;
-import com.example.bootWeb.domain.vo.Role;
+import com.example.bootWeb.domain.dto.vo.Role;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

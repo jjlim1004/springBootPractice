@@ -1,4 +1,4 @@
-package com.example.bootWeb.domain.vo.entity;
+package com.example.bootWeb.domain.entity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

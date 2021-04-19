@@ -1,6 +1,5 @@
-package com.example.bootWeb.domain.vo.entity;
+package com.example.bootWeb.domain.entity;
 
-import com.example.bootWeb.domain.vo.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -14,4 +13,6 @@ public interface MemberRepository extends JpaRepository<Member,Long> {
     //혹은 @param()으로 감싸고 :parameter 로 사용하기
     @Query("select m from Member m where m.memberId=?1")
     Member findByMemberId(String memberId);
+
+
 }

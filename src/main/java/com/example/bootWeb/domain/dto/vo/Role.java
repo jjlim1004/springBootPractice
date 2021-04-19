@@ -1,4 +1,4 @@
-package com.example.bootWeb.domain.vo;
+package com.example.bootWeb.domain.dto.vo;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

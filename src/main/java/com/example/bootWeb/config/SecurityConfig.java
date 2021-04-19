@@ -1,6 +1,6 @@
 package com.example.bootWeb.config;
 
-import com.example.bootWeb.domain.vo.Role;
+import com.example.bootWeb.domain.dto.vo.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
