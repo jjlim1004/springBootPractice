@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.bootWeb.mapper.MemberMapper">
+
+    <select id="get" parameterType="String" resultType="com.example.bootWeb.domain.entity.Member">
+        select * from member where member_id = #{memberId}
+    </select>
+
+
+    <!--    이거는 사용 못함. jpa 테이블 구성 칼럼 설정이 불가능 해서-->
+    <insert id="insert" parameterType="com.example.bootWeb.domain.dto.MemberJoinDTO">
+        <selectKey keyProperty="no" resultType="Long" order="BEFORE">
+            SELECT member_seq.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into member values(
+        #{no},
+        #{memberId},
+        #{memberPw},
+        #{memberName},
+        #{memberGender},
+        #{memberEmail},
+        #{memberAge},
+        #{role}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.example.bootWeb.domain.dto.UpdateInfoDTO">
+        update member set member_name=#{memberName}, member_email=#{memberEmail} where member_id=#{memberId}
+    </update>
+
+    <update id="updatePw" parameterType="com.example.bootWeb.domain.dto.UpdateInfoDTO">
+        update password set pw=#{memberPw} where member_member_id=#{memberId}
+    </update>
+</mapper>
+

@@ -9,6 +9,7 @@ package com.example.bootWeb.config;
 //이러한 이유로 인해 직렬화 기능을 갖은 세션 Dto를 하나 추가로 만드는게 유지보수에 도움이 된다.
 
 
+import com.example.bootWeb.domain.dto.vo.Role;
 import com.example.bootWeb.domain.entity.Member;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,6 +23,7 @@ public class SessionMember implements Serializable {
     private String email;
     private String gender;
     private String age;
+    private Role role;
 
     @Builder
     public SessionMember(Member member) {
@@ -30,5 +32,6 @@ public class SessionMember implements Serializable {
         this.email = member.getMemberEmail();
         this.gender = member.getMemberGender();
         this.age = member.getMemberAge();
+        this.role = member.getRole();
         }
     }

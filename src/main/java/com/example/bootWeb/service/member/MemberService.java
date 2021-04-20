@@ -12,7 +12,7 @@ public interface MemberService {
 
     public int join(Member member , Password password);
 
-    public Map<Integer, SessionMember> login(String loginId, String loginPw);
+    public SessionMember login(String loginId, String loginPw);
 
     public void updateInfo(UpdateInfoDTO updateInfoDTO);
 }

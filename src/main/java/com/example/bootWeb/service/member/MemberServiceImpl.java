@@ -11,9 +11,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Service
 @AllArgsConstructor
 public class MemberServiceImpl implements MemberService{
@@ -29,8 +26,9 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public int join(Member member, Password password) {
+
         if(memberRepository.findByMemberId(member.getMemberId()) != null ){
-            return 1; //로그인 실패
+            return 1; //회원가입 실패 -- 이미 존재하는 아이디
         }
         memberRepository.save(member);
         passwordRepository.save(password);
@@ -38,27 +36,20 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public Map<Integer, SessionMember> login(String loginId, String loginPw) {
-        Member member = memberRepository.findByMemberId(loginId);
-        Map<Integer,SessionMember> map = new HashMap<>();
-        SessionMember sessionMember = new SessionMember(member);
-        if(member != null){
-            String pw = passwordRepository.findByMemberId(member.getMemberId());
-            if(pw.equals(loginPw)){
-                map.put(0,sessionMember);
-                return map; //로그인 성공
-            }
-            map.put(1,null);
-            return map; //1은 잘못된 비밀번호
+    public SessionMember login(String loginId, String loginPw) {
+        String pw = passwordRepository.findPwByMemberId(loginId);
+        if(pw!=null && pw.equals(loginPw)){
+            Member member = memberRepository.findByMemberId(loginId);
+            SessionMember sessionMember = new SessionMember(member);
+            return sessionMember;
         }
-        map.put(2,null);
-        return map; //2는 잘못된 아이디
+        return null;
     }
 
     @Override
     public void updateInfo(UpdateInfoDTO updateInfoDTO) {
-        
+        memberMapper.update(updateInfoDTO);
+        memberMapper.updatePw(updateInfoDTO);
     }
-
 
 }

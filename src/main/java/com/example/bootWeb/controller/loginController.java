@@ -7,7 +7,6 @@ import com.example.bootWeb.domain.dto.MemberJoinDTO;
 import com.example.bootWeb.domain.entity.Member;
 import com.example.bootWeb.domain.entity.Password;
 import com.example.bootWeb.service.member.MemberService;
-import com.oracle.deploy.update.UpdateInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,9 +29,10 @@ public class loginController {
         return login( model, httpSession);
     }
 
+
     @GetMapping("/login")
     public String login(Model model, HttpSession httpSession){
-        //session 에 소셜 로그인 한 사람은 session 이름이 socialMember
+        //session 에 소셜 로그인 한 사람은 session 이름이 socialMember , oauth2userService 에서 그렇게 정의했으니까
         //session 에 회원으로 로그인 한 사람은 session 이름이 loginMember
         SessionMember socialMember = (SessionMember) httpSession.getAttribute("socialMember");
         SessionMember loginMember =(SessionMember) httpSession.getAttribute("loginMember");
@@ -47,8 +47,8 @@ public class loginController {
 
     @PostMapping("/login")
     public String memberLogin(Model model, HttpSession httpSession,String memberId, String memberPw){
-        Map<Integer,SessionMember> result = memberService.login(memberId,memberPw);
-        SessionMember sessionMember = result.get(0);
+        SessionMember result = memberService.login(memberId,memberPw);
+        SessionMember sessionMember = result;
         //추후 회원 정보 수정을 위한 session 에 넣을 데이터
         httpSession.setAttribute("loginMember",sessionMember);
         return index(model,httpSession);
@@ -71,6 +71,10 @@ public class loginController {
         if(result == 0){
             return "redirect:login";
         }
+//        회원가입 시 중복된 아이디 처리 필요 ajax 로
+//        else if(result == 1 ){
+//
+//        }
         return "join"; //이거 나중에 ajax 로 처리해야됨
     }
 
@@ -86,11 +90,14 @@ public class loginController {
         
     }
 
-    @PostMapping("/myPage")
+    @PostMapping("/memberUpdate")
     public String updateInfo(Model model, HttpSession httpSession, UpdateInfoDTO updateInfoDTO){
-
-        return index(model,httpSession);
+        memberService.updateInfo(updateInfoDTO);
+        return "redirect:/";
     }
 
-
+    @GetMapping("/adminPage")
+    public String adminPage(){
+        return "adminPage";
+    }
 }
