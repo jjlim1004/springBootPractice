@@ -1,10 +1,12 @@
 package com.example.bootWeb.service.member;
 
 import com.example.bootWeb.config.SessionMember;
-import com.example.bootWeb.domain.vo.entity.Member;
-import com.example.bootWeb.domain.vo.entity.MemberRepository;
-import com.example.bootWeb.domain.vo.entity.Password;
-import com.example.bootWeb.domain.vo.entity.PasswordRepository;
+import com.example.bootWeb.domain.dto.UpdateInfoDTO;
+import com.example.bootWeb.domain.entity.Member;
+import com.example.bootWeb.domain.entity.MemberRepository;
+import com.example.bootWeb.domain.entity.Password;
+import com.example.bootWeb.domain.entity.PasswordRepository;
+import com.example.bootWeb.mapper.MemberMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,8 @@ import java.util.Map;
 @AllArgsConstructor
 public class MemberServiceImpl implements MemberService{
 
-//    @Autowired
-//    MemberMapper memberMapper;
+    @Autowired
+    MemberMapper memberMapper;
 
     @Autowired
     MemberRepository memberRepository;
@@ -51,6 +53,11 @@ public class MemberServiceImpl implements MemberService{
         }
         map.put(2,null);
         return map; //2는 잘못된 아이디
+    }
+
+    @Override
+    public void updateInfo(UpdateInfoDTO updateInfoDTO) {
+        
     }
 
 

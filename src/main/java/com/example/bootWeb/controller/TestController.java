@@ -7,11 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
-@Controller
+@RestController
 @AllArgsConstructor
-@RequestMapping("/test")
 public class TestController {
 
 //    private MemberMapper mapper;
@@ -32,11 +32,16 @@ public class TestController {
         System.out.println(memberName);
     }
 
-/*    @PostMapping("/test/result")
-    public String test(TestVo testVo){
-        mapper.insert(testVo);
-        return "testResult";
-    }*/
+    @GetMapping("/test/restTest/string")
+    public String testString(){
+        String testValue = "rest test";
+        return testValue;
+    }
+
+//    @PostMapping("/test/restTest/")
+
+
+
 
 }
 

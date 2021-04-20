@@ -1,6 +1,6 @@
 package com.example.bootWeb.service.test;
 
-import com.example.bootWeb.domain.vo.TestVo;
+import com.example.bootWeb.domain.dto.vo.TestVo;
 import com.example.bootWeb.mapper.MemberMapper;
 import lombok.AllArgsConstructor;
 

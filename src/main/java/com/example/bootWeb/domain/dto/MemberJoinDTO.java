@@ -1,8 +1,8 @@
 package com.example.bootWeb.domain.dto;
 
 
-import com.example.bootWeb.domain.vo.entity.Member;
-import com.example.bootWeb.domain.vo.Role;
+import com.example.bootWeb.domain.entity.Member;
+import com.example.bootWeb.domain.dto.vo.Role;
 import lombok.Data;
 
 

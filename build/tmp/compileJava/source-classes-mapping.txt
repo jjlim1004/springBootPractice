@@ -2,51 +2,51 @@ com/example/bootWeb/config/DataAccessConfig.java
  com.example.bootWeb.config.DataAccessConfig
 com/example/bootWeb/domain/vo/TestVo.java
  com.example.bootWeb.domain.vo.TestVo
-com/example/bootWeb/config/DataSourceConfig.java
- com.example.bootWeb.config.DataSourceConfig
-com/example/bootWeb/domain/dto/MemberJoinDTO.java
- com.example.bootWeb.domain.dto.MemberJoinDTO
-com/example/bootWeb/config/annotation/SessionMember.java
- com.example.bootWeb.config.annotation.SessionMember
-com/example/bootWeb/domain/dao/LoginMember.java
- com.example.bootWeb.domain.dao.LoginMember
-com/example/bootWeb/Application.java
- com.example.bootWeb.Application
-com/example/bootWeb/domain/BaseTimeEntity.java
- com.example.bootWeb.domain.BaseTimeEntity
-com/example/bootWeb/service/test/TestService.java
- com.example.bootWeb.service.test.TestService
-com/example/bootWeb/domain/vo/Role.java
- com.example.bootWeb.domain.vo.Role
+com/example/bootWeb/domain/vo/entity/Member.java
+ com.example.bootWeb.domain.vo.entity.Member
+ com.example.bootWeb.domain.vo.entity.Member$MemberBuilder
 com/example/bootWeb/controller/TestController.java
  com.example.bootWeb.controller.TestController
+com/example/bootWeb/config/CustomOAuth2UserService.java
+ com.example.bootWeb.config.CustomOAuth2UserService
 com/example/bootWeb/mapper/MemberMapper.java
  com.example.bootWeb.mapper.MemberMapper
-com/example/bootWeb/config/OAuthAttributes.java
- com.example.bootWeb.config.OAuthAttributes
- com.example.bootWeb.config.OAuthAttributes$OAuthAttributesBuilder
+com/example/bootWeb/Application.java
+ com.example.bootWeb.Application
+com/example/bootWeb/service/member/MemberServiceImpl.java
+ com.example.bootWeb.service.member.MemberServiceImpl
+com/example/bootWeb/service/test/TestService.java
+ com.example.bootWeb.service.test.TestService
+com/example/bootWeb/service/member/MemberService.java
+ com.example.bootWeb.service.member.MemberService
+com/example/bootWeb/domain/vo/entity/MemberRepository.java
+ com.example.bootWeb.domain.vo.entity.MemberRepository
+com/example/bootWeb/domain/BaseTimeEntity.java
+ com.example.bootWeb.domain.BaseTimeEntity
+com/example/bootWeb/domain/vo/Role.java
+ com.example.bootWeb.domain.vo.Role
+com/example/bootWeb/config/SecurityConfig.java
+ com.example.bootWeb.config.SecurityConfig
+com/example/bootWeb/controller/loginController.java
+ com.example.bootWeb.controller.loginController
 com/example/bootWeb/service/test/TestServiceImpl.java
  com.example.bootWeb.service.test.TestServiceImpl
 com/example/bootWeb/config/SessionMember.java
  com.example.bootWeb.config.SessionMember
  com.example.bootWeb.config.SessionMember$SessionMemberBuilder
+com/example/bootWeb/config/annotation/SessionMember.java
+ com.example.bootWeb.config.annotation.SessionMember
+com/example/bootWeb/config/DataSourceConfig.java
+ com.example.bootWeb.config.DataSourceConfig
 com/example/bootWeb/domain/vo/entity/Password.java
  com.example.bootWeb.domain.vo.entity.Password
  com.example.bootWeb.domain.vo.entity.Password$PasswordBuilder
-com/example/bootWeb/domain/vo/entity/Member.java
- com.example.bootWeb.domain.vo.entity.Member
- com.example.bootWeb.domain.vo.entity.Member$MemberBuilder
-com/example/bootWeb/service/member/MemberService.java
- com.example.bootWeb.service.member.MemberService
-com/example/bootWeb/controller/loginController.java
- com.example.bootWeb.controller.loginController
 com/example/bootWeb/domain/vo/entity/PasswordRepository.java
  com.example.bootWeb.domain.vo.entity.PasswordRepository
-com/example/bootWeb/config/SecurityConfig.java
- com.example.bootWeb.config.SecurityConfig
-com/example/bootWeb/config/CustomOAuth2UserService.java
- com.example.bootWeb.config.CustomOAuth2UserService
-com/example/bootWeb/service/member/MemberServiceImpl.java
- com.example.bootWeb.service.member.MemberServiceImpl
-com/example/bootWeb/domain/vo/entity/MemberRepository.java
- com.example.bootWeb.domain.vo.entity.MemberRepository
+com/example/bootWeb/domain/dao/LoginMember.java
+ com.example.bootWeb.domain.dao.LoginMember
+com/example/bootWeb/domain/dto/MemberJoinDTO.java
+ com.example.bootWeb.domain.dto.MemberJoinDTO
+com/example/bootWeb/config/OAuthAttributes.java
+ com.example.bootWeb.config.OAuthAttributes
+ com.example.bootWeb.config.OAuthAttributes$OAuthAttributesBuilder
