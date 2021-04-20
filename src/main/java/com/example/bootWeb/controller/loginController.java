@@ -10,11 +10,10 @@ import com.example.bootWeb.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Map;
 
 
@@ -97,7 +96,23 @@ public class loginController {
     }
 
     @GetMapping("/adminPage")
-    public String adminPage(){
-        return "adminPage";
+    public String adminPage(HttpSession httpSession,Model model){
+        SessionMember sessionMember = (SessionMember) httpSession.getAttribute("loginMember");
+        if(sessionMember.getRole().equals("ROLE_ADMIN")) {
+//            ArrayList<Member> memberList = memberService.getMemberList();
+//            model.addAttribute();
+            return "adminPage";
+        }
+        return "redirect:/";
+    }
+
+    @DeleteMapping("/delete/{memberNo}")
+    public String deleteMember(HttpSession httpSession, @PathVariable("memberNo")Long memberNo){
+        SessionMember sessionMember = (SessionMember) httpSession.getAttribute("loginMember");
+        if(sessionMember.getRole().equals("ROLE_ADMIN")) {
+            memberService.deleteMember(memberNo);
+            return "redirect:/adminPage";
+        }
+        return "redirect:/";
     }
 }

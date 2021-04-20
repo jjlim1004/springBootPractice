@@ -11,6 +11,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 @AllArgsConstructor
 public class MemberServiceImpl implements MemberService{
@@ -50,6 +52,18 @@ public class MemberServiceImpl implements MemberService{
     public void updateInfo(UpdateInfoDTO updateInfoDTO) {
         memberMapper.update(updateInfoDTO);
         memberMapper.updatePw(updateInfoDTO);
+    }
+
+    @Override
+    public ArrayList<Member> getMemberList() {
+        ArrayList<Member> memberList = new ArrayList<>();
+        //paging 해보기 JPARepository 에 paging도 있는듯
+        return memberList;
+    }
+
+    @Override
+    public void deleteMember(Long memberNo) {
+        memberRepository.deleteById(memberNo);
     }
 
 }

@@ -5,6 +5,7 @@ import com.example.bootWeb.domain.dto.UpdateInfoDTO;
 import com.example.bootWeb.domain.entity.Member;
 import com.example.bootWeb.domain.entity.Password;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 
@@ -15,4 +16,8 @@ public interface MemberService {
     public SessionMember login(String loginId, String loginPw);
 
     public void updateInfo(UpdateInfoDTO updateInfoDTO);
+
+    public ArrayList<Member> getMemberList();
+
+    public void deleteMember(Long memberNo);
 }
