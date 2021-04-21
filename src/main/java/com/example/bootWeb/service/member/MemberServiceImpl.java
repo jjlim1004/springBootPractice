@@ -57,7 +57,7 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public void updateInfo(UpdateInfoDTO updateInfoDTO) {
-        
+
     }
 
 
