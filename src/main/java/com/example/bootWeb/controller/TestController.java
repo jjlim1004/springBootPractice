@@ -4,13 +4,10 @@ import com.example.bootWeb.domain.dto.MemberJoinDTO;
 import com.example.bootWeb.mapper.MemberMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
-@RestController
+@Controller
 @AllArgsConstructor
 public class TestController {
 
@@ -33,12 +30,22 @@ public class TestController {
     }
 
     @GetMapping("/test/restTest/string")
+    @ResponseBody
     public String testString(){
         String testValue = "rest test";
         return testValue;
     }
 
-//    @PostMapping("/test/restTest/")
+    @GetMapping("/test/jsp")
+    public String jpsTest(){
+        return "test";
+    }
+
+    @GetMapping("test/voidJsp")
+    public void voidJsp(){
+
+    }
+
 
 
 
