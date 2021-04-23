@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Spring Boot Web</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-6">
+            <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
+            {{#socialMember}} <!--userName 이 존재 할 경우-->
+                    Logged in as:<span id="user">{{socialMember.id}} </span>
+                    <a href="/logout" class="btn btn-info active" role="button">logout</a>
+            {{/socialMember}}
+            {{^socialMember}} <!--userName이 존재 하지 않을경우-->
+                {{#loginMember}}
+                    <a href="/memberLogout" class="btn btn-info active" role="button">logout</a>
+                    <a href="/myPage" class="btn btn-info active" role="button">my page</a>
+                {{/loginMember}}
+                {{^loginMember}}
+                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">google login</a>
+                    <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">naver login</a>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form action="/login" method="post">
+                                id: <input type="text" name="memberId"><br>
+                                pw: <input type="text" name="memberPw"><br>
+                                <input type="submit" value="로그인">
+                                <button type="button"  onclick="location.href='/join'">회원가입</button>
+                            </form>
+                        </div>
+                    </div>
+                {{/loginMember}}
+            {{/socialMember}}
+        </div>
+    </div>
+
+
+</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!--index.js 추가-->
+    <!-- script src="/js/app/index.js"/ -->
+</body>
+</html>

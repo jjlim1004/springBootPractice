@@ -1,0 +1,2 @@
+com/example/bootWeb/MemberTest.java
+ com.example.bootWeb.MemberTest

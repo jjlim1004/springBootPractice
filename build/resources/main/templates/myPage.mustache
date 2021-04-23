@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/memberUpdate" method="post">
+        <label for="memberId">아이디</label>
+        <input type="text" name="memberId" id="memberId" value={{loginMember.id}} readonly>
+        <br>
+        <label for="memberPw">비밀번호</label>
+        <input type="password" name="memberPw" id="memberPw" value="">
+        <br>
+        <label for="memberName">이름</label>
+        <input type="text" name="memberName" id="memberName" value={{loginMember.name}}>
+        <br>
+        <label for="memberGender">성별</label>
+        <input type="text" name="memberGender" id="memberGender" value={{loginMember.gender}} readonly>
+        <br>
+        <label for="memberEmail">이메일</label>
+        <input type="text" name="memberEmail" id="memberEmail" value={{loginMember.email}} >
+        <br>
+        <label for="memberAge">연령대</label>
+        <input type="text" name="memberAge" id="memberAge" value={{loginMember.age}} readonly>
+        <br>
+        <input type="submit" value="수정">
+    </form>
+</body>
+</html>
