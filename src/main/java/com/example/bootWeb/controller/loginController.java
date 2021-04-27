@@ -1,20 +1,26 @@
 package com.example.bootWeb.controller;
 
 import com.example.bootWeb.config.SessionMember;
+import com.example.bootWeb.domain.dto.PageDTO;
 import com.example.bootWeb.domain.dto.UpdateInfoDTO;
+import com.example.bootWeb.domain.dto.vo.Criteria;
 import com.example.bootWeb.domain.dto.vo.Role;
 import com.example.bootWeb.domain.dto.MemberJoinDTO;
+import com.example.bootWeb.domain.dto.vo.test.TestPageDTO;
 import com.example.bootWeb.domain.entity.Member;
 import com.example.bootWeb.domain.entity.Password;
 import com.example.bootWeb.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 
 @Controller
@@ -50,6 +56,9 @@ public class loginController {
         SessionMember sessionMember = result;
         //추후 회원 정보 수정을 위한 session 에 넣을 데이터
         httpSession.setAttribute("loginMember",sessionMember);
+        if(sessionMember.getRole()== Role.ADMIN){
+            httpSession.setAttribute("admin",sessionMember);
+        }
         return index(model,httpSession);
     }
 
@@ -95,12 +104,18 @@ public class loginController {
         return "redirect:/";
     }
 
-    @GetMapping("/adminPage")
-    public String adminPage(HttpSession httpSession,Model model){
+
+    public SessionMember adminSessionCheck(HttpSession httpSession){
         SessionMember sessionMember = (SessionMember) httpSession.getAttribute("loginMember");
-        if(sessionMember.getRole().equals("ROLE_ADMIN")) {
-//            ArrayList<Member> memberList = memberService.getMemberList();
-//            model.addAttribute();
+        return sessionMember;
+    }
+
+    @GetMapping("/adminPage")
+    public String adminPage(HttpSession httpSession , Model model, Criteria cri ){
+        SessionMember sessionMember = (SessionMember)httpSession.getAttribute("admin");
+        if(sessionMember!=null) {
+//            model.addAttribute("list",memberService.getList(cri));
+//            model.addAttribute("page", new PageDTO(cri,memberService.totalCount()));
             return "adminPage";
         }
         return "redirect:/";
@@ -108,8 +123,9 @@ public class loginController {
 
     @DeleteMapping("/delete/{memberNo}")
     public String deleteMember(HttpSession httpSession, @PathVariable("memberNo")Long memberNo){
-        SessionMember sessionMember = (SessionMember) httpSession.getAttribute("loginMember");
+        SessionMember sessionMember = adminSessionCheck(httpSession);
         if(sessionMember.getRole().equals("ROLE_ADMIN")) {
+            httpSession.setAttribute("admin",sessionMember);
             memberService.deleteMember(memberNo);
             return "redirect:/adminPage";
         }

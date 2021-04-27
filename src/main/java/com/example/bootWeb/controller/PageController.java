@@ -1,6 +1,8 @@
 package com.example.bootWeb.controller;
 
-import com.example.bootWeb.domain.dto.PageDTO;
+
+import com.example.bootWeb.config.SessionMember;
+import com.example.bootWeb.domain.dto.vo.test.TestPageDTO;
 import com.example.bootWeb.domain.entity.Member;
 import com.example.bootWeb.domain.entity.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,13 +20,14 @@ public class PageController {
     @Autowired
     MemberRepository memberRepository;
 
-    @GetMapping("/adminPage/memberList")
-    public Page<PageDTO> paging(@PageableDefault(size=15, sort = "memberNo")Pageable pageRequest){
+    @GetMapping("/adminPage/testPageDto")
+    public Page<TestPageDTO> paging(@PageableDefault(size=15, sort = "memberNo")Pageable pageRequest){
+
         Page<Member> memberList = memberRepository.findAll(pageRequest);
 
-        Page<PageDTO> pageList = memberList.map(
-            member -> new PageDTO(member.getMemberNo(),member.getMemberId(),member.getMemberName(),member.getMemberEmail(),member.getMemberAge(), member.getMemberGender())
+        Page<TestPageDTO> pageList = memberList.map(
+            member -> new TestPageDTO(member)
         );
-        return  pageList;
+        return pageList;
     }
 }

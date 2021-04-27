@@ -33,5 +33,24 @@
     <update id="updatePw" parameterType="com.example.bootWeb.domain.dto.UpdateInfoDTO">
         update password set pw=#{memberPw} where member_member_id=#{memberId}
     </update>
+
+    <select id="getListWithPaging" parameterType="com.example.bootWeb.domain.dto.vo.test.TestPageDTO" resultType="com.example.bootWeb.domain.entity.Member">
+        <![CDATA[
+              select
+                member_no, member_id, member_email, member_name, member_age, member_gender
+              from
+                  (
+                  select
+                    rownum rn, member_no, member_id, member_email, member_name, member_age, member_gender
+                  from
+                    member
+                  where
+                  rownum <= #{pageNum} * #{amount}
+                  )
+              where rn > (#{pageNum} -1) * #{amount}
+        ]]>
+    </select>
+
+
 </mapper>
 

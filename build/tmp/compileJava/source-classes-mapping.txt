@@ -11,6 +11,8 @@ com/example/bootWeb/Application.java
  com.example.bootWeb.Application
 com/example/bootWeb/service/member/MemberServiceImpl.java
  com.example.bootWeb.service.member.MemberServiceImpl
+com/example/bootWeb/domain/dto/vo/test/TestPageDTO.java
+ com.example.bootWeb.domain.dto.vo.test.TestPageDTO
 com/example/bootWeb/service/member/MemberService.java
  com.example.bootWeb.service.member.MemberService
 com/example/bootWeb/domain/BaseTimeEntity.java
@@ -22,11 +24,17 @@ com/example/bootWeb/config/SessionMember.java
  com.example.bootWeb.config.SessionMember$SessionMemberBuilder
 com/example/bootWeb/config/DataSourceConfig.java
  com.example.bootWeb.config.DataSourceConfig
+com/example/bootWeb/domain/dto/vo/Criteria.java
+ com.example.bootWeb.domain.dto.vo.Criteria
 com/example/bootWeb/domain/entity/Password.java
  com.example.bootWeb.domain.entity.Password
  com.example.bootWeb.domain.entity.Password$PasswordBuilder
 com/example/bootWeb/domain/dao/LoginMember.java
  com.example.bootWeb.domain.dao.LoginMember
+com/example/bootWeb/domain/dto/PageDTO.java
+ com.example.bootWeb.domain.dto.PageDTO
+com/example/bootWeb/controller/PageController.java
+ com.example.bootWeb.controller.PageController
 com/example/bootWeb/config/CustomOAuth2UserService.java
  com.example.bootWeb.config.CustomOAuth2UserService
 com/example/bootWeb/mapper/MemberMapper.java
