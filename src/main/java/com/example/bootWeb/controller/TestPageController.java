@@ -14,17 +14,24 @@ import org.springframework.web.bind.annotation.RestController;
 //https://semtax.tistory.com/77
 @RestController
 @RequiredArgsConstructor
-public class PageController {
+public class TestPageController {
     @Autowired
     MemberRepository memberRepository;
 
-    @GetMapping("/adminPage/memberList")
-    public Page<PageDTO> paging(@PageableDefault(size=15, sort = "memberNo")Pageable pageRequest){
-        Page<Member> memberList = memberRepository.findAll(pageRequest);
+//    @GetMapping("/adminPage/memberList")
+//    public Page<PageDTO> paging(@PageableDefault(size=15, sort = "memberNo")Pageable pageRequest){
+//        Page<Member> memberList = memberRepository.findAll(pageRequest);
+//
+//        Page<PageDTO> pageList = memberList.map(
+//            member -> new PageDTO(member.getMemberNo(),
+//                    member.getMemberId(),
+//                    member.getMemberName(),
+//                    member.getMemberEmail(),
+//                    member.getMemberAge(),
+//                    member.getMemberGender())
+//        );
+//        return pageList;
+//    }
 
-        Page<PageDTO> pageList = memberList.map(
-            member -> new PageDTO(member.getMemberNo(),member.getMemberId(),member.getMemberName(),member.getMemberEmail(),member.getMemberAge(), member.getMemberGender())
-        );
-        return  pageList;
-    }
+
 }

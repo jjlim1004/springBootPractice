@@ -27,6 +27,10 @@ com/example/bootWeb/domain/entity/Password.java
  com.example.bootWeb.domain.entity.Password$PasswordBuilder
 com/example/bootWeb/domain/dao/LoginMember.java
  com.example.bootWeb.domain.dao.LoginMember
+com/example/bootWeb/domain/dto/PageDTO.java
+ com.example.bootWeb.domain.dto.PageDTO
+com/example/bootWeb/controller/PageController.java
+ com.example.bootWeb.controller.PageController
 com/example/bootWeb/config/CustomOAuth2UserService.java
  com.example.bootWeb.config.CustomOAuth2UserService
 com/example/bootWeb/mapper/MemberMapper.java
@@ -37,8 +41,9 @@ com/example/bootWeb/domain/dto/vo/Role.java
  com.example.bootWeb.domain.dto.vo.Role
 com/example/bootWeb/config/SecurityConfig.java
  com.example.bootWeb.config.SecurityConfig
-com/example/bootWeb/controller/loginController.java
- com.example.bootWeb.controller.loginController
+com/example/bootWeb/config/OAuthAttributes.java
+ com.example.bootWeb.config.OAuthAttributes
+ com.example.bootWeb.config.OAuthAttributes$OAuthAttributesBuilder
 com/example/bootWeb/config/annotation/SessionMember.java
  com.example.bootWeb.config.annotation.SessionMember
 com/example/bootWeb/domain/dto/UpdateInfoDTO.java
@@ -49,6 +54,5 @@ com/example/bootWeb/domain/entity/MemberRepository.java
  com.example.bootWeb.domain.entity.MemberRepository
 com/example/bootWeb/domain/dto/MemberJoinDTO.java
  com.example.bootWeb.domain.dto.MemberJoinDTO
-com/example/bootWeb/config/OAuthAttributes.java
- com.example.bootWeb.config.OAuthAttributes
- com.example.bootWeb.config.OAuthAttributes$OAuthAttributesBuilder
+com/example/bootWeb/controller/loginController.java
+ com.example.bootWeb.controller.loginController

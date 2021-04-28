@@ -13,8 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Map;
 
 
 @Controller
@@ -48,14 +46,18 @@ public class loginController {
     public String memberLogin(Model model, HttpSession httpSession,String memberId, String memberPw){
         SessionMember result = memberService.login(memberId,memberPw);
         SessionMember sessionMember = result;
-        //추후 회원 정보 수정을 위한 session 에 넣을 데이터
-        httpSession.setAttribute("loginMember",sessionMember);
+        if(sessionMember != null) {
+            //추후 회원 정보 수정을 위한 session 에 넣을 데이터
+            httpSession.setAttribute("loginMember", sessionMember);
+            //로그인 실패시에는 jps 에서 loginMember != null 로 체크 해서 실패 메세지 뜨게
+        }
         return index(model,httpSession);
     }
 
 
     @GetMapping("/join")
-    public void joinPage(){
+    public String joinPage(){
+        return "join";
     }
 
     @PostMapping("/join")
@@ -99,8 +101,6 @@ public class loginController {
     public String adminPage(HttpSession httpSession,Model model){
         SessionMember sessionMember = (SessionMember) httpSession.getAttribute("loginMember");
         if(sessionMember.getRole().equals("ROLE_ADMIN")) {
-//            ArrayList<Member> memberList = memberService.getMemberList();
-//            model.addAttribute();
             return "adminPage";
         }
         return "redirect:/";
