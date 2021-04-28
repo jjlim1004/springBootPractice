@@ -1,28 +1,19 @@
 package com.example.bootWeb.domain.dto.vo;
 
+
 import lombok.Data;
 
 @Data
 public class Criteria {
+    private int amount; //한 페이지 당 나타나는 회원수
+    private int curPage; //현재 나타나는 화면의 페이지
 
-    //한 뷰에서 보여줄 페이지 수
-    private int pageCount;
-    //한 페이지 당 존재하는 글의 개수
-    private int contentNum;
-
-    private String type;
-    private String keyword;
-
-    public Criteria() {
-        this(1, 10);
+    public Criteria(){
+        this(10,1);
     }
 
-    public Criteria(int pageCount, int contentNum) {
-        this.pageCount = pageCount;
-        this.contentNum = contentNum;
-    }
-
-    public String[] getTypeArr() {
-        return type == null ? new String[] {}: type.split("");
+    public Criteria(int amount, int curPage) {
+        this.amount = amount;
+        this.curPage = curPage;
     }
 }

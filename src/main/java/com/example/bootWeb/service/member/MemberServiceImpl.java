@@ -1,17 +1,25 @@
 package com.example.bootWeb.service.member;
 
 import com.example.bootWeb.config.SessionMember;
+import com.example.bootWeb.domain.dto.PageDTO;
 import com.example.bootWeb.domain.dto.UpdateInfoDTO;
+import com.example.bootWeb.domain.dto.vo.Criteria;
+import com.example.bootWeb.domain.dto.vo.test.TestPageDTO;
 import com.example.bootWeb.domain.entity.Member;
 import com.example.bootWeb.domain.entity.MemberRepository;
 import com.example.bootWeb.domain.entity.Password;
 import com.example.bootWeb.domain.entity.PasswordRepository;
 import com.example.bootWeb.mapper.MemberMapper;
 import lombok.AllArgsConstructor;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -43,6 +51,7 @@ public class MemberServiceImpl implements MemberService{
         if(pw!=null && pw.equals(loginPw)){
             Member member = memberRepository.findByMemberId(loginId);
             SessionMember sessionMember = new SessionMember(member);
+            System.out.println(sessionMember.getRole());
             return sessionMember;
         }
         return null;
@@ -55,15 +64,26 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public ArrayList<Member> getMemberList() {
-        ArrayList<Member> memberList = new ArrayList<>();
-        //paging 해보기 JPARepository 에 paging도 있는듯
+    public int totalCount() {
+        int total = memberRepository.findAll().size();
+        return total;
+    }
+
+    @Override
+    public ArrayList<TestPageDTO> getList(Criteria cri) {
+        List<Member> list = memberMapper.getListWithPaging(cri);
+        ArrayList<TestPageDTO> memberList = new ArrayList<>();
+        for(Member member : list){
+            memberList.add(new TestPageDTO(member));
+        }
         return memberList;
     }
+
 
     @Override
     public void deleteMember(Long memberNo) {
         memberRepository.deleteById(memberNo);
     }
+
 
 }

@@ -6,16 +6,16 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-
+@RequestMapping("/test")
 @Controller
 @AllArgsConstructor
 public class TestController {
 
 //    private MemberMapper mapper;
 
-    @RequestMapping("/test")
+    @GetMapping("/test")
     public String testPage(){
-        return "testPage";
+        return "test";
     }
 
     @GetMapping("/test/test")
@@ -38,12 +38,12 @@ public class TestController {
 
     @GetMapping("/test/jsp")
     public String jpsTest(){
-        return "test";
+        return "forTest/test";
     }
 
-    @GetMapping("test/voidJsp")
-    public void voidJsp(){
-
+    @GetMapping("/test/voidJsp")
+    public String voidJsp(){
+        return "voidJsp";
     }
 
 

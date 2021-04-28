@@ -20,6 +20,10 @@
                 {{#loginMember}}
                     <a href="/memberLogout" class="btn btn-info active" role="button">logout</a>
                     <a href="/myPage" class="btn btn-info active" role="button">my page</a>
+                    {{#admin}}
+                        <a href="/adminPage" class="btn btn-info active" role="button">admin page</a>
+                    {{/admin}}
+
                 {{/loginMember}}
                 {{^loginMember}}
                     <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">google login</a>
