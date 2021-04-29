@@ -1,5 +1,6 @@
 package com.example.bootWeb.mapper;
 
+import com.example.bootWeb.domain.dto.MemberListDTO;
 import com.example.bootWeb.domain.dto.UpdateInfoDTO;
 import com.example.bootWeb.domain.dto.vo.Criteria;
 import com.example.bootWeb.domain.dto.vo.test.TestPageDTO;
@@ -19,6 +20,6 @@ public interface MemberMapper {
 
     public void updatePw(UpdateInfoDTO updateInfoDTO);
 
-    public List<Member> getListWithPaging(Criteria cri);
+    public List<MemberListDTO> getListWithPaging(Criteria cri);
 
 }

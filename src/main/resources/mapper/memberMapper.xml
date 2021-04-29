@@ -34,7 +34,7 @@
         update password set pw=#{memberPw} where member_member_id=#{memberId}
     </update>
 
-    <select id="getListWithPaging" parameterType="com.example.bootWeb.domain.dto.vo.test.TestPageDTO" resultType="com.example.bootWeb.domain.entity.Member">
+    <select id="getListWithPaging" parameterType="com.example.bootWeb.domain.dto.vo.Criteria" resultType="com.example.bootWeb.domain.dto.MemberListDTO">
         <![CDATA[
               select
                 member_no, member_id, member_email, member_name, member_age, member_gender
@@ -45,9 +45,9 @@
                   from
                     member
                   where
-                  rownum <= #{pageNum} * #{amount}
+                  rownum <= #{curPage} * #{amount}
                   )
-              where rn > (#{pageNum} -1) * #{amount}
+              where rn > (#{curPage} -1) * #{amount}
         ]]>
     </select>
 

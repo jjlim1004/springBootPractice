@@ -6,21 +6,16 @@ import com.example.bootWeb.domain.dto.UpdateInfoDTO;
 import com.example.bootWeb.domain.dto.vo.Criteria;
 import com.example.bootWeb.domain.dto.vo.Role;
 import com.example.bootWeb.domain.dto.MemberJoinDTO;
-import com.example.bootWeb.domain.dto.vo.test.TestPageDTO;
 import com.example.bootWeb.domain.entity.Member;
 import com.example.bootWeb.domain.entity.Password;
 import com.example.bootWeb.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 @Controller
@@ -104,21 +99,33 @@ public class loginController {
         return "redirect:/";
     }
 
-
-    public SessionMember adminSessionCheck(HttpSession httpSession){
+    @GetMapping("/memberOut")
+    public String memberOut(HttpSession httpSession){
         SessionMember sessionMember = (SessionMember) httpSession.getAttribute("loginMember");
-        return sessionMember;
+        memberService.memberOut(sessionMember.getId());
+        httpSession.invalidate();
+        return "redirect:/";
     }
+
 
     @GetMapping("/adminPage")
     public String adminPage(HttpSession httpSession , Model model, Criteria cri ){
         SessionMember sessionMember = (SessionMember)httpSession.getAttribute("admin");
         if(sessionMember!=null) {
-//            model.addAttribute("list",memberService.getList(cri));
-//            model.addAttribute("page", new PageDTO(cri,memberService.totalCount()));
+            model.addAttribute("list",memberService.getList(cri));
+            System.out.println(memberService.totalCount());
+            PageDTO page = new PageDTO(cri,memberService.totalCount());
+            System.out.println(page.getStartPage());
+            System.out.println(page.getEndPage());
+            model.addAttribute("pageMaker",page);
             return "adminPage";
         }
         return "redirect:/";
+    }
+
+    public SessionMember adminSessionCheck(HttpSession httpSession){
+        SessionMember sessionMember = (SessionMember) httpSession.getAttribute("loginMember");
+        return sessionMember;
     }
 
     @DeleteMapping("/delete/{memberNo}")
@@ -131,4 +138,5 @@ public class loginController {
         }
         return "redirect:/";
     }
+
 }
