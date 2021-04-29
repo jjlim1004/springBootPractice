@@ -51,6 +51,9 @@
         ]]>
     </select>
 
+    <delete id="memberOut">
+        delete from member where member_no = #{memberNo}
+    </delete>
 
 </mapper>
 

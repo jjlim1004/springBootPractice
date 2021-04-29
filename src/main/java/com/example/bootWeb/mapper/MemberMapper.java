@@ -22,4 +22,7 @@ public interface MemberMapper {
 
     public List<MemberListDTO> getListWithPaging(Criteria cri);
 
+    //jpql 이 안되서 일단 일시적으로 하는 것
+    public void memberOut(Long memberNo);
+
 }

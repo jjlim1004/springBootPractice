@@ -67,7 +67,8 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public void memberOut(String memberId) {
         Member member = memberRepository.findByMemberId(memberId);
-        memberRepository.deleteById(member.getMemberNo());
+        memberMapper.memberOut(member.getMemberNo());
+//        memberRepository.deleteById(member.getMemberNo());
     }
 
     @Override
