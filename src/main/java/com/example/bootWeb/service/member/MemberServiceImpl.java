@@ -1,19 +1,25 @@
 package com.example.bootWeb.service.member;
 
 import com.example.bootWeb.config.SessionMember;
-import com.example.bootWeb.domain.dto.MemberDTO;
+import com.example.bootWeb.domain.dto.MemberListDTO;
+import com.example.bootWeb.domain.dto.PageDTO;
 import com.example.bootWeb.domain.dto.UpdateInfoDTO;
 import com.example.bootWeb.domain.dto.vo.Criteria;
+import com.example.bootWeb.domain.dto.vo.test.TestPageDTO;
 import com.example.bootWeb.domain.entity.Member;
 import com.example.bootWeb.domain.entity.MemberRepository;
 import com.example.bootWeb.domain.entity.Password;
 import com.example.bootWeb.domain.entity.PasswordRepository;
 import com.example.bootWeb.mapper.MemberMapper;
 import lombok.AllArgsConstructor;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -59,14 +65,21 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
+    public void memberOut(String memberId) {
+        Member member = memberRepository.findByMemberId(memberId);
+        memberMapper.memberOut(member.getMemberNo());
+//        memberRepository.deleteById(member.getMemberNo());
+    }
+
+    @Override
     public int totalCount() {
-        int total = memberMapper.getMemberCount();
+        int total = memberRepository.findAll().size();
         return total;
     }
 
     @Override
-    public  List<MemberDTO> getList(Criteria cri) {
-        List<MemberDTO> list = memberMapper.getListWithPaging(cri);
+    public List<MemberListDTO> getList(Criteria cri) {
+        List<MemberListDTO> list = memberMapper.getListWithPaging(cri);
         return list;
     }
 

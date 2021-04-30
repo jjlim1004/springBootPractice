@@ -24,7 +24,7 @@ public class MemberTest {
 
     @Test
     public void insertMember(){
-        for(int i = 0 ; i<100; i++){
+        for(int i = 1 ; i<=100; i++){
             String s =Integer.toString(i);
             Member member =Member.builder().memberId(s).memberAge(s).memberEmail(s).memberName(s).memberGender(s).role(Role.USER).build();
             memberRepository.save(member);

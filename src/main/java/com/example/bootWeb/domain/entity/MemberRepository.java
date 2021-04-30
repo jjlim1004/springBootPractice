@@ -1,9 +1,8 @@
 package com.example.bootWeb.domain.entity;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +16,8 @@ public interface MemberRepository extends JpaRepository<Member,Long> {
     @Query("select m from Member m where m.memberId=?1")
     Member findByMemberId(String memberId);
 
-    Page<Member> findAll(Pageable pageable);
+//    @Query(value = "delete from Member m where m.member_no=:memberNo")
+//    void memberOut( @Param("memberNo") long memberNo);
 
     @Query("select count(*) from Member m where m.role='user'")
     List<Member> getMemberCount();
