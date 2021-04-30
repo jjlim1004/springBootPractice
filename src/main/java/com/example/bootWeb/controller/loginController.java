@@ -49,6 +49,10 @@ public class loginController {
     public String memberLogin(Model model, HttpSession httpSession,String memberId, String memberPw){
         SessionMember result = memberService.login(memberId,memberPw);
         SessionMember sessionMember = result;
+        if(sessionMember == null ){
+            model.addAttribute("loginFailResult","존재 하지 않은 정보 입니다.");
+            return index(model,httpSession);
+        }
         //추후 회원 정보 수정을 위한 session 에 넣을 데이터
         httpSession.setAttribute("loginMember",sessionMember);
         if(sessionMember.getRole()== Role.ADMIN){
@@ -74,11 +78,18 @@ public class loginController {
         if(result == 0){
             return "redirect:login";
         }
-//        회원가입 시 중복된 아이디 처리 필요 ajax 로
-//        else if(result == 1 ){
-//
-//        }
-        return "join"; //이거 나중에 ajax 로 처리해야됨
+        return "join";
+    }
+
+//    @PostMapping(value = "/idCheck",consumes = "application/json")
+    @PostMapping("/idCheck")
+    @ResponseBody
+    public String idCheck(@RequestBody String memberId){
+        int length = memberId.length();
+        System.out.println("idCheck 호출됨, length 는 " + length);
+        System.out.println("memberId는 " + memberId);
+        String result = memberService.idCheck(memberId);
+        return result;
     }
 
     @RequestMapping("/memberLogout")
@@ -107,6 +118,11 @@ public class loginController {
         return "redirect:/";
     }
 
+    @PostMapping("/memberCheck")
+    public String memberCheck(){
+
+        return "";
+    }
 
     @GetMapping("/adminPage")
     public String adminPage(HttpSession httpSession , Model model, Criteria cri ){

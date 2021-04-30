@@ -16,6 +16,8 @@ public interface MemberMapper {
 
     public Member get(String memberId);
 
+    public Member findMemberForIdCheck(String memberId);
+
     public void update(UpdateInfoDTO updateInfoDTO);
 
     public void updatePw(UpdateInfoDTO updateInfoDTO);

@@ -1,25 +1,20 @@
 package com.example.bootWeb.service.member;
 
 import com.example.bootWeb.config.SessionMember;
+import com.example.bootWeb.domain.dto.MemberDTO;
 import com.example.bootWeb.domain.dto.MemberListDTO;
-import com.example.bootWeb.domain.dto.PageDTO;
 import com.example.bootWeb.domain.dto.UpdateInfoDTO;
 import com.example.bootWeb.domain.dto.vo.Criteria;
-import com.example.bootWeb.domain.dto.vo.test.TestPageDTO;
 import com.example.bootWeb.domain.entity.Member;
 import com.example.bootWeb.domain.entity.MemberRepository;
 import com.example.bootWeb.domain.entity.Password;
 import com.example.bootWeb.domain.entity.PasswordRepository;
 import com.example.bootWeb.mapper.MemberMapper;
 import lombok.AllArgsConstructor;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -47,6 +42,16 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
+    public String idCheck(String memberId) {
+//       Member member = memberMapper.findMemberForIdCheck(memberId);
+        String member = memberRepository.findMemberIdForIdCheck(memberId);
+        if(member != null){
+            return "1";
+        }
+        return "0";
+    }
+
+    @Override
     public SessionMember login(String loginId, String loginPw) {
         String pw = passwordRepository.findPwByMemberId(loginId);
         if(pw!=null && pw.equals(loginPw)){
@@ -67,7 +72,9 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public void memberOut(String memberId) {
         Member member = memberRepository.findByMemberId(memberId);
-        memberMapper.memberOut(member.getMemberNo());
+        Password password = passwordRepository.findByMemberId(memberId);
+        passwordRepository.delete(password);
+        memberRepository.delete(member);
 //        memberRepository.deleteById(member.getMemberNo());
     }
 
@@ -83,11 +90,9 @@ public class MemberServiceImpl implements MemberService{
         return list;
     }
 
-
     @Override
     public void deleteMember(Long memberNo) {
         memberRepository.deleteById(memberNo);
     }
-
 
 }

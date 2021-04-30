@@ -16,10 +16,10 @@ public interface MemberRepository extends JpaRepository<Member,Long> {
     @Query("select m from Member m where m.memberId=?1")
     Member findByMemberId(String memberId);
 
-//    @Query(value = "delete from Member m where m.member_no=:memberNo")
-//    void memberOut( @Param("memberNo") long memberNo);
-
     @Query("select count(*) from Member m where m.role='user'")
     List<Member> getMemberCount();
+
+    @Query("select m.memberId from Member m where m.memberId=:memberId")
+    String findMemberIdForIdCheck(@Param("memberId") String memberId);
 
 }
