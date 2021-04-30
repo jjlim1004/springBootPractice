@@ -1,12 +1,11 @@
 package com.example.bootWeb.controller;
 
 import com.example.bootWeb.domain.dto.MemberJoinDTO;
-import com.example.bootWeb.mapper.MemberMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/test")
+@RequestMapping("/test/")
 @Controller
 @AllArgsConstructor
 public class TestController {
@@ -15,7 +14,7 @@ public class TestController {
 
     @GetMapping("/test")
     public String testPage(){
-        return "test";
+        return "/test/test";
     }
 
     @GetMapping("/test/test")

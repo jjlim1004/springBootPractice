@@ -114,8 +114,8 @@ public class loginController {
     public String adminPage(HttpSession httpSession , Model model, Criteria cri ){
         SessionMember sessionMember = (SessionMember)httpSession.getAttribute("admin");
         if(sessionMember!=null) {
-//            model.addAttribute("list",memberService.getList(cri));
-//            model.addAttribute("page", new PageDTO(cri,memberService.totalCount()));
+            model.addAttribute("member",memberService.getList(cri));
+            model.addAttribute("pageMaker",new PageDTO(cri,memberService.totalCount()));
             return "adminPage";
         }
         return "redirect:/";

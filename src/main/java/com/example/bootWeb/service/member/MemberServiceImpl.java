@@ -1,6 +1,7 @@
 package com.example.bootWeb.service.member;
 
 import com.example.bootWeb.config.SessionMember;
+import com.example.bootWeb.domain.dto.MemberDTO;
 import com.example.bootWeb.domain.dto.PageDTO;
 import com.example.bootWeb.domain.dto.UpdateInfoDTO;
 import com.example.bootWeb.domain.dto.vo.Criteria;
@@ -65,18 +66,14 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public int totalCount() {
-        int total = memberRepository.findAll().size();
+        int total = memberMapper.getMemberCount();
         return total;
     }
 
     @Override
-    public ArrayList<TestPageDTO> getList(Criteria cri) {
-        List<Member> list = memberMapper.getListWithPaging(cri);
-        ArrayList<TestPageDTO> memberList = new ArrayList<>();
-        for(Member member : list){
-            memberList.add(new TestPageDTO(member));
-        }
-        return memberList;
+    public  List<MemberDTO> getList(Criteria cri) {
+        List<MemberDTO> list = memberMapper.getListWithPaging(cri);
+        return list;
     }
 
 

@@ -1,6 +1,7 @@
 package com.example.bootWeb.service.member;
 
 import com.example.bootWeb.config.SessionMember;
+import com.example.bootWeb.domain.dto.MemberDTO;
 import com.example.bootWeb.domain.dto.PageDTO;
 import com.example.bootWeb.domain.dto.UpdateInfoDTO;
 import com.example.bootWeb.domain.dto.vo.Criteria;
@@ -22,7 +23,7 @@ public interface MemberService {
 
     public int totalCount();
 
-    public  ArrayList<TestPageDTO> getList(Criteria cri);
+    public List<MemberDTO> getList(Criteria cri);
 
     public void deleteMember(Long memberNo);
 }

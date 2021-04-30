@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member,Long> {
@@ -17,5 +18,8 @@ public interface MemberRepository extends JpaRepository<Member,Long> {
     Member findByMemberId(String memberId);
 
     Page<Member> findAll(Pageable pageable);
+
+    @Query("select count(*) from Member m where m.role='user'")
+    List<Member> getMemberCount();
 
 }
