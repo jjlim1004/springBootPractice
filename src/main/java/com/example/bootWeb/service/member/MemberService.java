@@ -17,6 +17,8 @@ public interface MemberService {
 
     public int join(Member member , Password password);
 
+    public String idCheck(String memberId);
+
     public SessionMember login(String loginId, String loginPw);
 
     public void updateInfo(UpdateInfoDTO updateInfoDTO);
