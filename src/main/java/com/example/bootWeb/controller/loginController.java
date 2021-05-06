@@ -15,7 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-
+import java.util.Map;
 
 
 @Controller
@@ -116,12 +116,6 @@ public class loginController {
         memberService.memberOut(sessionMember.getId());
         httpSession.invalidate();
         return "redirect:/";
-    }
-
-    @PostMapping("/memberCheck")
-    public String memberCheck(){
-
-        return "";
     }
 
     @GetMapping("/adminPage")

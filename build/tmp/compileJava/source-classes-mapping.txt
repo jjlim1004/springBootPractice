@@ -3,14 +3,14 @@ com/example/bootWeb/domain/entity/Member.java
  com.example.bootWeb.domain.entity.Member$MemberBuilder
 com/example/bootWeb/config/DataAccessConfig.java
  com.example.bootWeb.config.DataAccessConfig
-com/example/bootWeb/service/member/MemberServiceImpl.java
- com.example.bootWeb.service.member.MemberServiceImpl
-com/example/bootWeb/controller/TestController.java
- com.example.bootWeb.controller.TestController
-com/example/bootWeb/Application.java
- com.example.bootWeb.Application
+com/example/bootWeb/domain/entity/PasswordRepository.java
+ com.example.bootWeb.domain.entity.PasswordRepository
 com/example/bootWeb/domain/dto/MemberJoinDTO.java
  com.example.bootWeb.domain.dto.MemberJoinDTO
+com/example/bootWeb/Application.java
+ com.example.bootWeb.Application
+com/example/bootWeb/service/member/MemberServiceImpl.java
+ com.example.bootWeb.service.member.MemberServiceImpl
 com/example/bootWeb/domain/dto/vo/test/TestPageDTO.java
  com.example.bootWeb.domain.dto.vo.test.TestPageDTO
 com/example/bootWeb/service/member/MemberService.java
@@ -58,7 +58,7 @@ com/example/bootWeb/domain/dto/vo/TestVo.java
  com.example.bootWeb.domain.dto.vo.TestVo
 com/example/bootWeb/domain/entity/MemberRepository.java
  com.example.bootWeb.domain.entity.MemberRepository
-com/example/bootWeb/domain/entity/PasswordRepository.java
- com.example.bootWeb.domain.entity.PasswordRepository
 com/example/bootWeb/controller/loginController.java
  com.example.bootWeb.controller.loginController
+com/example/bootWeb/controller/TestController.java
+ com.example.bootWeb.controller.TestController

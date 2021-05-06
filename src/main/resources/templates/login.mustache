@@ -50,6 +50,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
+    /*
         $("#loginForm input[type='submit']").on("click",function(e){
             e.preventDefault();
             var memberData = {
@@ -59,10 +60,10 @@
             //console.log(memberId + "  " + memberPw);
             $.ajax(function(){
                 url:/memberCheck,
-                data:memberData,
-                contentType:'application/json' ,
+                data:JSON.stringify(memberData),
+                contentType:'application/json',
                 success:function(){
-                    
+
                 },
                 error:function(){
                     console.log();
@@ -70,9 +71,7 @@
             });
 
         });
-
-
-
+        */
     </script>
 </body>
 </html>
