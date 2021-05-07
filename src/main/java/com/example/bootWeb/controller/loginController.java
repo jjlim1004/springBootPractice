@@ -15,7 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-
+import java.util.Map;
 
 
 @Controller
@@ -119,9 +119,10 @@ public class loginController {
     }
 
     @PostMapping("/memberCheck")
-    public String memberCheck(){
-
-        return "";
+    @ResponseBody
+    public Map<String,Object> memberCheck(@RequestBody Map<String,Object> memberCheck){
+//        Map<String,Object> member
+        return null;
     }
 
     @GetMapping("/adminPage")

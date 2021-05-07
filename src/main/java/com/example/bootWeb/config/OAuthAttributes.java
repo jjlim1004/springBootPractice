@@ -81,7 +81,6 @@ public class OAuthAttributes {
 
         return Member.builder()
                 .memberId(id)
-
                 .memberName(name)
                 .memberEmail(email)
                 .memberGender(gender)

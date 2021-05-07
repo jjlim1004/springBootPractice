@@ -1,7 +1,6 @@
 package com.example.bootWeb.service.member;
 
 import com.example.bootWeb.config.SessionMember;
-import com.example.bootWeb.domain.dto.MemberDTO;
 import com.example.bootWeb.domain.dto.MemberListDTO;
 import com.example.bootWeb.domain.dto.UpdateInfoDTO;
 import com.example.bootWeb.domain.dto.vo.Criteria;
