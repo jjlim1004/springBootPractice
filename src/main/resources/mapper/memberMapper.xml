@@ -27,11 +27,11 @@
     </insert>
 
     <update id="update" parameterType="com.example.bootWeb.domain.dto.UpdateInfoDTO">
-        update member set member_name=#{memberName}, member_email=#{memberEmail} where member_id=#{memberId}
+        update member set member_name=#{memberName}, member_email=#{memberEmail} where member_no=#{memberNo}
     </update>
 
     <update id="updatePw" parameterType="com.example.bootWeb.domain.dto.UpdateInfoDTO">
-        update password set pw=#{memberPw} where member_member_id=#{memberId}
+        update password set pw=#{memberPw} where member_no=#{memberNo}
     </update>
 
     <select id="getListWithPaging" parameterType="com.example.bootWeb.domain.dto.vo.Criteria" resultType="com.example.bootWeb.domain.dto.MemberListDTO">

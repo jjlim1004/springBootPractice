@@ -9,6 +9,7 @@
     import org.springframework.context.annotation.Configuration;
     import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
+    //출처- https://brunch.co.kr/@ourlove/66
     @Configuration
     @MapperScan(basePackages = "com.example.bootWeb.mapper")
     public class DataAccessConfig {
@@ -17,7 +18,6 @@
         public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
 
             SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-
             sessionFactory.setDataSource(dataSource);
             sessionFactory.setMapperLocations(
                     new PathMatchingResourcePatternResolver()
