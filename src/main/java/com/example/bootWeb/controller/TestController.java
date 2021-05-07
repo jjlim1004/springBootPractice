@@ -7,8 +7,10 @@ import com.example.bootWeb.domain.entity.Member;
 import com.example.bootWeb.mapper.MemberMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RequestMapping("/test")
@@ -50,6 +52,15 @@ public class TestController {
     public String voidJsp(){
         return "voidJsp";
     }
+
+    @GetMapping("/test/testRest")
+    @ResponseBody
+    public String testRest(HttpSession session , Model model){
+        session.setAttribute("sessionTest","session rest");
+        model.addAttribute("modelTest","model rest");
+        return "testRest";
+    }
+
 
 
 //    @GetMapping("/mapperTest")
