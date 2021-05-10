@@ -34,7 +34,7 @@
         update password set pw=#{memberPw} where member_no=#{memberNo}
     </update>
 
-    <select id="getListWithPaging" parameterType="com.example.demo.domain.member.dto.vo.Criteria" resultType="com.example.demo.domain.member.dto.MemberListDTO">
+    <select id="getListWithPaging" parameterType="com.example.demo.domain.Criteria" resultType="com.example.demo.domain.member.dto.MemberListDTO">
         <![CDATA[
               select
                 member_no, member_id, member_email, member_name, member_age, member_gender
