@@ -1,7 +1,7 @@
-package com.example.demo.mapper;
+package com.example.demo.mapper.board;
 
 import com.example.demo.domain.Criteria;
-import com.example.demo.domain.ReplyVO;
+import com.example.demo.domain.board.ReplyVO;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;

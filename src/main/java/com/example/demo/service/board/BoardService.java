@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package com.example.demo.service.board;
 
-import com.example.demo.domain.BoardFileVO;
-import com.example.demo.domain.BoardVO;
+import com.example.demo.domain.board.BoardFileVO;
+import com.example.demo.domain.board.BoardVO;
 import com.example.demo.domain.Criteria;
 
 

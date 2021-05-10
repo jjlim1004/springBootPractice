@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.mapper.BoardMapper">
+<mapper namespace="com.example.demo.mapper.board.BoardMapper">
 
     <sql id="criteria">
         <trim prefix="(" suffix=") AND " prefixOverrides="OR">
@@ -34,7 +34,7 @@
      <choose> 안쪽의 동적 SQL 이 'OR title... OR content ... OR writer' 와 같은 구문을 만들어 냅니다.
     따라서 바깥쪽에서는 <trim> 을 이용해서 맨 앞에 생성되는 'OR' 를 제거합니다-->
 
-    <select id="getList" resultType="com.example.demo.domain.BoardVO">
+    <select id="getList" resultType="com.example.demo.domain.board.BoardVO">
         <![CDATA[
         select * from board where
         bno > 0 and rownum <= 100
@@ -55,7 +55,7 @@
         values (#{bno}, #{title}, #{content}, #{writer})
     </insert>
 
-    <select id="read" resultType="com.example.demo.domain.BoardVO">
+    <select id="read" resultType="com.example.demo.domain.board.BoardVO">
         select * from board
         where bno = #{bno}
     </select>
@@ -74,7 +74,7 @@
     </update>
 
 
-    <select id="getListWithPaging" resultType="com.example.demo.domain.BoardVO">
+    <select id="getListWithPaging" resultType="com.example.demo.domain.board.BoardVO">
         <![CDATA[
           select
             bno, title, content, writer, regdate, updatedate, replycnt, hits

@@ -11,8 +11,8 @@
     </settings>
 
     <mappers>
-        <mapper class="com.example.demo.mapper.BoardMapper"/>
-        <mapper class="com.example.demo.mapper.ReplyMapper"/>
+        <mapper class="com.example.demo.mapper.board.BoardMapper"/>
+        <mapper class="com.example.demo.mapper.board.ReplyMapper"/>
     </mappers>
 
 </configuration>

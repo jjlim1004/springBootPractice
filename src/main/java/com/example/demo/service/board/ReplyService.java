@@ -1,8 +1,8 @@
-package com.example.demo.service;
+package com.example.demo.service.board;
 
 import com.example.demo.domain.Criteria;
-import com.example.demo.domain.ReplyPageDTO;
-import com.example.demo.domain.ReplyVO;
+import com.example.demo.domain.board.ReplyPageDTO;
+import com.example.demo.domain.board.ReplyVO;
 
 import java.util.List;
 

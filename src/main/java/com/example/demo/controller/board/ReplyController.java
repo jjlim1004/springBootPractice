@@ -1,13 +1,10 @@
-package com.example.demo.controller;
+package com.example.demo.controller.board;
 
 import com.example.demo.domain.Criteria;
-import com.example.demo.domain.ReplyPageDTO;
-import com.example.demo.domain.ReplyVO;
-import com.example.demo.service.ReplyService;
+import com.example.demo.domain.board.ReplyPageDTO;
+import com.example.demo.domain.board.ReplyVO;
+import com.example.demo.service.board.ReplyService;
 import lombok.AllArgsConstructor;
-import org.apache.catalina.connector.Request;
-import org.apache.catalina.connector.Response;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

@@ -1,12 +1,11 @@
-package com.example.demo.controller;
+package com.example.demo.controller.board;
 
-import com.example.demo.domain.BoardFileVO;
-import com.example.demo.domain.BoardVO;
+import com.example.demo.domain.board.BoardFileVO;
+import com.example.demo.domain.board.BoardVO;
 import com.example.demo.domain.Criteria;
 import com.example.demo.domain.PageDTO;
-import com.example.demo.service.BoardService;
+import com.example.demo.service.board.BoardService;
 import lombok.AllArgsConstructor;
-import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;

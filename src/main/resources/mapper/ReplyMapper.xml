@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.mapper.ReplyMapper">
+<mapper namespace="com.example.demo.mapper.board.ReplyMapper">
 
     <insert id="insert">
 
@@ -13,7 +13,7 @@
 
 
 
-    <select id="read" resultType="com.example.demo.domain.ReplyVO">
+    <select id="read" resultType="com.example.demo.domain.board.ReplyVO">
         <!-- //replyVO에 래핑해서 리턴 -->
         select * from board_reply where rno = #{rno}
 
@@ -33,7 +33,7 @@
 
     </update>
 
-    <select id="getListWithPaging" resultType="com.example.demo.domain.ReplyVO">
+    <select id="getListWithPaging" resultType="com.example.demo.domain.board.ReplyVO">
         <![CDATA[
 		 select  rno, bno, reply, replyer, replyDate, updateDate
 		 from

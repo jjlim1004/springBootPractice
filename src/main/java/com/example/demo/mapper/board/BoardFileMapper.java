@@ -1,6 +1,6 @@
-package com.example.demo.mapper;
+package com.example.demo.mapper.board;
 
-import com.example.demo.domain.BoardFileVO;
+import com.example.demo.domain.board.BoardFileVO;
 
 import java.util.List;
 

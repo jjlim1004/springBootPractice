@@ -5,12 +5,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.example.demo.domain.BoardFileVO;
-import com.example.demo.mapper.BoardFileMapper;
+import com.example.demo.domain.board.BoardFileVO;
+import com.example.demo.mapper.board.BoardFileMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

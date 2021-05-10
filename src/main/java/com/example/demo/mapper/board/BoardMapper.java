@@ -1,7 +1,7 @@
-package com.example.demo.mapper;
+package com.example.demo.mapper.board;
 
-import com.example.demo.domain.BoardFileVO;
-import com.example.demo.domain.BoardVO;
+import com.example.demo.domain.board.BoardFileVO;
+import com.example.demo.domain.board.BoardVO;
 import com.example.demo.domain.Criteria;
 import org.springframework.data.repository.query.Param;
 //import org.hibernate.Criteria;

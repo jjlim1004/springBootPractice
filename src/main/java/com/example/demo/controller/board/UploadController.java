@@ -1,7 +1,6 @@
-package com.example.demo.controller;
+package com.example.demo.controller.board;
 
-import com.example.demo.domain.AttachFileDTO;
-import net.coobird.thumbnailator.Thumbnailator;
+import com.example.demo.domain.board.AttachFileDTO;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -21,12 +20,10 @@ import org.springframework.web.multipart.MultipartFile;
 //import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

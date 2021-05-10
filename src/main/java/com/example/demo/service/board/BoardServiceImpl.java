@@ -1,12 +1,12 @@
-package com.example.demo.service;
+package com.example.demo.service.board;
 
 
-import com.example.demo.domain.BoardFileVO;
-import com.example.demo.domain.BoardVO;
+import com.example.demo.domain.board.BoardFileVO;
+import com.example.demo.domain.board.BoardVO;
 
 import com.example.demo.domain.Criteria;
-import com.example.demo.mapper.BoardFileMapper;
-import com.example.demo.mapper.BoardMapper;
+import com.example.demo.mapper.board.BoardFileMapper;
+import com.example.demo.mapper.board.BoardMapper;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

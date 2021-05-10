@@ -1,10 +1,10 @@
-package com.example.demo.service;
+package com.example.demo.service.board;
 
 import com.example.demo.domain.Criteria;
-import com.example.demo.domain.ReplyPageDTO;
-import com.example.demo.domain.ReplyVO;
-import com.example.demo.mapper.BoardMapper;
-import com.example.demo.mapper.ReplyMapper;
+import com.example.demo.domain.board.ReplyPageDTO;
+import com.example.demo.domain.board.ReplyVO;
+import com.example.demo.mapper.board.BoardMapper;
+import com.example.demo.mapper.board.ReplyMapper;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
