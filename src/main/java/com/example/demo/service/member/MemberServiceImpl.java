@@ -65,6 +65,8 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public void updateInfo(UpdateInfoDTO updateInfoDTO) {
+        Member member = memberRepository.findByMemberId(updateInfoDTO.getMemberId());
+        updateInfoDTO.setMemberNo(member.getMemberNo());
         memberMapper.update(updateInfoDTO);
         memberMapper.updatePw(updateInfoDTO);
     }
