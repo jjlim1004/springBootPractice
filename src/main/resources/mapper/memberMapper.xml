@@ -4,13 +4,13 @@
 
 <mapper namespace="com.example.demo.mapper.member.MemberMapper">
 
-    <select id="get" parameterType="String" resultType="com.example.demo.domain.member.entity.Member">
+    <select id="get" parameterType="String" resultType="com.example.bootWeb.domain.entity.Member">
         select * from member where member_id = #{memberId}
     </select>
 
 
     <!--    이거는 사용 못함. jpa 테이블 구성 칼럼 설정이 불가능 해서-->
-    <insert id="insert" parameterType="com.example.demo.domain.member.dto.MemberJoinDTO">
+    <insert id="insert" parameterType="com.example.bootWeb.domain.dto.MemberJoinDTO">
         <selectKey keyProperty="no" resultType="Long" order="BEFORE">
             SELECT member_seq.NEXTVAL FROM DUAL
         </selectKey>
@@ -26,15 +26,15 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.example.demo.domain.member.dto.UpdateInfoDTO">
+    <update id="update" parameterType="com.example.bootWeb.domain.dto.UpdateInfoDTO">
         update member set member_name=#{memberName}, member_email=#{memberEmail} where member_no=#{memberNo}
     </update>
 
-    <update id="updatePw" parameterType="com.example.demo.domain.member.dto.UpdateInfoDTO">
-       update password set pw=#{memberPw} where member_no=#{memberNo}
+    <update id="updatePw" parameterType="com.example.bootWeb.domain.dto.UpdateInfoDTO">
+        update password set pw=#{memberPw} where member_no=#{memberNo}
     </update>
 
-    <select id="getListWithPaging" parameterType="com.example.demo.domain.Criteria" resultType="com.example.demo.domain.member.dto.MemberListDTO">
+    <select id="getListWithPaging" parameterType="com.example.bootWeb.domain.dto.vo.Criteria" resultType="com.example.bootWeb.domain.dto.MemberListDTO">
         <![CDATA[
               select
                 member_no, member_id, member_email, member_name, member_age, member_gender
@@ -55,9 +55,8 @@
         delete from member where member_no = #{memberNo}
     </delete>
 
-    <select id="findMemberForIdCheck" resultType="com.example.demo.domain.member.entity.Member">
+    <select id="findMemberForIdCheck" resultType="com.example.bootWeb.domain.entity.Member">
         select * from member where member_id = #{memberId}
     </select>
 
 </mapper>
-
