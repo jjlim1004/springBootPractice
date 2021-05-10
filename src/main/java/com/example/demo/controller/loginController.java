@@ -1,9 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.config.SessionMember;
-import com.example.demo.domain.member.dto.PageDTO;
+import com.example.demo.domain.PageDTO;
 import com.example.demo.domain.member.dto.UpdateInfoDTO;
-import com.example.demo.domain.member.dto.vo.Criteria;
+import com.example.demo.domain.Criteria;
 import com.example.demo.domain.member.dto.vo.Role;
 import com.example.demo.domain.member.dto.MemberJoinDTO;
 import com.example.demo.domain.member.entity.Member;

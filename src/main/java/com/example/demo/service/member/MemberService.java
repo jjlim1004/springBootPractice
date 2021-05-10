@@ -5,7 +5,6 @@ import com.example.demo.domain.member.dto.MemberListDTO;
 import com.example.demo.domain.PageDTO;
 import com.example.demo.domain.member.dto.UpdateInfoDTO;
 import com.example.demo.domain.Criteria;
-import com.example.demo.domain.member.dto.vo.test.TestPageDTO;
 import com.example.demo.domain.member.entity.Member;
 import com.example.demo.domain.member.entity.Password;
 
