@@ -19,7 +19,7 @@ public class Password {
     private Long pwId;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn( name = "member_memberNo")
+    @JoinColumn( name = "memberNo")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Member member;
 
