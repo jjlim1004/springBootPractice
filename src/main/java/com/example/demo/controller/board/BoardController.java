@@ -54,7 +54,14 @@ public class BoardController {
     }
 
     @GetMapping("list") //회원인지 체크 회원이 아니면 로그인페이지로 리턴
-    public String list(Criteria cri, Model model){
+    public String list(Criteria cri, Model model, HttpSession httpSession){
+
+        SessionMember socialMember = (SessionMember) httpSession.getAttribute("socialMember");
+        SessionMember loginMember =(SessionMember) httpSession.getAttribute("loginMember");
+
+        if(loginMember == null){
+            return "redirect:/login";
+        }
 
         model.addAttribute("list", service.getList(cri));
 

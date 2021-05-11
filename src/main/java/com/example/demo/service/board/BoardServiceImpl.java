@@ -5,6 +5,8 @@ import com.example.demo.domain.board.BoardFileVO;
 import com.example.demo.domain.board.BoardVO;
 
 import com.example.demo.domain.Criteria;
+import com.example.demo.domain.member.entity.Member;
+import com.example.demo.domain.member.entity.MemberRepository;
 import com.example.demo.mapper.board.BoardFileMapper;
 import com.example.demo.mapper.board.BoardMapper;
 import lombok.Setter;
@@ -18,16 +20,24 @@ import java.util.List;
 @Service
 public class BoardServiceImpl implements BoardService {
 
-    @Setter(onMethod_ = @Autowired)
+    @Autowired
     private BoardMapper mapper;
 
-    @Setter(onMethod_ = @Autowired)
+    @Autowired
     private BoardFileMapper fileMapper;
+
+    @Autowired
+    private MemberRepository repository;
+
+
 
     @Transactional
     @Override
     public void register(BoardVO board) {
 
+        Member member = repository.findByMemberId(board.getWriter());
+        Long memberNO = member.getMemberNo();
+        board.setMno(memberNO);
 
         mapper.insertSelectKey(board);
 
