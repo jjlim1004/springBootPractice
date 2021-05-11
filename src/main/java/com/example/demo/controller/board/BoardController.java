@@ -59,8 +59,14 @@ public class BoardController {
         SessionMember socialMember = (SessionMember) httpSession.getAttribute("socialMember");
         SessionMember loginMember =(SessionMember) httpSession.getAttribute("loginMember");
 
-        if(loginMember == null){
-            return "redirect:/login";
+        if(socialMember != null){
+            model.addAttribute("list", service.getList(cri));
+            int total = service.getTotal(cri);
+            model.addAttribute("pageMaker", new PageDTO(cri, total));
+            return "board/list";
+            //나중에 지워야될 코드
+        } else if (loginMember == null){
+                return "redirect:/login";
         }
 
         model.addAttribute("list", service.getList(cri));
