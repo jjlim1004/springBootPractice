@@ -13,6 +13,7 @@ public class ReplyVO {
 
     private Long rno;
     private Long bno;
+    private Long mno;
 
     private String reply;
     private String replyer;

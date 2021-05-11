@@ -76,7 +76,8 @@
           </div>
 
           <div class="form-group">
-            <label>Writer</label> <input class="form-control" name='writer'>
+            <label>Writer</label>
+            <input class="form-control" name='writer' value="${member.id}" readonly>
           </div>
           <button type="submit" class="btn btn-default">Submit
             Button</button>

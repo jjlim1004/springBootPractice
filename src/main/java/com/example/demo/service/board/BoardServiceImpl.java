@@ -28,7 +28,9 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public void register(BoardVO board) {
 
+
         mapper.insertSelectKey(board);
+
 //file 없다
         if(board.getFileList() == null || board.getFileList().size() <= 0){
             return;

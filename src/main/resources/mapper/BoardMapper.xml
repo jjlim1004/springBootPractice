@@ -51,8 +51,8 @@
             select seq_board.nextval from dual
         </selectKey>
 
-        insert into board (bno, title, content, writer)
-        values (#{bno}, #{title}, #{content}, #{writer})
+        insert into board (bno, mno, title, content, writer)
+        values (#{bno}, #{mno},#{title}, #{content}, #{writer})
     </insert>
 
     <select id="read" resultType="com.example.demo.domain.board.BoardVO">

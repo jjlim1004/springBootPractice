@@ -1,5 +1,6 @@
 package com.example.demo.controller.board;
 
+import com.example.demo.config.SessionMember;
 import com.example.demo.domain.board.BoardFileVO;
 import com.example.demo.domain.board.BoardVO;
 import com.example.demo.domain.Criteria;
@@ -15,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -29,8 +31,16 @@ public class BoardController {
     private BoardService service;
 
     @GetMapping("register")
-    public String register(){
+    public String register(Model model, HttpSession httpSession){
 
+        SessionMember socialMember = (SessionMember) httpSession.getAttribute("socialMember");
+        SessionMember loginMember = (SessionMember) httpSession.getAttribute("loginMember");
+
+        if(socialMember != null){
+            model.addAttribute("member", socialMember);
+        } else if (loginMember != null){
+            model.addAttribute("member", loginMember);
+        }
         return "board/register";
     }
 
@@ -43,7 +53,7 @@ public class BoardController {
         return "redirect:list";
     }
 
-    @GetMapping("list")
+    @GetMapping("list") //회원인지 체크 회원이 아니면 로그인페이지로 리턴
     public String list(Criteria cri, Model model){
 
         model.addAttribute("list", service.getList(cri));
