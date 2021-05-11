@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.controller.member;
 
 import com.example.demo.config.SessionMember;
 import com.example.demo.domain.PageDTO;
