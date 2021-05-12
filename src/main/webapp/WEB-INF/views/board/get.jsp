@@ -5,6 +5,7 @@
 <%@include file="../includes/header.jsp"%>
 
 
+
 <div class="row">
   <div class="col-lg-12">
     <h1 class="page-header">Board Read</h1>
@@ -23,12 +24,12 @@
 
           <div class="form-group">
           <label>Bno</label> <input class="form-control" name='bno'
-            value='<c:out value="${board.bno }"/>' readonly="readonly">
+            value='<c:out value="${board.bno}"/>' readonly="readonly">
         </div>
 
         <div class="form-group">
           <label>Title</label> <input class="form-control" name='title'
-            value='<c:out value="${board.title }"/>' readonly="readonly">
+            value='<c:out value="${board.title}"/>' readonly="readonly">
         </div>
 
         <div class="form-group">
@@ -39,7 +40,7 @@
 
         <div class="form-group">
           <label>Writer</label> <input class="form-control" name='writer'
-            value='<c:out value="${board.writer }"/>' readonly="readonly">
+            value='<c:out value="${board.writer}"/>' readonly="readonly">
         </div>
 
 <%-- 		<button data-oper='modify' class="btn btn-default">
@@ -207,15 +208,23 @@
             <div class="modal-body">
               <div class="form-group">
                 <label>Reply</label> 
-                <input class="form-control" name='reply' value='New Reply!!!!'>
+                <input class="form-control" name='reply'>
               </div>      
               <div class="form-group">
-                <label>Replyer</label> 
-                <input class="form-control" name='replyer' value='replyer'>
+                <label>Replyer</label>
+                <c:set var="id" value='${loginMember.id}'/>
+                <c:choose>
+                    <c:when test="${not empty id}">
+                        <input class="form-control" name='replyer' value='${loginMember.id}' readonly>
+                    </c:when>
+                    <c:otherwise>
+                        <input class="form-control" name='replyer' value='${socialMember.id}' readonly>
+                    </c:otherwise>
+                </c:choose>
               </div>
               <div class="form-group">
                 <label>Reply Date</label> 
-                <input class="form-control" name='replyDate' value='2018-01-01 13:13'>
+                <input class="form-control" name='replyDate'>
               </div>
       
             </div>
@@ -238,7 +247,7 @@
 <script>
 
 $(document).ready(function () {
-  
+
   var bnoValue = '<c:out value="${board.bno}"/>';
   var replyUL = $(".chat");
   
@@ -383,8 +392,7 @@ $(document).ready(function () {
     });
     
     $("#addReplyBtn").on("click", function(e){
-      
-      modal.find("input").val("");
+
       modalInputReplyDate.closest("div").hide();
       modal.find("button[id !='modalCloseBtn']").hide();
       

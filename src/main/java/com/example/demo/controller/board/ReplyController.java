@@ -8,7 +8,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 
 @RequestMapping("/replies/")
 @RestController
@@ -17,10 +19,10 @@ public class ReplyController {
 
     private ReplyService service;
 
-//register
 
+//register
     @PostMapping(value ="/new", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
-    public ResponseEntity<String> create( @RequestBody  ReplyVO reply){
+    public ResponseEntity<String> create(@RequestBody  ReplyVO reply){
 
         int insertCount = service.register(reply);
 

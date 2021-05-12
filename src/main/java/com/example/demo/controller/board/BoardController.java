@@ -85,8 +85,12 @@ public class BoardController {
     public String get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model){
         model.addAttribute("board", service.get(bno));
 
+
         return "board/get";
     }
+
+
+
 
     @GetMapping("modify")
     public String modify(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model){
