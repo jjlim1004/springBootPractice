@@ -80,7 +80,7 @@
 <script>
     function ScoreSum(){
         var sum = 0;
-        var count = document.getElementByType("radio").length;
+        var count = $("input:radio:checked").length;
         for(var i=0; i < count; i++){
             if(frm.radio[i].checked == true){
                 sum += parseInt(frm.radio[i].value);
