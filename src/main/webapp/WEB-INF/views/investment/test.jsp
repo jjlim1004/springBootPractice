@@ -78,9 +78,9 @@
 </form>
 </body>
 <script>
-    function ScoreSum(frm){
+    function ScoreSum(){
         var sum = 0;
-        var count = frm.radio.length;
+        var count = document.getElementByType("radio").length;
         for(var i=0; i < count; i++){
             if(frm.radio[i].checked == true){
                 sum += parseInt(frm.radio[i].value);
