@@ -13,9 +13,9 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping("home")
-    public String home(){
+    @RequestMapping("test")
+    public String test(){
 
-        return "home";
+        return "investment/test";
     }
 }
