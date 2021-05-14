@@ -91,7 +91,14 @@
            }
            console.log(sum);
         resultChk(sum);
+        check(count);
  }
+
+ $(function check(count){
+      for(i=0; i<count.length; i++ ){
+         if(count[i].is(":checked") == false){
+            alert('문항에 체크해주세요');
+ });
 
 function resultChk(sum){
 
