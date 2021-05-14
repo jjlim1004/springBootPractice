@@ -91,7 +91,7 @@
            }
            console.log(sum);
         resultChk(sum);
-        check(count);
+
  }
 
 
