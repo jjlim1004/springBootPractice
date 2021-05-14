@@ -31,12 +31,12 @@
       </br>
         <h3>3. 다음 중 투자경험과 가장 가까운 것은 어느 것입니까? (중복가능)</h3>
         	<div>
-        		<p><input class="test" type="checkbox" name="experience" value="3.1"> 은행 예금/적금, 국채, 지방채, 보증채, MMF, CMA 등</p>
-        		<p><input class="test" type="checkbox" name="experience" value="6.2">
+        		<p><input class="test" type="radio" name="experience1" value="3.1"> 은행 예금/적금, 국채, 지방채, 보증채, MMF, CMA 등</p>
+        		<p><input class="test" type="radio" name="experience2" value="6.2">
                 	금융채, 신용도가 높은 회사채, 채권형펀드, 원금보장형 ELS 등</p>
-        		<p><input class="test" type="checkbox" name="experience" value="9.3"> 신용도 중간 등급의 회사채, 원금의 일부만 보장되는 ELS, 혼합형 펀드 등</p>
-        		<p><input class="test" type="checkbox" name="experience" value="12.5"> 신용도가 낮은 회사채, 주식, 원금이 보장되지 않는 ELS, 시장수익률 수준의 수익을 추구하는 주식형 펀드 등</p>
-        		<p><input class="test" type="checkbox" name="experience" value="15.6"> ELW, 선물옵션, 시장수익률 이상의 수익을 추구하는 주식형펀드, 파생상품에 투자하는 펀드, 주식 신용거래 등</p>
+        		<p><input class="test" type="radio" name="experience3" value="9.3"> 신용도 중간 등급의 회사채, 원금의 일부만 보장되는 ELS, 혼합형 펀드 등</p>
+        		<p><input class="test" type="radio" name="experience4" value="12.5"> 신용도가 낮은 회사채, 주식, 원금이 보장되지 않는 ELS, 시장수익률 수준의 수익을 추구하는 주식형 펀드 등</p>
+        		<p><input class="test" type="radio" name="experience5" value="15.6"> ELW, 선물옵션, 시장수익률 이상의 수익을 추구하는 주식형펀드, 파생상품에 투자하는 펀드, 주식 신용거래 등</p>
         	</div>
     </br>
     <h3>4. 금융상품 투자에 대한 본인의 수준은 어느 정도라고 생각하십니까?</h3>
@@ -73,7 +73,7 @@
             		<p><input class="test" type="radio" name="loss" value="18.7"> 기대수익이 높다면 위험이 높아도 상관하지 않겠다.</p>
             	</div>
     </br>
-    <button type="button" id="result"> 결과 확인하기 </button>
+    <button type="button" id="result" onclick="sumScore()"> 결과 확인하기 </button>
     </br>
     <p>합계 (테스트용):&nbsp;<input name="total_sum" type="text" size="20" readonly></p>
 
@@ -82,21 +82,66 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-function scoreSum(){
-   var sum = 0;
-   var count = document.getElementsByClassName("test");
-   for(i=0; i<count.length; i++ ){
-       if(count[i].checked == true){
-       sum += parseInt(count[i].value);
-       }
-   }
-   $('input[name=total_sum]').val(sum)
+ function sumScore(){
+          var sum = 0;
+          var count = document.getElementsByClassName("test");
+           for(i=0; i<count.length; i++ ){
+               if(count[i].checked == true){
+               sum += parseInt(count[i].value);
+               }
+           }
+        resultChk(sum);
+ }
+
+function resultChk(sum){
+
+  var output="";
+
+   if(sum <= 20){
+           output +="<h1>안정형</h1><hr>";
+           output += "<h3>당신은 안정형입니다.</h3></br>";
+           output +="<p>예금이나 적금 수준의 수익률을 기대하며, 투자원금에 손실을 발생하는 것을 원하지 않습니다.</br> 원금손실의 우려가 없는 상품에 투자하는 것이 바람직하며 CMA와 MMF가 좋습니다.</p></br>";
+           output +="<h3>추천 상품</h3>";
+           output +="<p>벤처투자X</p>";
+           document.body.innerHTML =output;
+
+      }else if(20<sum<=40){
+               output +="<h1>안정추구형</h1><hr>";
+               output +="<h3>당신은 안정추구형입니다.</h3></br>";
+               output +="<p>투자원금의 손실위험은 최소화하고, 이자소득이나 배당소득 수준의 안정적인 투자를 목표로 합니다.</br>다만 수익을 위해 단기적인 손실을 수용할 수 있으며,</br>예금/적금보다 높은 수익을 위해 자산 중의 일부를 변동성 높은 상품에 투자할 의향이 있습니다.</br>채권형 펀드가 적당하며, 그 중에서도 장기회사채펀드 등이 좋습니다.</p></br>";
+               output +="<h3>추천 상품</h3>";
+               output +="<p>원칙:벤처투자X</p> <p>예외:소득공제+채권형</p>";
+               document.body.innerHTML =output;
+
+      }else if(40<sum<=60){
+               output +="<h1>위험중립형</h1><hr>";
+               output +="<h3>당신은 위험중립형입니다.</h3></br>";
+               output +="<p>투자에는 그에 상응하는 투자위험이 있음을 충분히 인식하고 있으며,</br>예.적금보다 높은 수익을 기대할 수 있다면 일정수준의 손실위험을 감수할 수 있습니다.</br>적립식펀드나 주가연동상품처럼 중위험 펀드로 분류되는 상품을 선택하는 것이 좋습니다.</p></br>";
+               output +="<h3>추천 상품</h3>";
+               output +="<p>전환사채</p> <p>신주인수권부사채</p>";
+               document.body.innerHTML =output;
+
+      }else if(60<sum<=80){
+               output +="<h1>적극투자형</h1><hr>";
+               output +="<h3>당신은 적극투자형입니다.</h3></br>";
+               output +="<p>투자원금의 보전보다는 위험을 감내하더라도 높은 수준의 투자수익을 추구합니다.</br>투자자금의 상당 부분을 주식, 주식형편드 또는 파생상품 등의 위험자산에 투자할 의향이 있습니다.</br>국내외 주식형펀드와 원금비보장형 주가연계증권(ELS) 등 고수익, 고위험 상품에 투자할 수 있습니다.</p></br>";
+               output +="<h3>추천 상품</h3>";
+               output +="<p>상환전환우선주</p>";
+              document.body.innerHTML =output;
+
+      }else{
+               output +="<h1>공격투자형</h1><hr>";
+               output +="<h3>당신은 공격투자형입니다.</h3></br>";
+               output +="<p>시장평균수익률을 훨씬 넘어서는 높은 수준의 투자수익을 추구하며</br>이를 위해 자산가치의 변동에 따른 손실위험을 적극 수용할 수 있습니다.</br>투자자금 대부분을 주식, 주식형펀드 또는 파생상품 등의 위험자산에 투자할 의향이 있습니다.</br>주식 비중이 70% 이상인 고위험 펀드가 적당하고, 자산의 10%정도는 직접투자(주식)도 고려해 볼만합니다.</p></br>";
+               output +="<h3>추천 상품</h3>";
+               output +="<p>보통주</p> <p>이익참가부사채</p>";
+               document.body.innerHTML =output;
+      }
+
 }
+
 
 </script>
 
- <!--  var count = $("input[type=radio]").length;
-   $('input[name=number]:checked').val();
-   document.getElementByName(); -->
 
 </html>
