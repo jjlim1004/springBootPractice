@@ -115,7 +115,7 @@ function resultChk(sum){
                output +="<p>원칙:벤처투자X</p> <p>예외:소득공제+채권형</p>";
                document.body.innerHTML =output;
 
-      }else if(40<sum && sum <=60){
+      }else if(40 < sum && sum <= 60){
                output +="<img src='/resources/img/test_icon3.png' alt='위험중립형'/>";
                output +="<h1>위험중립형</h1><hr>";
                output +="<h3>당신은 위험중립형입니다.</h3></br>";
@@ -124,7 +124,7 @@ function resultChk(sum){
                output +="<p>전환사채</p> <p>신주인수권부사채</p>";
                document.body.innerHTML =output;
 
-      }else if(60<sum && sum<=80){
+      }else if(60 < sum && sum <= 80){
                output +="<img src='/resources/img/test_icon2.png' alt='적극투자형'/>";
                output +="<h1>적극투자형</h1><hr>";
                output +="<h3>당신은 적극투자형입니다.</h3></br>";
