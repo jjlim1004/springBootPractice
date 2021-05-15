@@ -92,7 +92,7 @@
 
         <![CDATA[
         rownum <= #{pageNum} * #{amount}
-         order by bno desc
+        order by bno desc
         )
         where rn > (#{pageNum} -1) * #{amount}
          ]]>
