@@ -38,7 +38,7 @@
 		 select  rno, bno, reply, replyer, replyDate, updateDate
 		 from
 		   (
-		    select /*+INDEX(board_reply SYS_C0012577) */
+		    select /*+INDEX_DESC(board_reply SYS_C0012577) */
 		      rownum rn,  rno, bno, reply, replyer, replyDate, updateDate
 		    from board_reply
 		    where bno =  #{bno}
