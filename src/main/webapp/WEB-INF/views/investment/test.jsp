@@ -81,18 +81,31 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
+
+
  function sumScore(){
           var sum = 0;
-          var count = document.getElementsByClassName("test");
-           for(i=0; i<count.length; i++ ){
-               if(count[i].checked == true){
-               sum += parseInt(count[i].value);
-               }
+          var radio = document.getElementsByClassName("test");
+          var chkCnt = 0;
+
+           for(i=0; i<radio.length; i++ ){
+                if(radio[i].checked == true){
+                    sum += parseInt(radio[i].value);
+                    chkCnt++;
+                }
            }
-           console.log(sum);
+
+           if(chkCnt < 6){
+                alert("모든 문항에 체크해야 합니다");
+                return;
+           }
+
+
+        console.log(sum);
         resultChk(sum);
 
  }
+
 
 
 function resultChk(sum){
