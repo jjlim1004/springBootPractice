@@ -45,7 +45,7 @@
     		<p><input class="test" type="radio" name="level" value="6.2">
             	 [낮은 수준] 널리 알려진 금융투자상품 (주식, 채권 및 펀드 등)의 구조 및 위험을 일정부분 이해하고 있는 정도</p>
     		<p><input class="test" type="radio" name=bo"level" value="9.3"> [높은 수준] 투자할 수 있는 대부분의 금융상품의 차이를 구별할 수 있는 정도</p>
-    		<p><input class="test" type="radio" name="level" value="12.5">[매우 높은 수준] 금융상품을 비롯하여 모든 투자대상 상품의 차이를 이해할 수 있는 정도</p>
+    		<p><input class="test" type="radio" name="level" value="12.5"> [매우 높은 수준] 금융상품을 비롯하여 모든 투자대상 상품의 차이를 이해할 수 있는 정도</p>
     	</div>
     </br>
             <h3>5. 현재 투자하고자 하는 자금은 전체 금융자산(부동산 등을 제외) 중 어느 정도의 비중을 차지합니까?</h3>
