@@ -15,13 +15,14 @@ this is joinPage
     <input type="text" name="memberId" id="memberId"><button id="idCheck">아이디 중복 체크</button>
     <br>
     <label for="memberPw">비밀번호</label>
-    <input type="text" name="memberPw" id="memberPw">
+    <input type="text" name="memberPw" id="memberPw" placeholder="영문자+숫자+특수문자 조합"> (8자리 이상)
     <br>
     <label for="memberName">이름</label>
     <input type="text" name="memberName" id="memberName">
     <br>
     <label for="memberGender">성별</label>
-    <input type="text" name="memberGender" id="memberGender">
+    <input type="radio" value="F" name="memberGender" id="female">여
+    <input type="radio" value="M" name="memberGender" id="male">남
     <br>
     <label for="memberEmail">이메일</label>
     <input type="text" name="memberEmail" id="memberEmail">
@@ -38,19 +39,34 @@ this is joinPage
 
         //회원 정보 전체 입력 확인
         $("#joinForm input[type='submit']").on("click",function(e){
-            e.preventDefault();
-            var inputArray = $("form input");
-            var inputLength = inputArray.length-1;
+            var form = document.getElementById("joinForm");
 
-            for(var i = 0 ; i<inputLength ; i++){
-                //console.log(i);
-                //console.log('0번째 val() 은 '+inputArray.eq(0).val());
-                if(inputArray.eq(i).val() == ''){
-                    console.log('입력필요');
-                    return false;
-                }
+             if(!form.memberId.value){
+                alert("아이디를 입력해 주세요");
+                return false;
             }
-            $("#joinForm").submit();
+             if(!form.memberPw.value){
+                alert("비밀번호를 입력해 주세요");
+                return false;
+            }
+             if(!form.memberName.value){
+                alert("이름을 입력해 주세요");
+                return false;
+            }
+             if(!form.memberGender.value){
+                alert("성별을 선택해 주세요");
+                return false;
+            }
+             if(!form.memberEmail.value){
+                alert("이메일을 입력해 주세요");
+                return false;
+            }
+             if(!form.memberAge.value){
+                alert("나이를 입력해 주세요");
+                return false;
+            }
+
+            form.submit();
         });
 
         // 아이디 중복 체크
