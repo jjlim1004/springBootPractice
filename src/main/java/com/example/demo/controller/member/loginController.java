@@ -99,7 +99,7 @@ public class loginController {
     }
 
     //어짜피 회원 수정은 일반 로그인 회원 전용 기능
-    @GetMapping("/myPage")
+    @GetMapping({"/myPage", "/myPageModi"})
     public void myPage(Model model, HttpSession httpSession){
 
     }
@@ -118,12 +118,12 @@ public class loginController {
         return "redirect:/";
     }
 
-    @PostMapping("/memberCheck")
+/*    @PostMapping("/memberCheck")
     @ResponseBody
     public Map<String,Object> memberCheck(@RequestBody Map<String,Object> memberCheck){
 //        Map<String,Object> member
         return null;
-    }
+    }*/
 
     @GetMapping("/adminPage")
     public String adminPage(HttpSession httpSession , Model model, Criteria cri ){

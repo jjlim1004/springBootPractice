@@ -34,12 +34,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <form action="/login" method="post" id="loginForm">
-                                id: <input type="text" name="memberId"><br>
-                                pw: <input type="text" name="memberPw"><br>
-                                <input type="submit" value="로그인">
+                                id: <input type="text" id="memberId"  name="memberId"><br>
+                                pw: <input type="text" id="memberPw" name="memberPw"><br>
+                                <input type="submit" value="로그인" onclick="loginChk()">
                                 <button type="button"  onclick="location.href='/join'">회원가입</button>
                             </form>
                         </div>
+
                     </div>
                 {{/loginMember}}
             {{/socialMember}}
@@ -48,30 +49,23 @@
 
 </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script>
-        $("#loginForm input[type='submit']").on("click",function(e){
-            e.preventDefault();
-            var memberData = {
-                    memberId : $("input[name='memberId']").val();
-                    memberPw : $("input[name='memberPw']").val();
-                }
-            //console.log(memberId + "  " + memberPw);
-            $.ajax(function(){
-                url:/memberCheck,
-                data:memberData,
-                contentType:'application/json' ,
-                success:function(){
-                    
-                },
-                error:function(){
-                    console.log();
-                }
-            });
+    <script type="text/javascript">
 
-        });
+       function loginChk(){
+            var form = document.getElementById("loginForm");
 
+            if(!form.memberId.value){
+                alert("아이디를 입력해 주세요");
+                return false;
+            }
+            if(!form.memberPw.value){
+                alert("비밀번호를 입력해 주세요");
 
+                return false;
+            }
+
+            form.submit();
+        }
 
     </script>
 </body>

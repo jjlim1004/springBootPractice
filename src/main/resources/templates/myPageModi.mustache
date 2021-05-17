@@ -8,27 +8,27 @@
     <title>Document</title>
 </head>
 <body>
-    <form>
+    <form action="/memberUpdate" method="post">
         <label for="memberId">아이디</label>
         <input type="text" name="memberId" id="memberId" value={{loginMember.id}} readonly>
         <br>
         <label for="memberPw">비밀번호</label>
-        <input type="password" name="memberPw" id="memberPw" value="" readonly>
+        <input type="password" name="memberPw" id="memberPw" value="">
         <br>
         <label for="memberName">이름</label>
-        <input type="text" name="memberName" id="memberName" value={{loginMember.name}} readonly>
+        <input type="text" name="memberName" id="memberName" value={{loginMember.name}}>
         <br>
         <label for="memberGender">성별</label>
         <input type="text" name="memberGender" id="memberGender" value={{loginMember.gender}} readonly>
         <br>
         <label for="memberEmail">이메일</label>
-        <input type="text" name="memberEmail" id="memberEmail" value={{loginMember.email}} readonly>
+        <input type="text" name="memberEmail" id="memberEmail" value={{loginMember.email}} >
         <br>
         <label for="memberAge">연령대</label>
         <input type="text" name="memberAge" id="memberAge" value={{loginMember.age}} readonly>
         <br>
-        <a href="/myPageModi">수정</a>
-        <a href="/">뒤로가기</a>
+        <input type="submit" value="수정하기">
+        <a href="/myPage">뒤로가기</a>
     </form>
 </body>
 </html>
