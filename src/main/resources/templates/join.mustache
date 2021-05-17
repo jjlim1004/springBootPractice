@@ -21,8 +21,8 @@
     <input type="text" name="memberName" id="memberName">
     <br>
     <label for="memberGender">성별</label>
-    <input type="radio" value="F" name="memberGender" id="female">여
-    <input type="radio" value="M" name="memberGender" id="male">남
+    <input type="radio" value="F" name="memberGender" id="memberGender">여
+    <input type="radio" value="M" name="memberGender" id="memberGender">남
     <br>
     <label for="memberEmail">이메일</label>
     <input type="text" name="memberEmail" id="memberEmail">
@@ -43,7 +43,7 @@
 
             var idChk = /^[a-zA-Z0-9]{4,10}$/;
             var pwdChk = /^[a-zA-Z0-9]{8,15}$/;
-            var emailChk = /^0-9a-zA-Z@0-9a-zA-Z.[a-zA-Z]{2,3}$/i;
+            var emailChk = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
             var nameChk = /^[가-힣]{2,15}$/;
             var ageChk= /^[0-9]{1,2}$/;
 
@@ -94,7 +94,7 @@
                 return false;
              }
         <!--성별 유효성 검사------------>
-             if(!gender.value){
+             if(!gender.checked){
                 alert("성별을 선택해 주세요");
                 return false;
             }
