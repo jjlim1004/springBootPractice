@@ -9,13 +9,13 @@
 </head>
 <body>
 <h1>회원 가입</h1>
-<br>
+
 <form id="joinForm" action="/join" method="post">
     <label for="memberId">아이디</label>
-    <input type="text" name="memberId" id="memberId"><button id="idCheck">아이디 중복 체크</button>
+    <input type="text" name="memberId" id="memberId" placeholder="영문자+숫자 조합"><button id="idCheck">아이디 중복 체크</button>
     <br>
     <label for="memberPw">비밀번호</label>
-    <input type="text" name="memberPw" id="memberPw" placeholder="영문자+숫자+특수문자 조합"> (8자리 이상)
+    <input type="text" name="memberPw" id="memberPw" placeholder="영문자+숫자 조합"> (8자리 이상)
     <br>
     <label for="memberName">이름</label>
     <input type="text" name="memberName" id="memberName">
@@ -27,7 +27,7 @@
     <label for="memberEmail">이메일</label>
     <input type="text" name="memberEmail" id="memberEmail">
     <br>
-    <label for="memberAge">연령대</label>
+    <label for="memberAge">나이</label>
     <input type="text" name="memberAge" id="memberAge">
     <br>
     <input type="submit" value="회원가입">
@@ -41,36 +41,81 @@
         $("#joinForm input[type='submit']").on("click",function(e){
             var form = document.getElementById("joinForm");
 
-             if(!form.memberId.value){
+            var idChk = /^[a-zA-Z0-9]{4,10}$/;
+            var pwdChk = /^[a-zA-Z0-9]{8,15}$/;
+            var emailChk = /^0-9a-zA-Z@0-9a-zA-Z.[a-zA-Z]{2,3}$/i;
+            var nameChk = /^[가-힣]{2,15}$/;
+            var ageChk= /^[0-9]{1,2}$/;
+
+            var id = document.getElementById("memberId");
+            var pwd = document.getElementById("memberPw");
+            var name = document.getElementById("memberName");
+            var gender = document.getElementById("memberGender");
+            var email = document.getElementById("memberEmail");
+            var age = document.getElementById("memberAge");
+
+        <!--아이디 유효성 검사------------>
+
+             if(!id.value){
                 alert("아이디를 입력해 주세요");
                 return false;
             }
-             if(!form.memberPw.value){
+             if(!idChk.test(id.value)){
+                alert("아이디는 영문자와 숫자 조합으로 4~10자리 사용해야 합니다.");
+                return false;
+            }
+
+         <!--비밀번호 유효성 검사------------>
+
+             if(!pwd.value){
                 alert("비밀번호를 입력해 주세요");
                 return false;
             }
 
-            var pwdChk =/^(?=.*[a-zA=Z])(?=.[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
-
-            if(!pwdChk.test(form.memberPw.value)){
-                alert("비밀번호는 영문자+숫자+특수문자 조합으로 /n 8~15자리 사용해야 합니다.");
+            if(!pwdChk.test(pwd.value)){
+                alert("비밀번호는 영문자와 숫자 조합으로 8~15자리 사용해야 합니다.");
                 return false;
             }
 
-             if(!form.memberName.value){
+            if(pwd.value==id.value){
+                alert("id와 password가 동일합니다.");
+                return false;
+            }
+
+         <!--이름 유효성 검사------------>
+
+             if(!name.value){
                 alert("이름을 입력해 주세요");
                 return false;
             }
-             if(!form.memberGender.value){
+
+             if(!nameChk.test(name.value)){
+                alert("한글만 입력해 주세요");
+                return false;
+             }
+        <!--성별 유효성 검사------------>
+             if(!gender.value){
                 alert("성별을 선택해 주세요");
                 return false;
             }
-             if(!form.memberEmail.value){
+         <!--이메일 유효성 검사------------>
+
+             if(!email.value){
                 alert("이메일을 입력해 주세요");
                 return false;
             }
-             if(!form.memberAge.value){
+
+            if(!emailChk.test(email.value)){
+                alert("올바른 이메일 형식이 아닙니다.");
+                return false;
+            }
+        <!--나이 유효성 검사------------>
+             if(!age.value){
                 alert("나이를 입력해 주세요");
+                return false;
+            }
+             if(!ageChk.test(age.value)){
+                alert("숫자로만 입력해 주세요");
                 return false;
             }
 
@@ -92,7 +137,9 @@
                     console.log(data);
                     if(data == '1'){
                         $("#idCheck").text("사용중인 아이디 입니다.");
-                        $("#joinForm").find("input[type='submit']").attr("disabled",true);
+                        $("#memberId").val('');
+                        $("#joinForm").find("input[type='submit']").attr("disabled",false);
+
                     }else{
                         $("#idCheck").text("사용 가능한 아이디 입니다.");
                         $("#joinForm").find("input[type='submit']").attr("disabled",false);
