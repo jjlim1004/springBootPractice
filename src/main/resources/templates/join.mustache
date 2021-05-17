@@ -13,16 +13,17 @@
 <form id="joinForm" action="/join" method="post">
     <label for="memberId">아이디</label>
     <input type="text" name="memberId" id="memberId" placeholder="영문자+숫자 조합"><button id="idCheck">아이디 중복 체크</button>
+    <input type="hidden" name="id_chk" id="id_chk" value="">
     <br>
     <label for="memberPw">비밀번호</label>
-    <input type="text" name="memberPw" id="memberPw" placeholder="영문자+숫자 조합"> (8자리 이상)
+    <input type="password" name="memberPw" id="memberPw" placeholder="영문자+숫자 조합"> (8자리 이상)
     <br>
     <label for="memberName">이름</label>
     <input type="text" name="memberName" id="memberName">
     <br>
     <label for="memberGender">성별</label>
-    <input type="radio" value="F" name="memberGender" id="memberGender">여
-    <input type="radio" value="M" name="memberGender" id="memberGender">남
+    <input type="radio" value="F" name="memberGender" id="female">여
+    <input type="radio" value="M" name="memberGender" id="male">남
     <br>
     <label for="memberEmail">이메일</label>
     <input type="text" name="memberEmail" id="memberEmail">
@@ -36,6 +37,11 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
+        $('#idCheck').click(function(){
+
+        $("input[name='id_chk']").val('y');
+
+        });
 
         //회원 정보 전체 입력 확인
         $("#joinForm input[type='submit']").on("click",function(e){
@@ -50,7 +56,8 @@
             var id = document.getElementById("memberId");
             var pwd = document.getElementById("memberPw");
             var name = document.getElementById("memberName");
-            var gender = document.getElementById("memberGender");
+            var female = document.getElementById("female");
+            var male = document.getElementById("male");
             var email = document.getElementById("memberEmail");
             var age = document.getElementById("memberAge");
 
@@ -60,6 +67,11 @@
                 alert("아이디를 입력해 주세요");
                 return false;
             }
+            if(form.id_chk.value ==''){
+                alert("아이디 중복체크를 해주세요");
+                return false;
+            }
+
              if(!idChk.test(id.value)){
                 alert("아이디는 영문자와 숫자 조합으로 4~10자리 사용해야 합니다.");
                 return false;
@@ -90,14 +102,16 @@
             }
 
              if(!nameChk.test(name.value)){
-                alert("한글만 입력해 주세요");
+                alert("이름은 한글만 입력해 주세요");
                 return false;
              }
         <!--성별 유효성 검사------------>
-             if(!gender.checked){
-                alert("성별을 선택해 주세요");
-                return false;
-            }
+
+                 if(!female.checked && !male.checked){
+                    alert("성별을 선택해주세요");
+                    return false;
+                }
+
          <!--이메일 유효성 검사------------>
 
              if(!email.value){
@@ -115,7 +129,7 @@
                 return false;
             }
              if(!ageChk.test(age.value)){
-                alert("숫자로만 입력해 주세요");
+                alert("나이는 숫자로만 입력해 주세요");
                 return false;
             }
 
@@ -138,6 +152,7 @@
                     if(data == '1'){
                         $("#idCheck").text("사용중인 아이디 입니다.");
                         $("#memberId").val('');
+                        $("input[name='id_chk']").val('');
                         $("#joinForm").find("input[type='submit']").attr("disabled",false);
 
                     }else{
