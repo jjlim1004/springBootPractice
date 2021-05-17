@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/memberUpdate" method="post">
+    <form id="modiForm" action="/memberUpdate" method="post">
         <label for="memberId">아이디</label>
         <input type="text" name="memberId" id="memberId" value={{loginMember.id}} readonly>
         <br>
@@ -16,7 +16,7 @@
         <input type="password" name="memberPw" id="memberPw" value="">
         <br>
         <label for="memberName">이름</label>
-        <input type="text" name="memberName" id="memberName" value={{loginMember.name}}>
+        <input type="text" name="memberName" id="memberName" value={{loginMember.name}} readonly>
         <br>
         <label for="memberGender">성별</label>
         <input type="text" name="memberGender" id="memberGender" value={{loginMember.gender}} readonly>
@@ -31,4 +31,45 @@
         <a href="/myPage">뒤로가기</a>
     </form>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+     $("#modiForm input[type='submit']").on("click",function(e){
+          var form = document.getElementById("modiForm");
+          var pwdChk = /^[a-zA-Z0-9]{8,15}$/;
+          var emailChk = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+
+          var pwd = document.getElementById("memberPw");
+          var email = document.getElementById("memberEmail");
+
+        <!--비밀번호 유효성 검사------------>
+             if(!pwd.value){
+                alert("수정하실 비밀번호를 입력해 주세요");
+                return false;
+            }
+             if(!pwdChk.test(pwd.value)){
+                alert("비밀번호는 영문자와 숫자 조합으로 8~15자리 사용해야 합니다.");
+                return false;
+            }
+
+            if(pwd.value==id.value){
+                alert("Id와 Password가 동일합니다.");
+                return false;
+            }
+
+        <!--이메일 유효성 검사------------>
+              if(!email.value){
+                alert("이메일을 입력해 주세요");
+                return false;
+            }
+
+            if(!emailChk.test(email.value)){
+                alert("올바른 이메일 형식이 아닙니다.");
+                return false;
+            }
+
+            form.submit();
+     });
+</script>
 </html>
+
