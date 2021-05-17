@@ -56,12 +56,10 @@
                 alert("Id와 Password가 동일합니다.");
                 return false;
             }
-
-        <!--이메일 유효성 검사------------>
               if(!email.value){
                 alert("이메일을 입력해 주세요");
                 return false;
-            }
+             }
 
             if(!emailChk.test(email.value)){
                 alert("올바른 이메일 형식이 아닙니다.");
