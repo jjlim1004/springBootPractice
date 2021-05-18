@@ -37,10 +37,17 @@ public class loginController {
         SessionMember socialMember = (SessionMember) httpSession.getAttribute("socialMember");
         SessionMember loginMember =(SessionMember) httpSession.getAttribute("loginMember");
         //어짜피 model 에 보내줘야 할 내용은 공통된 테이블에 저장된 회원정보니 그냥 member 로 이름 통일
+        String loginChk = (String) model.getAttribute("loginChk");
         if( socialMember != null){
             model.addAttribute("member",socialMember);
+            model.addAttribute("loginChk","1");
         }else if(loginMember != null){
             model.addAttribute("member",loginMember);
+            model.addAttribute("loginChk","1");
+        }else if(loginChk!=null && loginChk.equals("2")   ){
+            model.addAttribute("loginChk","2");
+        }else{
+            model.addAttribute("loginChk","0");
         }
         return "login";
     }
@@ -50,7 +57,7 @@ public class loginController {
         SessionMember result = memberService.login(memberId,memberPw);
         SessionMember sessionMember = result;
         if(sessionMember == null ){
-            model.addAttribute("loginFailResult","존재 하지 않은 정보 입니다.");
+            model.addAttribute("loginChk","2");
             return index(model,httpSession);
         }
         //추후 회원 정보 수정을 위한 session 에 넣을 데이터

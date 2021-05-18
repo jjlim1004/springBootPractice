@@ -67,7 +67,19 @@
 
             form.submit();
         }
-<!--document.onReady-->
+
+            var msg = {{loginChk}};
+            console.log(msg);
+
+            window.onload = function() {
+                 if (msg == "2"){
+                    alert("로그인 실패!");
+                }
+            }
+
+
+
+
     </script>
 </body>
 </html>
