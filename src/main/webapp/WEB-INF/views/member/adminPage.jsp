@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false" contentType = "text/html; charset=UTF-8" %>
 
-<%@include file="./includes/header.jsp"%>
+<%@include file="../includes/header.jsp"%>
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">Tables</h1>
@@ -51,7 +51,7 @@
 						</c:if>
 
 						<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-							<li class="paginate_button  ${pageMaker.cri.curPage == num ? 'active':''} ">
+							<li class="paginate_button  ${pageMaker.cri.pageNum == num ? 'active':''} ">
 								<a href="${num}">${num}</a>
 							</li>
 						</c:forEach>
@@ -65,7 +65,7 @@
 				<!--  end Pagination -->
 			</div>
 			<form id='actionForm' action="/adminPage" method='get'>
-            	<input type='hidden' name='curPage' value='${pageMaker.cri.curPage}'>
+            	<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
             	<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
             </form>
 		</div>
@@ -111,10 +111,10 @@
 
 		var paginate_button = $(".paginate_button a").on("click",function(e){
 			e.preventDefault();
-			actionForm.find("input[name='curPage']").val($(this).attr("href"));
+			actionForm.find("input[name='pageNum']").val($(this).attr("href"));
 			actionForm.submit();
 		});
 	});
 </script>
 
-<%@include file="./includes/footer.jsp"%>
+<%@include file="../includes/footer.jsp"%>

@@ -148,7 +148,7 @@ public class loginController {
             System.out.println(page.getStartPage());
             System.out.println(page.getEndPage());
             model.addAttribute("pageMaker",page);
-            return "adminPage";
+            return "/member/adminPage";
         }
         return "redirect:/";
     }

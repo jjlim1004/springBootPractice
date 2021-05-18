@@ -45,9 +45,9 @@
                   from
                     member
                   where
-                  rownum <= #{curPage} * #{amount}
+                  rownum <= #{pageNum} * #{amount}
                   )
-              where rn > (#{curPage} -1) * #{amount}
+              where rn > (#{pageNum} -1) * #{amount}
         ]]>
     </select>
 
