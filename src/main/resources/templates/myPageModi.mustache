@@ -10,22 +10,22 @@
 <body>
     <form id="modiForm" action="/memberUpdate" method="post">
         <label for="memberId">아이디</label>
-        <input type="text" name="memberId" id="memberId" value={{loginMember.id}} readonly>
+        <input type="text" name="memberId" id="memberId" value={{member.memberId}} readonly>
         <br>
         <label for="memberPw">비밀번호</label>
-        <input type="password" name="memberPw" id="memberPw" value="">
+        <input type="password" name="memberPw" id="memberPw">
         <br>
         <label for="memberName">이름</label>
-        <input type="text" name="memberName" id="memberName" value={{loginMember.name}} readonly>
+        <input type="text" name="memberName" id="memberName" value={{member.memberName}} readonly>
         <br>
         <label for="memberGender">성별</label>
-        <input type="text" name="memberGender" id="memberGender" value={{loginMember.gender}} readonly>
+        <input type="text" name="memberGender" id="memberGender" value={{member.memberGender}} readonly>
         <br>
         <label for="memberEmail">이메일</label>
-        <input type="text" name="memberEmail" id="memberEmail" value={{loginMember.email}} >
+        <input type="text" name="memberEmail" id="memberEmail" value={{member.memberEmail}}>
         <br>
         <label for="memberAge">연령대</label>
-        <input type="text" name="memberAge" id="memberAge" value={{loginMember.age}} readonly>
+        <input type="text" name="memberAge" id="memberAge" value={{member.memberAge}} readonly>
         <br>
         <input type="submit" value="수정하기">
         <a href="/myPage">뒤로가기</a>
@@ -36,17 +36,20 @@
 
      $("#modiForm input[type='submit']").on("click",function(e){
           var form = document.getElementById("modiForm");
+
           var pwdChk = /^[a-zA-Z0-9]{8,15}$/;
           var emailChk = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
 
+          var id = document.getElementById("memberId");
           var pwd = document.getElementById("memberPw");
           var email = document.getElementById("memberEmail");
 
-        <!--비밀번호 유효성 검사------------>
+
              if(!pwd.value){
                 alert("수정하실 비밀번호를 입력해 주세요");
                 return false;
             }
+
              if(!pwdChk.test(pwd.value)){
                 alert("비밀번호는 영문자와 숫자 조합으로 8~15자리 사용해야 합니다.");
                 return false;
@@ -57,11 +60,10 @@
                 return false;
             }
 
-            <!--//이메일 안됨-->
               if(!email.value){
                 alert("이메일을 입력해 주세요");
                 return false;
-             }
+            }
 
             if(!emailChk.test(email.value)){
                 alert("올바른 이메일 형식이 아닙니다.");
@@ -70,6 +72,7 @@
 
             form.submit();
      });
+
 </script>
 </html>
 

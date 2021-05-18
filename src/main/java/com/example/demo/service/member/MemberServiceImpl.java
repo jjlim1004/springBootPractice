@@ -42,6 +42,12 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
+    public Member get(String memberId) {
+        Member member = memberRepository.findByMemberId(memberId);
+        return member;
+    }
+
+    @Override
     public String idCheck(String memberId) {
 //       Member member = memberMapper.findMemberForIdCheck(memberId);
         String member = memberRepository.findMemberIdForIdCheck(memberId);

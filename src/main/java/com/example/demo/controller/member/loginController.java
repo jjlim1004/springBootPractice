@@ -101,7 +101,13 @@ public class loginController {
     //어짜피 회원 수정은 일반 로그인 회원 전용 기능
     @GetMapping({"/myPage", "/myPageModi"})
     public void myPage(Model model, HttpSession httpSession){
+        SessionMember loginMember = (SessionMember) httpSession.getAttribute("loginMember");
 
+        if(loginMember != null) {
+            Member member = memberService.get(loginMember.getId());
+
+            model.addAttribute("member", member);
+        }
     }
 
     @PostMapping("/memberUpdate")
