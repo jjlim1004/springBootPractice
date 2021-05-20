@@ -5,6 +5,9 @@ import com.example.demo.domain.board.BoardFileVO;
 import com.example.demo.domain.board.BoardVO;
 import com.example.demo.domain.Criteria;
 import com.example.demo.domain.PageDTO;
+import com.example.demo.domain.member.dto.MemberDTO;
+import com.example.demo.domain.member.dto.vo.Role;
+import com.example.demo.domain.member.entity.Member;
 import com.example.demo.service.board.BoardService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,8 +86,8 @@ public class BoardController {
 
     @GetMapping("get")
     public String get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model, HttpSession httpSession){
-        model.addAttribute("board", service.get(bno));
 
+        model.addAttribute("board", service.get(bno));
 
         return "board/get";
     }

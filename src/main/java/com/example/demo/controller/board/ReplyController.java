@@ -37,11 +37,11 @@ public class ReplyController {
 
     //get
     @GetMapping(value="/{rno}", produces = {"application/json"})
-    public ResponseEntity<ReplyVO> get(@PathVariable("rno") String rnos){
-
+    public ResponseEntity<ReplyVO> get(@PathVariable("rno") String rnos, Model model){
 
         rnos = rnos.replace(".json", "");
         Long rno = Long.parseLong(rnos);
+        model.addAttribute("reply", service.get(rno));
 
         return new ResponseEntity<>(service.get(rno), HttpStatus.OK);
 

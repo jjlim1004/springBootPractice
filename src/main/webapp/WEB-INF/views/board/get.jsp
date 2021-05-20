@@ -43,13 +43,7 @@
             value='<c:out value="${board.writer}"/>' readonly="readonly">
         </div>
 
-<%-- 		<button data-oper='modify' class="btn btn-default">
 
-
-            <a href="/board/modify?bno=<c:out value="${board.bno}"/>">Modify</a></button>
-
-        <button data-oper='list' class="btn btn-info">
-        <a href="/board/list">List</a></button> --%>
 
 
 
@@ -64,15 +58,14 @@
         </c:when>
     </c:choose>
 
+
 <button data-oper='list' class="btn btn-info">List</button>
 
 
 
 
 
-<%-- <form id='operForm' action="/board/modify" method="get">
-  <input type='hidden' id='bno' name='bno' value='<c:out value="${board.bno}"/>'>
-</form> --%>
+
 
 
 <form id='operForm' action="/board/modify" method="get">
@@ -183,9 +176,6 @@
 
     <!-- /.panel -->
     <div class="panel panel-default">
-<!--       <div class="panel-heading">
-        <i class="fa fa-comments fa-fw"></i> Reply
-      </div> -->
       
       <div class="panel-heading">
         <i class="fa fa-comments fa-fw"></i> Reply
@@ -249,11 +239,11 @@
 <div class="modal-footer">
  <c:set var="id" value='${loginMember.id}'/>
     <c:choose>
-        <c:when test="${id == board.writer}">
+        <c:when test="${id == reply.replyer}">
             <button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
             <button id='modalRemoveBtn' type="button" class="btn btn-danger">Remove</button>
         </c:when>
-        <c:when test="${socialMember.id == board.writer}">
+        <c:when test="${socialMember.id == reply.replyer}">
             <button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
             <button id='modalRemoveBtn' type="button" class="btn btn-danger">Remove</button>
         </c:when>
@@ -380,30 +370,7 @@ $(document).ready(function () {
       });     
 
     
-/*     function showList(page){
-      
-      replyService.getList({bno:bnoValue,page: page|| 1 }, function(list) {
-        
-        var str="";
-       if(list == null || list.length == 0){
-        
-        replyUL.html("");
-        
-        return;
-      }
-       for (var i = 0, len = list.length || 0; i < len; i++) {
-           str +="<li class='left clearfix' data-rno='"+list[i].rno+"'>";
-           str +="  <div><div class='header'><strong class='primary-font'>"+list[i].replyer+"</strong>"; 
-           str +="    <small class='pull-right text-muted'>"+replyService.displayTime(list[i].replyDate)+"</small></div>";
-           str +="    <p>"+list[i].reply+"</p></div></li>";
-         }
 
-
-    replyUL.html(str);
-
-      });//end function
-      
-   }//end showList */
    
     var modal = $(".modal");
     var modalInputReply = modal.find("input[name='reply']");
@@ -423,7 +390,9 @@ $(document).ready(function () {
 
       modalInputReplyDate.closest("div").hide();
       modal.find("button[id !='modalCloseBtn']").hide();
-      
+      var memberId = `${loginMember.id}`;
+      modalInputReply.val('');
+      modalInputReplyer.val(memberId);
       modalRegisterBtn.show();
       
       $(".modal").modal("show");
@@ -462,7 +431,7 @@ $(document).ready(function () {
       
         modalInputReply.val(reply.reply);
         modalInputReplyer.val(reply.replyer);
-        modalInputReplyDate.val(replyService.displayTime( reply.replyDate))
+        modalInputReplyDate.val(replyService.displayTime(reply.replyDate))
         .attr("readonly","readonly");
         modal.data("rno", reply.rno);
         
@@ -476,33 +445,7 @@ $(document).ready(function () {
     });
   
     
-/*     modalModBtn.on("click", function(e){
-      
-      var reply = {rno:modal.data("rno"), reply: modalInputReply.val()};
-      
-      replyService.update(reply, function(result){
-            
-        alert(result);
-        modal.modal("hide");
-        showList(1);
-        
-      });
-      
-    });
 
-    modalRemoveBtn.on("click", function (e){
-    	  
-  	  var rno = modal.data("rno");
-  	  
-  	  replyService.remove(rno, function(result){
-  	        
-  	      alert(result);
-  	      modal.modal("hide");
-  	      showList(1);
-  	      
-  	  });
-  	  
-  	}); */
 
     modalModBtn.on("click", function(e){
     	  
@@ -540,61 +483,6 @@ $(document).ready(function () {
 
 
 
-<script>
-
-/* console.log("===============");
-console.log("JS TEST");
-
-var bnoValue = '<c:out value="${board.bno}"/>'; */
-
-//for replyService add test
-/* replyService.add(
-    
-    {reply:"JS Test", replyer:"tester", bno:bnoValue}
-    ,
-    function(result){ 
-      alert("RESULT: " + result);
-    }
-); */
-
-
-//reply List Test
-/* replyService.getList({bno:bnoValue, page:1}, function(list){
-    
-	  for(var i = 0,  len = list.length||0; i < len; i++ ){
-	    console.log(list[i]);
-	  }
-});
- */
-
- 
-/*  //17번 댓글 삭제 테스트 
- replyService.remove(17, function(count) {
-
-   console.log(count);
-
-   if (count === "success") {
-     alert("REMOVED");
-   }
- }, function(err) {
-   alert('ERROR...');
- });
- */
- 
-
-//12번 댓글 수정 
-/* replyService.update({
-  rno : 12,
-  bno : bnoValue,
-  reply : "Modified Reply...."
-}, function(result) {
-
-  alert("수정 완료...");
-
-});  
- */
-
-</script>  
 
 
 <script type="text/javascript">
