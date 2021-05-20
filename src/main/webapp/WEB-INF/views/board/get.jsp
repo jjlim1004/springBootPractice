@@ -44,13 +44,31 @@
         </div>
 
 <%-- 		<button data-oper='modify' class="btn btn-default">
-        <a href="/board/modify?bno=<c:out value="${board.bno}"/>">Modify</a></button>
+
+
+            <a href="/board/modify?bno=<c:out value="${board.bno}"/>">Modify</a></button>
+
         <button data-oper='list' class="btn btn-info">
         <a href="/board/list">List</a></button> --%>
 
 
-<button data-oper='modify' class="btn btn-default">Modify</button>
+
+
+ <c:set var="id" value='${loginMember.id}'/>
+    <c:choose>
+        <c:when test="${id == board.writer}">
+            <button data-oper='modify' class="btn btn-default">Modify</button>
+        </c:when>
+        <c:when test="${socialMember.id == board.writer}">
+            <button data-oper='modify' class="btn btn-default">Modify</button>
+        </c:when>
+    </c:choose>
+
 <button data-oper='list' class="btn btn-info">List</button>
+
+
+
+
 
 <%-- <form id='operForm' action="/board/modify" method="get">
   <input type='hidden' id='bno' name='bno' value='<c:out value="${board.bno}"/>'>
@@ -229,8 +247,18 @@
       
             </div>
 <div class="modal-footer">
-        <button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
-        <button id='modalRemoveBtn' type="button" class="btn btn-danger">Remove</button>
+ <c:set var="id" value='${loginMember.id}'/>
+    <c:choose>
+        <c:when test="${id == board.writer}">
+            <button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
+            <button id='modalRemoveBtn' type="button" class="btn btn-danger">Remove</button>
+        </c:when>
+        <c:when test="${socialMember.id == board.writer}">
+            <button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
+            <button id='modalRemoveBtn' type="button" class="btn btn-danger">Remove</button>
+        </c:when>
+    </c:choose>
+
         <button id='modalRegisterBtn' type="button" class="btn btn-primary">Register</button>
         <button id='modalCloseBtn' type="button" class="btn btn-default">Close</button>
       </div>          </div>

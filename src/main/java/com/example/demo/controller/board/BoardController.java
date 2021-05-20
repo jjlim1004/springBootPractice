@@ -82,7 +82,7 @@ public class BoardController {
     }
 
     @GetMapping("get")
-    public String get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model){
+    public String get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model, HttpSession httpSession){
         model.addAttribute("board", service.get(bno));
 
 
