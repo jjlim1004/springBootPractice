@@ -167,7 +167,7 @@ public class loginController {
             return "redirect:/adminPage";
         }
         return "redirect:/";
-    }
+    } //post - requestParam
 
 }
 

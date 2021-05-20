@@ -441,12 +441,11 @@ $(document).ready(function () {
        } else if(socialId == reply.replyer){
             modalModBtn.show();
             modalRemoveBtn.show();
-       }else{
-            modalModBtn.hide();
-            modalRemoveBtn.hide();
-            document.getElementByName('reply').readonly = true;
-       }
-
+       }  else{
+               modalModBtn.hide();
+               modalRemoveBtn.hide();
+               document.getElementByName('reply').readonly = true;
+        }
 
 
         $(".modal").modal("show");
