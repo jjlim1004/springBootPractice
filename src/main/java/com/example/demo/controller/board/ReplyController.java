@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 
 @RequestMapping("/replies/")
 @RestController
@@ -37,11 +39,12 @@ public class ReplyController {
 
     //get
     @GetMapping(value="/{rno}", produces = {"application/json"})
-    public ResponseEntity<ReplyVO> get(@PathVariable("rno") String rnos, Model model){
+    public ResponseEntity<ReplyVO> get(@PathVariable("rno") String rnos, HttpSession httpSession){
 
         rnos = rnos.replace(".json", "");
         Long rno = Long.parseLong(rnos);
-        model.addAttribute("reply", service.get(rno));
+
+        httpSession.setAttribute("reply", service.get(rno));
 
         return new ResponseEntity<>(service.get(rno), HttpStatus.OK);
 

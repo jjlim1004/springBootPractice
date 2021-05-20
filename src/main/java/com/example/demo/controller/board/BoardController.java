@@ -9,6 +9,7 @@ import com.example.demo.domain.member.dto.MemberDTO;
 import com.example.demo.domain.member.dto.vo.Role;
 import com.example.demo.domain.member.entity.Member;
 import com.example.demo.service.board.BoardService;
+import com.example.demo.service.board.ReplyService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,9 @@ public class BoardController {
 
     @Autowired
     private BoardService service;
+
+    @Autowired
+    private ReplyService replyService;
 
     @GetMapping("register")
     public String register(Model model, HttpSession httpSession){
@@ -88,7 +92,6 @@ public class BoardController {
     public String get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model, HttpSession httpSession){
 
         model.addAttribute("board", service.get(bno));
-
         return "board/get";
     }
 

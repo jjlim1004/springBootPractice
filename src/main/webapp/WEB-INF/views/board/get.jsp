@@ -237,17 +237,9 @@
       
             </div>
 <div class="modal-footer">
- <c:set var="id" value='${loginMember.id}'/>
-    <c:choose>
-        <c:when test="${id == reply.replyer}">
-            <button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
-            <button id='modalRemoveBtn' type="button" class="btn btn-danger">Remove</button>
-        </c:when>
-        <c:when test="${socialMember.id == reply.replyer}">
-            <button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
-            <button id='modalRemoveBtn' type="button" class="btn btn-danger">Remove</button>
-        </c:when>
-    </c:choose>
+
+        <button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
+        <button id='modalRemoveBtn' type="button" class="btn btn-danger">Remove</button>
 
         <button id='modalRegisterBtn' type="button" class="btn btn-primary">Register</button>
         <button id='modalCloseBtn' type="button" class="btn btn-default">Close</button>
@@ -424,21 +416,39 @@ $(document).ready(function () {
 
   //댓글 조회 클릭 이벤트 처리 
     $(".chat").on("click", "li", function(e){
-      
+
+      var memberId = `${loginMember.id}`;
+      var socialId = `${socialMember.id}`;
       var rno = $(this).data("rno");
-      
+
       replyService.get(rno, function(reply){
       
         modalInputReply.val(reply.reply);
         modalInputReplyer.val(reply.replyer);
+
         modalInputReplyDate.val(replyService.displayTime(reply.replyDate))
         .attr("readonly","readonly");
         modal.data("rno", reply.rno);
         
         modal.find("button[id !='modalCloseBtn']").hide();
-        modalModBtn.show();
-        modalRemoveBtn.show();
-        
+
+        console.log(reply.replyer);
+        console.log(memberId);
+
+      if(memberId == reply.replyer){
+            modalModBtn.show();
+            modalRemoveBtn.show();
+       } else if(socialId == reply.replyer){
+            modalModBtn.show();
+            modalRemoveBtn.show();
+       }else{
+            modalModBtn.hide();
+            modalRemoveBtn.hide();
+            document.getElementByName('reply').readonly = true;
+       }
+
+
+
         $(".modal").modal("show");
             
       });
