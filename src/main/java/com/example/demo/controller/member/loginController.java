@@ -155,6 +155,7 @@ public class loginController {
 
     public SessionMember adminSessionCheck(HttpSession httpSession){
         SessionMember sessionMember = (SessionMember) httpSession.getAttribute("loginMember");
+
         return sessionMember;
     }
 

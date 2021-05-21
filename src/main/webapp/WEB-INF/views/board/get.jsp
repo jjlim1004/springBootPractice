@@ -49,9 +49,13 @@
 
 
  <c:set var="id" value='${loginMember.id}'/>
+ <c:set var="admin" value='${loginMember.role}'/>
     <c:choose>
         <c:when test="${id == board.writer}">
             <button data-oper='modify' class="btn btn-default">Modify</button>
+        </c:when>
+        <c:when test="${admin == 'ADMIN'}">
+             <button data-oper='modify' class="btn btn-default">Modify</button>
         </c:when>
         <c:when test="${socialMember.id == board.writer}">
             <button data-oper='modify' class="btn btn-default">Modify</button>
@@ -216,7 +220,7 @@
             <div class="modal-body">
               <div class="form-group">
                 <label>Reply</label> 
-                <input class="form-control" name='reply'>
+                <input class="form-control" name='reply' id='reply'>
               </div>      
               <div class="form-group">
                 <label>Replyer</label>
@@ -416,7 +420,7 @@ $(document).ready(function () {
 
   //댓글 조회 클릭 이벤트 처리 
     $(".chat").on("click", "li", function(e){
-
+      var admin = `${loginMember.role}`;
       var memberId = `${loginMember.id}`;
       var socialId = `${socialMember.id}`;
       var rno = $(this).data("rno");
@@ -432,19 +436,26 @@ $(document).ready(function () {
         
         modal.find("button[id !='modalCloseBtn']").hide();
 
-        console.log(reply.replyer);
-        console.log(memberId);
+        console.log(admin);
 
-      if(memberId == reply.replyer){
+
+      if(memberId == reply.replyer || admin == 'ADMIN'){
+
             modalModBtn.show();
             modalRemoveBtn.show();
+            modalInputReply.attr("readonly", false);
+
        } else if(socialId == reply.replyer){
             modalModBtn.show();
             modalRemoveBtn.show();
+            modalInputReply.attr("readonly", false);
+
        }  else{
-               modalModBtn.hide();
-               modalRemoveBtn.hide();
-               document.getElementByName('reply').readonly = true;
+
+             modalModBtn.hide();
+             modalRemoveBtn.hide();
+             modalInputReply.attr("readonly", true);
+
         }
 
 
