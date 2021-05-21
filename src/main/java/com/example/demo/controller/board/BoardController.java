@@ -77,16 +77,15 @@ public class BoardController {
         }
 
         model.addAttribute("list", service.getList(cri));
-
         //pageDTO를 사용할 수 있도록 model에 담아서 화면에 전달
         // PageDTO 를 구성하기 위해서 전체 데이터 수가 필요한데, 아직 그 처리를 하지 않았으므로 임의의 값 123 지정
 
        int total = service.getTotal(cri);
-
         model.addAttribute("pageMaker", new PageDTO(cri, total));
 
         return "board/list";
     }
+
 
     @GetMapping("get")
     public String get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model, HttpSession httpSession){

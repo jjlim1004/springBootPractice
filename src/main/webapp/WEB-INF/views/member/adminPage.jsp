@@ -44,6 +44,33 @@
 			        </c:forEach>
 				</table>
 
+				<div class='row'>
+					<div class="col-lg-12">
+
+						<form id='searchForm' action="/adminPage" method='get'>
+							<select name='type'>
+								<option value=""
+									<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
+								<option value="I"
+									<c:out value="${pageMaker.cri.type eq 'I'?'selected':''}"/>>아이디</option>
+								<option value="N"
+									<c:out value="${pageMaker.cri.type eq 'N'?'selected':''}"/>>이름</option>
+								<option value="E"
+									<c:out value="${pageMaker.cri.type eq 'E'?'selected':''}"/>>이메일</option>
+								<option value="IN"
+									<c:out value="${pageMaker.cri.type eq 'IN'?'selected':''}"/>>아이디
+									or 이름</option>
+							</select> <input type='text' name='keyword'
+								value='<c:out value="${pageMaker.cri.keyword}"/>' /> <input
+								type='hidden' name='pageNum'
+								value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input
+								type='hidden' name='amount'
+								value='<c:out value="${pageMaker.cri.amount}"/>' />
+							<button class='btn btn-default'>Search</button>
+						</form>
+					</div>
+				</div>
+
 				<div class='pull-right'>
 					<ul class="pagination">
 						<c:if test="${pageMaker.prev}">
@@ -67,6 +94,10 @@
 			<form id='actionForm' action="/adminPage" method='get'>
             	<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
             	<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+            <input type='hidden' name='type'
+                value='<c:out value="${ pageMaker.cri.type }"/>'>
+            <input type='hidden' name='keyword'
+                value='<c:out value="${ pageMaker.cri.keyword }"/>'>
             </form>
 		</div>
 		<!--  end panel-body -->
@@ -115,6 +146,30 @@
 			actionForm.submit();
 		});
 	});
+
+		var searchForm = $("#searchForm");
+
+        $("#searchForm button").on("click", function(e) {
+
+    	    if (!searchForm.find("option:selected").val()) {
+    			alert("검색종류를 선택하세요");
+    		    return false;
+    		    }
+
+            if (!searchForm.find("input[name='keyword']").val()) {
+                alert("키워드를 입력하세요");
+                return false;
+            }
+
+            searchForm.find("input[name='pageNum']").val("1");
+                e.preventDefault();
+
+                searchForm.submit();
+
+  		});
+
+
+
 </script>
 
 <%@include file="../includes/footer.jsp"%>

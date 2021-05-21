@@ -10,7 +10,7 @@
                 <trim prefix="OR">
                     <choose>
                         <when test="type == 'T'.toString()">
-                            title like '%'||#{keyword}||'%'
+                             like '%'||#{keyword}||'%'
                         </when>
                         <when test="type == 'C'.toString()">
                             content like '%'||#{keyword}||'%'
@@ -76,14 +76,14 @@
 
     <select id="getListWithPaging" resultType="com.example.demo.domain.board.BoardVO">
         <![CDATA[
-          select
-            bno, title, content, writer, regdate, updatedate, replycnt, hits
-          from (
-             select /*+INDEX_DESC(board SYS_C0012575) */
-                rownum rn, bno, title, content, writer, regdate, updatedate, replycnt, hits
-              from
-                board
-              where
+              select
+                bno, title, content, writer, regdate, updatedate, replycnt, hits
+              from (
+                 select /*+INDEX_DESC(board SYS_C0012575) */
+                    rownum rn, bno, title, content, writer, regdate, updatedate, replycnt, hits
+                  from
+                    board
+                  where
           ]]>
 
         <include refid="criteria"></include>
