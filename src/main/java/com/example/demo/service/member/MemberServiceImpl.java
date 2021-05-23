@@ -43,7 +43,10 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public Member get(String memberId) {
+        System.out.println("memberServiceImpl:" + memberId);
         Member member = memberRepository.findByMemberId(memberId);
+        System.out.println("memberServiceImpl MEMBER:" + member.getMemberId());
+        System.out.println("memberServiceImpl MEMBER NAME:" + member.getMemberName());
         return member;
     }
 

@@ -35,7 +35,9 @@
 			        <c:forEach items="${list}" var="list">
 			           <tr>
 			             <td><c:out value="${list.member_no}" /></td>
-			             <td><c:out value="${list.member_id}" /></td>
+			             <td class='move' id="memberId">
+                                <c:out value="${list.member_id}"/>
+			             </td>
 			             <td><c:out value="${list.member_name}" /></td>
 			             <td><c:out value="${list.member_email}" /></td>
 			             <td><c:out value="${list.member_age}" /></td>
@@ -111,31 +113,45 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
-                    <h4 class="modal-title" id="myModalLabel">REPLY MODAL</h4>
+                    <h4 class="modal-title" id="myModalLabel">MEMBER INFO</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Reply</label>
-                        <input class="form-control" name='reply' value=''>
+                        <label>NO</label>
+                        <input class="form-control" name='member_no'>
                     </div>
                     <div class="form-group">
-                        <label>Replyer</label>
-                        <input class="form-control" name='replyer' value='replyer'>
+                        <label>ID</label>
+                        <input class="form-control" name='member_id'>
                     </div>
                     <div class="form-group">
-                        <label>Reply Date</label>
-                        <input class="form-control" name='replyDate' value='2018-01-01 13:13'>
+                        <label>NAME</label>
+                        <input class="form-control" name='member_name'>
                     </div>
+                    <div class="form-group">
+                        <label>EMAIL</label>
+                        <input class="form-control" name='member_email'>
+                    </div>
+                     <div class="form-group">
+                        <label>AGE</label>
+                        <input class="form-control" name='member_age'>
+                    </div>
+                    <div class="form-group">
+                        <label>GENDER</label>
+                        <input class="form-control" name='member_gender'>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
                     <button id='modalRemoveBtn' type="button" class="btn btn-danger">Remove</button>
+                     <button id='modalCloseBtn' type="button" class="btn btn-default">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
-
+<script type="text/javascript" src="/resources/js/member.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var actionForm = $("#actionForm");
@@ -145,8 +161,8 @@
 			actionForm.find("input[name='pageNum']").val($(this).attr("href"));
 			actionForm.submit();
 		});
-	});
 
+   });
 		var searchForm = $("#searchForm");
 
         $("#searchForm button").on("click", function(e) {
@@ -167,6 +183,49 @@
                 searchForm.submit();
 
   		});
+
+    var modal = $(".modal");
+    var modalMemberNo = modal.find("input[name='member_no']");
+    var modalMemberId = modal.find("input[name='member_id']");
+    var modalMemberName = modal.find("input[name='member_name']");
+    var modalMemberEmail = modal.find("input[name='member_email']");
+    var modalMemberAge = modal.find("input[name='member_age']");
+    var modalMemberGender = modal.find("input[name='member_gender']");
+
+
+    var modalModBtn = $("#modalModBtn");
+    var modalRemoveBtn = $("#modalRemoveBtn");
+    var modalRegisterBtn = $("#modalRegisterBtn");
+
+    $("#modalCloseBtn").on("click", function(e){
+
+    	modal.modal('hide');
+    });
+
+    var memberInfo =document.getElementsByTagName("tr");
+
+    $(".move").on("click", function(e) {
+
+        var member_id = document.getElementById('memberId').innerText;
+        console.log(member_id);
+
+        memberService.get(member_id, function(member){
+            console.log(member.member_id);
+            modalMemberNo.val(member.member_no);
+            modalMemberId.val(member.member_id);
+            modalMemberName.val(member.member_name);
+            modalMemberEmail.val(member.member_email);
+            modalMemberAge.val(member.member_age);
+            modalMemberGender.val(member.member_gender);
+            modal.data("member_id", member.member_id);
+
+             $(".modal").modal("show");
+        });
+
+    });
+
+
+
 
 
 
