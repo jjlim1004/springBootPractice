@@ -11,8 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
 
 @RequestMapping("/admin/")
@@ -28,14 +30,25 @@ public class AdminController {
         return sessionMember;
     }
 
+
+
    //get
    @GetMapping(value ="/{member_id}", produces = {"application/json"})
-   public ResponseEntity<Member> get(@PathVariable("member_id") String id, HttpSession httpSession){
-        id = id.replace(".json", "");
-        System.out.println("adminController에서 왔어요"+ id);
-        httpSession.setAttribute("member", memberService.get(id));
-        return new ResponseEntity<>(memberService.get(id), HttpStatus.OK);
+   public ResponseEntity<Member> get(@PathVariable("member_id") String id, HttpSession httpSession, Model model){
+
+       System.out.println("adminController에서 왔어요"+ id);
+//       httpSession.setAttribute("member", memberService.get(id));
+
+       Member member = memberService.get(id);
+       System.out.println("adminController" + member.getMemberEmail());
+
+//       model.addAttribute("member", member);
+//       httpSession.setAttribute("member", memberService.get(id));
+
+        System.out.println("---------"+ memberService.get(id).getMemberId());
+       return new ResponseEntity<>(memberService.get(id), HttpStatus.OK);
    }
+
 
 
     @DeleteMapping("/delete/{memberNo}")

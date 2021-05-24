@@ -202,7 +202,7 @@
     	modal.modal('hide');
     });
 
-    var memberInfo =document.getElementsByTagName("tr");
+
 
     $(".move").on("click", function(e) {
 
@@ -210,7 +210,10 @@
         console.log(member_id);
 
         memberService.get(member_id, function(member){
-            console.log(member.member_id);
+
+            console.log("memberId:" + member_id);
+            console.log("member:" +member);
+
             modalMemberNo.val(member.member_no);
             modalMemberId.val(member.member_id);
             modalMemberName.val(member.member_name);

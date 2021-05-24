@@ -4,7 +4,7 @@ var memberService =(function(){
 
     function get(member_id, callback, error){
 
-        $.get("/admin/"+ member_id + ".json", function(result){
+        $.get("/admin/"+ member_id, function(result){
                     if(callback){
                         callback(result);
                     }
@@ -16,6 +16,6 @@ var memberService =(function(){
                 });
     }
 
-  return { get : get };
+ return { get : get };
 
 })();
