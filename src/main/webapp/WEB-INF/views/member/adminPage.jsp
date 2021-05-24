@@ -33,9 +33,9 @@
 						</tr>
 					</thead>
 			        <c:forEach items="${list}" var="list">
-			           <tr>
+			           <tr class="${list.member_no}">
 			             <td><c:out value="${list.member_no}" /></td>
-			             <td class='move' id="memberId">
+			             <td id="memberId">
                                 <c:out value="${list.member_id}"/>
 			             </td>
 			             <td><c:out value="${list.member_name}" /></td>
@@ -202,25 +202,24 @@
     	modal.modal('hide');
     });
 
+  // var move = $('tr').attr('class');
 
-
-    $(".move").on("click", function(e) {
+    $(".move")on("click", function(e) {
 
         var member_id = document.getElementById('memberId').innerText;
         console.log(member_id);
 
         memberService.get(member_id, function(member){
 
-            console.log("memberId:" + member_id);
+            console.log("memberId:" + member.id);
             console.log("member:" +member);
 
-            modalMemberNo.val(member.member_no);
-            modalMemberId.val(member.member_id);
-            modalMemberName.val(member.member_name);
-            modalMemberEmail.val(member.member_email);
-            modalMemberAge.val(member.member_age);
-            modalMemberGender.val(member.member_gender);
-            modal.data("member_id", member.member_id);
+            modalMemberNo.val(member.no);
+            modalMemberId.val(member.id);
+            modalMemberName.val(member.name);
+            modalMemberEmail.val(member.email);
+            modalMemberAge.val(member.age);
+            modalMemberGender.val(member.gender);
 
              $(".modal").modal("show");
         });

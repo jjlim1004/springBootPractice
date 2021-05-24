@@ -5,6 +5,7 @@ import com.example.demo.domain.Criteria;
 import com.example.demo.domain.PageDTO;
 import com.example.demo.domain.member.entity.Member;
 import com.example.demo.service.member.MemberService;
+import com.google.gson.JsonObject;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,19 +35,19 @@ public class AdminController {
 
    //get
    @GetMapping(value ="/{member_id}", produces = {"application/json"})
-   public ResponseEntity<Member> get(@PathVariable("member_id") String id, HttpSession httpSession, Model model){
-
-       System.out.println("adminController에서 왔어요"+ id);
-//       httpSession.setAttribute("member", memberService.get(id));
+   public String get(@PathVariable("member_id") String id, HttpSession httpSession, Model model){
 
        Member member = memberService.get(id);
-       System.out.println("adminController" + member.getMemberEmail());
 
-//       model.addAttribute("member", member);
-//       httpSession.setAttribute("member", memberService.get(id));
+       JsonObject obj = new JsonObject();
+       obj.addProperty("no",member.getMemberNo());
+       obj.addProperty("id",member.getMemberId());
+       obj.addProperty("name",member.getMemberName());
+       obj.addProperty("email",member.getMemberEmail());
+       obj.addProperty("age",member.getMemberAge());
+       obj.addProperty("gender", member.getMemberGender());
 
-        System.out.println("---------"+ memberService.get(id).getMemberId());
-       return new ResponseEntity<>(memberService.get(id), HttpStatus.OK);
+       return obj.toString();
    }
 
 
