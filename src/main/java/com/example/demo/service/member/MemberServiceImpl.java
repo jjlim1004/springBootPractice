@@ -81,8 +81,9 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public int update(Member member) {
-       return memberMapper.modify(member);
+    public int update(MemberDTO memberDTO) {
+
+        return memberMapper.modify(memberDTO);
     }
 
     @Override
@@ -109,6 +110,11 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public void deleteMember(Long memberNo) {
         memberRepository.deleteById(memberNo);
+    }
+
+    @Override
+    public int delete(Long memberNo) {
+        return memberMapper.remove(memberNo);
     }
 
 }

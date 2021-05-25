@@ -118,7 +118,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>NO</label>
-                        <input class="form-control" name='member_no'>
+                        <input class="form-control" name='member_no' readonly>
                     </div>
                     <div class="form-group">
                         <label>ID</label>
@@ -138,7 +138,7 @@
                     </div>
                     <div class="form-group">
                         <label>GENDER</label>
-                        <input class="form-control" name='member_gender'>
+                        <input class="form-control" name='member_gender' readonly>
                     </div>
 
                 </div>
@@ -238,24 +238,35 @@
     modalModBtn.on("click", function(e){
 
         var member = {
-            member_no : modal.data("member_no"),
+            member_no : modalMemberNo.val(),
             member_id: modalMemberId.val(),
             member_name: modalMemberName.val(),
             member_email: modalMemberEmail.val(),
-            member_age: modalMemberAge.val(),
-            member_gender: modalMemberGender.val()
+            member_age: modalMemberAge.val()
+
         };
 
         memberService.update(member, function(result){
 
             alert(result);
             modal.modal("hide");
-            showList(pageNum);
+
+
         });
 
     });
 
 
+    modalRemoveBtn.on("click", function(e){
+
+        var mno = member_no : modalMemberNo.val();
+
+        memberService.remove(mno, function(result){
+             alert(result);
+             modal.modal("hide";
+        });
+
+    });
 
 
 </script>

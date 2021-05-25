@@ -50,9 +50,9 @@
         update member set member_name=#{memberName}, member_email=#{memberEmail} where member_no=#{memberNo}
     </update>
 
-    <update id="modify" parameterType="com.example.demo.domain.member.entity.Member">
-        update member set member_name=#{memberName}, member_email=#{memberEmail}, member_age=#{memberAge}, member_Gender=#{memberGender}
-        where member_no=#{memberNo}
+    <update id="modify" parameterType="com.example.demo.domain.member.dto.MemberDTO">
+        update member set member_id = #{member_id}, member_name=#{member_name}, member_email=#{member_email}, member_age=#{member_age}
+        where member_no=#{member_no}
     </update>
 
     <update id="updatePw" parameterType="com.example.demo.domain.member.dto.UpdateInfoDTO">
@@ -86,5 +86,13 @@
     <select id="findMemberForIdCheck" resultType="com.example.demo.domain.member.entity.Member">
         select * from member where member_id = #{memberId}
     </select>
+
+    <delete id="memberOut">
+        delete from member where member_no = #{memberNo}
+    </delete>
+
+    <delete id="remove">
+        delete from member where member_no = #{memberNo}
+    </delete>
 
 </mapper>

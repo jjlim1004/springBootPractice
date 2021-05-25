@@ -1,6 +1,7 @@
 package com.example.demo.service.member;
 
 import com.example.demo.config.SessionMember;
+import com.example.demo.domain.member.dto.MemberDTO;
 import com.example.demo.domain.member.dto.MemberListDTO;
 import com.example.demo.domain.PageDTO;
 import com.example.demo.domain.member.dto.UpdateInfoDTO;
@@ -24,7 +25,7 @@ public interface MemberService {
 
     public void updateInfo(UpdateInfoDTO updateInfoDTO);
 
-    public int update(Member member);
+    public int update(MemberDTO memberDTO);
 
     public void memberOut(String memberId);
 
@@ -34,5 +35,6 @@ public interface MemberService {
 
     public void deleteMember(Long memberNo);
 
+    public int delete(Long memberNo);
 
 }

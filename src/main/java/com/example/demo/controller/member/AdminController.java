@@ -3,6 +3,7 @@ package com.example.demo.controller.member;
 import com.example.demo.config.SessionMember;
 import com.example.demo.domain.Criteria;
 import com.example.demo.domain.PageDTO;
+import com.example.demo.domain.member.dto.MemberDTO;
 import com.example.demo.domain.member.entity.Member;
 import com.example.demo.service.member.MemberService;
 import com.google.gson.JsonObject;
@@ -26,6 +27,7 @@ import java.util.HashMap;
 public class AdminController {
 
     MemberService memberService;
+
 
     public SessionMember adminSessionCheck(HttpSession httpSession){
         SessionMember sessionMember = (SessionMember) httpSession.getAttribute("loginMember");
@@ -53,25 +55,22 @@ public class AdminController {
    }
 
 
-   @PutMapping(value ="/{member_id}",consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
-   public  ResponseEntity<String> modify(@RequestBody Member member, @PathVariable("member_id") String id ){
+   @PutMapping(value ="/{member_no}",consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+   public  ResponseEntity<String> modify(@RequestBody MemberDTO memberDTO, @PathVariable("member_no") String mno ){
 
 
-        return memberService.update(member) == 1
+        return memberService.update(memberDTO) == 1
                 ?new ResponseEntity<>("success", HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
    }
 
 
-    @DeleteMapping("/delete/{memberNo}")
-    public String deleteMember(HttpSession httpSession, @PathVariable("memberNo")Long memberNo){
-        SessionMember sessionMember = adminSessionCheck(httpSession);
-        if(sessionMember.getRole().equals("ROLE_ADMIN")) {
-            httpSession.setAttribute("admin",sessionMember);
-            memberService.deleteMember(memberNo);
-            return "redirect:/adminPage";
-        }
-        return "redirect:/";
-    } //post - requestParam
+    @DeleteMapping(value = "/delete/{member_no}", produces = {MediaType.TEXT_PLAIN_VALUE})
+    public ResponseEntity<String> remove(@PathVariable("member_no")Long memberNo){
+
+        return memberService.delete(memberNo) ==1
+                ? new ResponseEntity<>("success", HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
 }
