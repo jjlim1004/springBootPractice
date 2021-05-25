@@ -50,6 +50,11 @@
         update member set member_name=#{memberName}, member_email=#{memberEmail} where member_no=#{memberNo}
     </update>
 
+    <update id="modify" parameterType="com.example.demo.domain.member.entity.Member">
+        update member set member_name=#{memberName}, member_email=#{memberEmail}, member_age=#{memberAge}, member_Gender=#{memberGender}
+        where member_no=#{memberNo}
+    </update>
+
     <update id="updatePw" parameterType="com.example.demo.domain.member.dto.UpdateInfoDTO">
         update password set pw=#{memberPw} where member_no=#{memberNo}
     </update>

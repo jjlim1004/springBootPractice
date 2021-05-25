@@ -24,6 +24,8 @@ public interface MemberService {
 
     public void updateInfo(UpdateInfoDTO updateInfoDTO);
 
+    public int update(Member member);
+
     public void memberOut(String memberId);
 
     public int totalCount();

@@ -18,6 +18,8 @@ public interface MemberMapper {
 
     public void update(UpdateInfoDTO updateInfoDTO);
 
+    public int modify(Member member);
+
     public void updatePw(UpdateInfoDTO updateInfoDTO);
 
     public List<MemberListDTO> getListWithPaging(Criteria cri);

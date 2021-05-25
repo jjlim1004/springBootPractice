@@ -6,9 +6,11 @@ import com.example.demo.domain.PageDTO;
 import com.example.demo.domain.member.entity.Member;
 import com.example.demo.service.member.MemberService;
 import com.google.gson.JsonObject;
+import com.sun.media.jfxmedia.Media;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +37,7 @@ public class AdminController {
 
    //get
    @GetMapping(value ="/{member_id}", produces = {"application/json"})
-   public String get(@PathVariable("member_id") String id, HttpSession httpSession, Model model){
+   public String get(@PathVariable("member_id") String id){
 
        Member member = memberService.get(id);
 
@@ -50,6 +52,15 @@ public class AdminController {
        return obj.toString();
    }
 
+
+   @PutMapping(value ="/{member_id}",consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+   public  ResponseEntity<String> modify(@RequestBody Member member, @PathVariable("member_id") String id ){
+
+
+        return memberService.update(member) == 1
+                ?new ResponseEntity<>("success", HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+   }
 
 
     @DeleteMapping("/delete/{memberNo}")

@@ -33,16 +33,16 @@
 						</tr>
 					</thead>
 			        <c:forEach items="${list}" var="list">
-			           <tr class="${list.member_no}">
-			             <td><c:out value="${list.member_no}" /></td>
-			             <td id="memberId">
-                                <c:out value="${list.member_id}"/>
-			             </td>
-			             <td><c:out value="${list.member_name}" /></td>
-			             <td><c:out value="${list.member_email}" /></td>
-			             <td><c:out value="${list.member_age}" /></td>
-			             <td><c:out value="${list.member_gender}" /></td>
-			             </tr>
+                           <tr class="${list.member_id}">
+                                 <td><c:out value="${list.member_no}"/></td>
+                                 <td id="memberId" >
+                                        <c:out value="${list.member_id}"/>
+                                 </td>
+                                 <td><c:out value="${list.member_name}" /></td>
+                                 <td><c:out value="${list.member_email}" /></td>
+                                 <td><c:out value="${list.member_age}" /></td>
+                                 <td><c:out value="${list.member_gender}" /></td>
+                           </tr>
 			        </c:forEach>
 				</table>
 
@@ -151,6 +151,7 @@
         </div>
     </div>
 
+
 <script type="text/javascript" src="/resources/js/member.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -170,7 +171,7 @@
     	    if (!searchForm.find("option:selected").val()) {
     			alert("검색종류를 선택하세요");
     		    return false;
-    		    }
+    		}
 
             if (!searchForm.find("input[name='keyword']").val()) {
                 alert("키워드를 입력하세요");
@@ -202,31 +203,57 @@
     	modal.modal('hide');
     });
 
-  // var move = $('tr').attr('class');
 
-    $(".move")on("click", function(e) {
 
-        var member_id = document.getElementById('memberId').innerText;
-        console.log(member_id);
 
-        memberService.get(member_id, function(member){
 
-            console.log("memberId:" + member.id);
-            console.log("member:" +member);
 
-            modalMemberNo.val(member.no);
-            modalMemberId.val(member.id);
-            modalMemberName.val(member.name);
-            modalMemberEmail.val(member.email);
-            modalMemberAge.val(member.age);
-            modalMemberGender.val(member.gender);
+     $("tr").on("click", function(e) {
+        var move = $(this).attr('class');
 
-             $(".modal").modal("show");
-        });
+        if(move != undefined){
+
+            console.log("move:" +move);
+
+            memberService.get(move, function(member){
+
+                    console.log("memberId:" + member.id);
+                    console.log("member:" +member);
+
+                    modalMemberNo.val(member.no);
+                    modalMemberId.val(member.id);
+                    modalMemberName.val(member.name);
+                    modalMemberEmail.val(member.email);
+                    modalMemberAge.val(member.age);
+                    modalMemberGender.val(member.gender);
+
+                     $(".modal").modal("show");
+
+            });
+        }
 
     });
 
 
+    modalModBtn.on("click", function(e){
+
+        var member = {
+            member_no : modal.data("member_no"),
+            member_id: modalMemberId.val(),
+            member_name: modalMemberName.val(),
+            member_email: modalMemberEmail.val(),
+            member_age: modalMemberAge.val(),
+            member_gender: modalMemberGender.val()
+        };
+
+        memberService.update(member, function(result){
+
+            alert(result);
+            modal.modal("hide");
+            showList(pageNum);
+        });
+
+    });
 
 
 

@@ -81,6 +81,11 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
+    public int update(Member member) {
+       return memberMapper.modify(member);
+    }
+
+    @Override
     public void memberOut(String memberId) {
         Member member = memberRepository.findByMemberId(memberId);
         Password password = passwordRepository.findByMemberId(memberId);
