@@ -259,11 +259,11 @@
 
     modalRemoveBtn.on("click", function(e){
 
-        var mno = member_no : modalMemberNo.val();
+        var mno = modalMemberNo.val();
 
         memberService.remove(mno, function(result){
              alert(result);
-             modal.modal("hide";
+             modal.modal("hide");
         });
 
     });

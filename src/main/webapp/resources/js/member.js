@@ -61,7 +61,7 @@ var memberService =(function(){
 
  return {
     get : get,
-    update : update
+    update : update,
     remove : remove
  };
 
