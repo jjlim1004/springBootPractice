@@ -79,9 +79,6 @@
         ]]>
     </select>
 
-    <delete id="memberOut">
-        delete from member where member_no = #{memberNo}
-    </delete>
 
     <select id="findMemberForIdCheck" resultType="com.example.demo.domain.member.entity.Member">
         select * from member where member_id = #{memberId}
