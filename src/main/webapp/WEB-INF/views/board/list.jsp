@@ -7,7 +7,7 @@
 <%@include file="../includes/header.jsp"%>
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Tables</h1>
+		<h1 class="page-header">종목 토론방</h1>
 	</div>
 	<!-- /.col-lg-12 -->
 </div>
@@ -17,9 +17,8 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				Board List Page
-				<button id='regBtn' type="button" class="btn btn-xs pull-right">Register
-					New Board</button>
+
+				<button id='regBtn' type="button" class="btn btn-xs pull-right">    Write !  </button>
 			</div>
 
 			<!-- /.panel-heading -->
@@ -27,12 +26,11 @@
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
-							<th>#번호</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>작성일</th>
-							<th>수정일</th>
-							<th>조회수</th>
+							<th>No.</th>
+							<th>Title</th>
+							<th>Writer</th>
+							<th>Regdate</th>
+							<th>Views</th>
 						</tr>
 					</thead>
 
@@ -47,8 +45,6 @@
               <td><c:out value="${board.writer}" /></td>
               <td><fmt:formatDate pattern="yyyy-MM-dd"
                   value="${board.regdate}" /></td>
-              <td><fmt:formatDate pattern="yyyy-MM-dd"
-                  value="${board.updateDate}" /></td>
                    <td><c:out value="${board.hits}" /></td>
             </tr>
           </c:forEach>
