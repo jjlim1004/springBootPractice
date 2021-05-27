@@ -6,6 +6,8 @@ import com.example.bootWeb.domain.dto.vo.Criteria;
 import com.example.bootWeb.domain.dto.vo.test.TestPageDTO;
 import com.example.bootWeb.domain.entity.Member;
 import com.example.bootWeb.domain.dto.MemberJoinDTO;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 

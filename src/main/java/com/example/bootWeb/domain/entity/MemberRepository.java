@@ -19,7 +19,7 @@ public interface MemberRepository extends JpaRepository<Member,Long> {
     @Query("select count(*) from Member m where m.role='user'")
     List<Member> getMemberCount();
 
-    @Query("select m.memberId from Member m where m.memberId=:memberId")
+    @Query("select m.memberId from Member m where m.memberId=:memberId") //jpql
     String findMemberIdForIdCheck(@Param("memberId") String memberId);
 
 }

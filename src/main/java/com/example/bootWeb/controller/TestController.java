@@ -1,9 +1,6 @@
 package com.example.bootWeb.controller;
 
 import com.example.bootWeb.domain.dto.MemberJoinDTO;
-import com.example.bootWeb.domain.dto.MemberListDTO;
-import com.example.bootWeb.domain.dto.vo.Criteria;
-import com.example.bootWeb.domain.entity.Member;
 import com.example.bootWeb.mapper.MemberMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -11,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @RequestMapping("/test")
 @Controller
@@ -20,8 +16,17 @@ public class TestController {
 
     private MemberMapper mapper;
 
+    @GetMapping("/testPage")
+    public void testPage(){    }
+
+
+
+    @GetMapping("/testImage")
+    public void testImage(){    }
+
+
     @GetMapping("/test")
-    public String testPage(){
+    public String test(){
         return "test";
     }
 
@@ -61,7 +66,10 @@ public class TestController {
         return "testRest";
     }
 
+    @GetMapping("/testcors")
+    public void corsPage(){
 
+    }
 
 //    @GetMapping("/mapperTest")
 //    public String mapperTest(){

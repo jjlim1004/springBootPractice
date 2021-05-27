@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="kospi" action="kospi/" method="get">
+    <input id="date" type="date" name="date" >
+    <input type="submit" value="CORS!!!!!!!!!">
+</form>
+<div id="kospi_img">
+</div>
+</body>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+    $("#kospi").submit(function(e){
+        e.preventDefault();
+
+        var kospi_img = $("#kospi_img");
+        var date = $("#date").val();
+        var data = {'date':date};
+        console.log(date);
+        console.log(data);
+
+        $.get('http://127.0.0.1:8000/stock/kospi/',data,function(data){
+            console.log(data);
+        });
+    });
+
+</script>
+</html>

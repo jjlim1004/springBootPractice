@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    this is newsPage! <!-- 나중에 지워야 할 것-->
+
+    <form id="newsForm">
+        <input type="text" name='keyword' placeholder="검색어">
+        <label for="news_num">글 개수</label>
+        <select id="news_num" name="news_num">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+        </select>
+        <input type="submit" value="입력">
+    </form>
+    <div id="news">
+        <table>
+            <thead>
+            <tr>
+                <th>헤드라인</th>
+                <th>아이디</th>
+            </tr>
+            </thead>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+        </table>
+    </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $("#newsForm").submit(function(e){
+        e.preventDefault();
+
+        var keyword = $("input[name='keyword']").val();
+        var news_num = $("#news_num option:selected").val();
+        var page_count = $().val();
+        console.log(keyword);
+        console.log(news_num);
+
+        var data = {'keyword': keyword,'news_num':news_num,'page_count':page_count};
+
+
+        $.ajax({
+            url:'http://127.0.0.1:8000/news/news',
+            method:'GET',
+            data: data,
+            success:function(result){
+                $("#news").append("")
+            },
+        });
+
+        console.log('ajax end');
+      });
+</script>
+</html>

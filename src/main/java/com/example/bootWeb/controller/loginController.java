@@ -95,6 +95,7 @@ public class loginController {
     @RequestMapping("/memberLogout")
     public String memberLogout(Model model,HttpSession httpSession ){
         httpSession.invalidate();
+        //소셜 로그아웃 https://brunch.co.kr/@ourlove/67
         return "redirect:login";
     }
 

@@ -1,5 +1,7 @@
 package com.example.bootWeb.config;
 
+
+
 // SessionMember 에는 인증된 사용자 정보만 필요하다.
 // 그 외의 정보는 필요 없으니 name, email, gender, age 필드로 선언한다.
 //SessionMember 대신 Member 클래스를 사용하면 직렬화 관련 에러가 발생한다.
@@ -18,7 +20,7 @@ import java.io.Serializable;
 
 @Getter
 public class SessionMember implements Serializable {
-    private String id;
+    private String id; //회원 아이디
     private String name;
     private String email;
     private String gender;
@@ -34,4 +36,4 @@ public class SessionMember implements Serializable {
         this.age = member.getMemberAge();
         this.role = member.getRole();
         }
-    }
+}
