@@ -39,7 +39,7 @@
 <script>
         $('#idCheck').click(function(){
 
-        $("input[name='id_chk']").val('y');
+            $("input[name='id_chk']").val('y');
 
         });
 
@@ -107,10 +107,10 @@
              }
         <!--성별 유효성 검사------------>
 
-                 if(!female.checked && !male.checked){
-                    alert("성별을 선택해 주세요");
-                    return false;
-                }
+             if(!female.checked && !male.checked){
+                alert("성별을 선택해 주세요");
+                return false;
+            }
 
          <!--이메일 유효성 검사------------>
 
@@ -123,6 +123,7 @@
                 alert("올바른 이메일 형식이 아닙니다.");
                 return false;
             }
+
         <!--나이 유효성 검사------------>
              if(!age.value){
                 alert("나이를 입력해 주세요");
