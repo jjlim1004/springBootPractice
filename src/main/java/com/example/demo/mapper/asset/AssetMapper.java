@@ -16,4 +16,5 @@ public interface AssetMapper {
 
     public void delete (Long asset_no);
 
+    public List<AssetVO> findMemberAssetInfo(String memberId);
 }

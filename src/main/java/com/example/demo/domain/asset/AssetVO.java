@@ -15,9 +15,4 @@ public class AssetVO {
     private String stock_count;
     private String stock_price;
 
-    public List<AssetVO> listAsset;
-
-    public void setAssetList(List<AssetVO> listAsset){
-        this.listAsset = listAsset;
-    }
 }

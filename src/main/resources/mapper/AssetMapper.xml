@@ -28,4 +28,9 @@
     </delete>
 
 
+    <select id="findMemberAssetInfo" resultType="com.example.demo.domain.asset.AssetVO">
+        select * from asset
+        where member_id = #{member_id}
+    </select>
+
 </mapper>

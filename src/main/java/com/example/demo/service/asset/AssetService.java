@@ -15,4 +15,6 @@ public interface AssetService {
     public void remove(Long asset_no);
 
     public List<AssetVO> getList();
+
+    public String assetChk(String memberId);
 }

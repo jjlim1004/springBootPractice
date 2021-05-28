@@ -45,4 +45,19 @@ public class AssetServiceImpl implements AssetService{
     public List<AssetVO> getList() {
         return null;
     }
+
+    @Override
+    public String assetChk(String memberId) {
+
+        System.out.println("from asset service:" + memberId);
+
+        List<AssetVO> assetInfo = mapper.findMemberAssetInfo(memberId);
+        System.out.println("assetInfo"+assetInfo);
+        if(assetInfo != null){
+            return "1";
+        }
+        return "0";
+    }
+
+
 }

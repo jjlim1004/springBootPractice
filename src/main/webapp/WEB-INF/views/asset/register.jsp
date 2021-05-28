@@ -96,6 +96,17 @@
                     alert("정확한 주식명을 입력해 주세요.");
                     return false;
                 }
+
+      /*          for(j=1; j < 5; i++){
+                     if(stock_name[i].value == stock_name[j].value){
+                        console.log([i]);
+                        console.log([j]);
+
+                        alert("동일한 주식명이 존재합니다.");
+                        return false;
+                    }
+                }           */
+
                 if(!priceChk.test(stock_price[i].value)){
                     alert("정확한 주식 가격을 입력해 주세요.");
                     return false;
