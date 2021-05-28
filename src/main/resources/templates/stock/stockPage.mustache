@@ -66,11 +66,11 @@ $(document).ready(function(){
         datatype:"JSON",
         contentType: "application/json; charset=UTF-8",
         success: function(result){
-
             Object.keys(result).forEach(function (key){
+                console.log(result[key]);
                 $("#stock").append(
                     "<tr><td>" + result[key][1] +"</td>"+
-                    "<td><a href='/stock/stockDetail?stock_code=" + result[key][0] +"'>"+ result[key][0]+ "</a></td>"+
+                    "<td>" + result[key][0]+ "</td>"+
                     "<td class='stock_code'>" + key + "</td>"+
                     "<td>" + result[key][2] +"</td></tr>"
                 );
@@ -78,14 +78,11 @@ $(document).ready(function(){
         }
    });
 
-   $('tr').on('click',function(){
-    /*
-    var stock_code = $(this).find("td[class='stock_code']").val();
-    var link = "/stock/stockDetail?stock_code=" + stock_code ;
-    location.href=link;
-    */
-    console.log('event');
-});
+   $(document).on('click','tr', function(){
+        var stock_code = $(this).find("td[class='stock_code']").val();
+        var link = "/stock/stockDetail?stock_code=" + stock_code ;
+        location.href=link;
+    });
 });
 
 
