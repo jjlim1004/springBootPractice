@@ -18,6 +18,9 @@
             {{/socialMember}}
             {{^socialMember}} <!--userName이 존재 하지 않을경우-->
                 {{#loginMember}}
+                    <a href="/test" class="btn btn-info active" role="button">투자성향 테스트</a>
+                    <a href="/asset/register" class="btn btn-info active" role="button">자산 등록</a>
+                    <a href="/asset/get" class="btn btn-info active" role="button">내 자산 조회</a>
                     <a href="/memberLogout" class="btn btn-info active" role="button">logout</a>
                     <a href="/myPage" class="btn btn-info active" role="button">my page</a>
                     {{^admin}}
