@@ -53,7 +53,7 @@ public class AssetServiceImpl implements AssetService{
 
         List<AssetVO> assetInfo = mapper.findMemberAssetInfo(memberId);
         System.out.println("assetInfo"+assetInfo);
-        if(assetInfo != null){
+        if(!assetInfo.isEmpty()){
             return "1";
         }
         return "0";

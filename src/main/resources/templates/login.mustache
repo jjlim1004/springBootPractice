@@ -18,14 +18,13 @@
             {{/socialMember}}
             {{^socialMember}} <!--userName이 존재 하지 않을경우-->
                 {{#loginMember}}
-                    <a href="/test" class="btn btn-info active" role="button">투자성향 테스트</a>
-                    <a href="/asset/register" class="btn btn-info active" role="button" id="regAsset">자산 등록</a>
-                    <a href="/asset/get" class="btn btn-info active" role="button" id="getAsset">내 자산 조회</a>
                     <a href="/memberLogout" class="btn btn-info active" role="button">logout</a>
                     <a href="/myPage" class="btn btn-info active" role="button">my page</a>
                     {{^admin}}
-                    <a href="/memberOut" class="btn btn-info active" role="button">회원 탈퇴</a>
-
+                        <a href="/memberOut" class="btn btn-info active" role="button">회원 탈퇴</a>
+                        <a href="/test" class="btn btn-info active" role="button">투자성향 테스트</a>
+                        <a href="/asset/register" class="btn btn-info active" role="button" id="regAsset">자산 등록</a>
+                        <a href="/asset/get" class="btn btn-info active" role="button" id="getAsset">내 자산 조회</a>
                     {{/admin}}
                     {{#admin}}
                         <a href="/adminPage" class="btn btn-info active" role="button">admin page</a>
@@ -86,7 +85,7 @@
 
 
 
-        $("#loginForm").submit(function(e){
+        $("#loginForm").submit(function(e){ //이부분 고쳐야될듯
               //e.preventDefault();
 
               var memberId = $("#memberId").val();
@@ -102,9 +101,11 @@
                          console.log("from login mustache" + result);
                         if(result == '1'){
                             console.log("from login mustache" + result);
-                             $("#regAsset").attr('href', '/asset/get').val("내 자산 조회"); //이부분 안먹음
+                             $('#regAsset').css("display", "none");
+                            // $('#regAsset').hide();
                         } else{
-                             $("#loginForm").find("a[name='getAsset']").hide(); //이 부분 안먹음
+                              $('#getAsset').css("display", "none"); //이 부분 안먹음
+                              //$('#getAsset').hide();
                         }
 
                 },
@@ -112,6 +113,8 @@
                     console.log("fail");
                 }
              });
+
+
         });
 
 

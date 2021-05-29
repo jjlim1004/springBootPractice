@@ -97,7 +97,7 @@
                     return false;
                 }
 
-      /*          for(j=1; j < 5; i++){
+      /*        for(j=1; j < 5; i++){
                      if(stock_name[i].value == stock_name[j].value){
                         console.log([i]);
                         console.log([j]);
