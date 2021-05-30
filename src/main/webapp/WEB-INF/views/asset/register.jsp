@@ -105,8 +105,6 @@
                         alert("동일한 주식명이 존재합니다.");
                         return false;
                     }
-
-
                 }
 
                 if(!priceChk.test(stock_price[i].value)){
