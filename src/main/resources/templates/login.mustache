@@ -62,43 +62,41 @@
                 alert("아이디를 입력해 주세요");
                 return false;
             }
+
             if(!form.memberPw.value){
                 alert("비밀번호를 입력해 주세요");
                 return false;
             }
+
             form.submit();
 
              var memberId = $("#memberId").val();
              console.log(memberId);
+
              var regBtn = $("#regBtn");
-             console.log("regBtn"+ regBtn);
              var getBtn = $("#getBtn");
-             console.log("getBtn" + getBtn);
 
-              $.ajax({
-                url : '/asset/assetChk',
-                type: 'POST',
-                data: memberId,
-                contentType : "application/json; charset=UTF-8",
-                success : function(result){
-                         console.log("from login mustache1:" + result);
-
-                        if(result == '1'){
-                            console.log("from login mustache2:" + result);
-                            regBtn.hide();
-
-                        } else if(result == '0'){
-                             console.log("from login mustache3:" + result);
-                             getBtn.hide();
+                  $.ajax({
+                        url : '/asset/assetChk',
+                        type: 'POST',
+                        data: memberId,
+                        contentType : "application/json; charset=UTF-8",
+                        success : function(result){
+                                 console.log("from login mustache1:" + result);
+                                if(result == '1'){
+                                    console.log("from login mustache2:" + result);
+                                    regBtn.hide();
+                                } else if(result == '0'){
+                                     console.log("from login mustache3:" + result);
+                                     getBtn.hide();
+                                }
+                        },
+                        error: function(){
+                            console.log("fail");
                         }
-
-                },
-                error: function(){
-                    console.log("fail");
-                }
-             });
-
+                 });
         }
+
 
             var msg = {{loginChk}};
             console.log(msg);
@@ -111,10 +109,8 @@
 
      /*   $("#loginForm").submit(function(e, callback){
               e.preventDefault();
-
               var memberId = $("#memberId").val();
               console.log(memberId);
-
               $.ajax({
                 url : '/asset/assetChk',
                 type: 'POST',
@@ -122,18 +118,15 @@
                 contentType : "application/json; charset=UTF-8",
                 success : function(result){
                          console.log("from login mustache1:" + result);
-
                         if(result == '1'){
                             console.log("from login mustache2:" + result);
                             // $('#regAsset').css("display", "none");
                              $('#regAsset').hide();
-
                         } else if(result == '0'){
                              console.log("from login mustache3:" + result);
                             //$('#getAsset').css("display", "none"); //이 부분 안먹음
                               $('#getAsset').hide();
                         }
-
                 },
                 error: function(){
                     console.log("fail");

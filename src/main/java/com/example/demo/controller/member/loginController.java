@@ -45,7 +45,7 @@ public class loginController {
         }else if(loginMember != null){
             model.addAttribute("member",loginMember);
             model.addAttribute("loginChk","1");
-        }else if(loginChk!=null && loginChk.equals("2")   ){
+        }else if(loginChk!=null && loginChk.equals("2")){
             model.addAttribute("loginChk","2");
         }else{
             model.addAttribute("loginChk","0");
