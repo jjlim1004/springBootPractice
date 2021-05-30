@@ -38,6 +38,7 @@ public class loginController {
         SessionMember loginMember =(SessionMember) httpSession.getAttribute("loginMember");
         //어짜피 model 에 보내줘야 할 내용은 공통된 테이블에 저장된 회원정보니 그냥 member 로 이름 통일
         String loginChk = (String) model.getAttribute("loginChk");
+
         if( socialMember != null){
             model.addAttribute("member",socialMember);
             model.addAttribute("loginChk","1");
@@ -56,16 +57,20 @@ public class loginController {
     public String memberLogin(Model model, HttpSession httpSession,String memberId, String memberPw){
         SessionMember result = memberService.login(memberId,memberPw);
         SessionMember sessionMember = result;
+
         if(sessionMember == null ){
             model.addAttribute("loginChk","2");
             return index(model,httpSession);
         }
-        //추후 회원 정보 수정을 위한 session 에 넣을 데이터
-        httpSession.setAttribute("loginMember",sessionMember);
+            //추후 회원 정보 수정을 위한 session 에 넣을 데이터
+            httpSession.setAttribute("loginMember", sessionMember);
+
         if(sessionMember.getRole()== Role.ADMIN){
             httpSession.setAttribute("admin",sessionMember);
         }
         return index(model,httpSession);
+
+
     }
 
 

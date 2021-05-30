@@ -13,8 +13,8 @@
         <div class="col-md-6">
             <a href="/board/list" role="button" class="btn btn-primary">글 등록</a>
             {{#socialMember}} <!--userName 이 존재 할 경우-->
-                    Logged in as:<span id="user">{{socialMember.id}} </span>
-                    <a href="/memberLogout" class="btn btn-info active" role="button">logout</a>
+                Logged in as:<span id="user">{{socialMember.id}} </span>
+                <a href="/memberLogout" class="btn btn-info active" role="button">logout</a>
             {{/socialMember}}
             {{^socialMember}} <!--userName이 존재 하지 않을경우-->
                 {{#loginMember}}
@@ -23,8 +23,8 @@
                     {{^admin}}
                         <a href="/memberOut" class="btn btn-info active" role="button">회원 탈퇴</a>
                         <a href="/test" class="btn btn-info active" role="button">투자성향 테스트</a>
-                        <a href="/asset/register" class="btn btn-info active" role="button" id="regAsset">자산 등록</a>
-                        <a href="/asset/get" class="btn btn-info active" role="button" id="getAsset">내 자산 조회</a>
+                        <a href="/asset/register" class="btn btn-info active" role="button" id="regBtn">자산 등록</a>
+                        <a href="/asset/get" class="btn btn-info active" role="button" id="getBtn">내 자산 조회</a>
                     {{/admin}}
                     {{#admin}}
                         <a href="/adminPage" class="btn btn-info active" role="button">admin page</a>
@@ -52,11 +52,10 @@
     </div>
 
 </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
 
        function loginChk(){
-
             var form = document.getElementById("loginForm");
 
             if(!form.memberId.value){
@@ -65,47 +64,32 @@
             }
             if(!form.memberPw.value){
                 alert("비밀번호를 입력해 주세요");
-
                 return false;
             }
-
             form.submit();
-        }
 
-
-            var msg = {{loginChk}};
-            console.log(msg);
-
-            window.onload = function() {
-                 if (msg == "2"){
-                    alert("로그인 실패!");
-                }
-            }
-
-
-
-
-        $("#loginForm").submit(function(e){ //이부분 고쳐야될듯
-              //e.preventDefault();
-
-              var memberId = $("#memberId").val();
-
-              console.log(memberId);
+             var memberId = $("#memberId").val();
+             console.log(memberId);
+             var regBtn = $("#regBtn");
+             console.log("regBtn"+ regBtn);
+             var getBtn = $("#getBtn");
+             console.log("getBtn" + getBtn);
 
               $.ajax({
                 url : '/asset/assetChk',
                 type: 'POST',
                 data: memberId,
                 contentType : "application/json; charset=UTF-8",
-                success : function(result, status, xhr){
-                         console.log("from login mustache" + result);
+                success : function(result){
+                         console.log("from login mustache1:" + result);
+
                         if(result == '1'){
-                            console.log("from login mustache" + result);
-                             $('#regAsset').css("display", "none");
-                            // $('#regAsset').hide();
-                        } else{
-                              $('#getAsset').css("display", "none"); //이 부분 안먹음
-                              //$('#getAsset').hide();
+                            console.log("from login mustache2:" + result);
+                            regBtn.hide();
+
+                        } else if(result == '0'){
+                             console.log("from login mustache3:" + result);
+                             getBtn.hide();
                         }
 
                 },
@@ -114,12 +98,49 @@
                 }
              });
 
+        }
 
-        });
+            var msg = {{loginChk}};
+            console.log(msg);
+            window.onload = function() {
+                 if (msg == "2"){
+                    alert("로그인 실패!");
+                }
+            }
 
 
+     /*   $("#loginForm").submit(function(e, callback){
+              e.preventDefault();
+
+              var memberId = $("#memberId").val();
+              console.log(memberId);
+
+              $.ajax({
+                url : '/asset/assetChk',
+                type: 'POST',
+                data: memberId,
+                contentType : "application/json; charset=UTF-8",
+                success : function(result){
+                         console.log("from login mustache1:" + result);
+
+                        if(result == '1'){
+                            console.log("from login mustache2:" + result);
+                            // $('#regAsset').css("display", "none");
+                             $('#regAsset').hide();
+
+                        } else if(result == '0'){
+                             console.log("from login mustache3:" + result);
+                            //$('#getAsset').css("display", "none"); //이 부분 안먹음
+                              $('#getAsset').hide();
+                        }
+
+                },
+                error: function(){
+                    console.log("fail");
+                }
+             });
+        });     */
 
     </script>
 </body>
 </html>
-
