@@ -102,6 +102,7 @@ public class AssetController {
         return "redirect:get";
     }
 
+
     @PostMapping("assetChk")
     @ResponseBody
     public String assetChk(@RequestBody String memberId){

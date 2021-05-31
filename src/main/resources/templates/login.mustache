@@ -14,11 +14,11 @@
             <a href="/board/list" role="button" class="btn btn-primary">글 등록</a>
             {{#socialMember}} <!--userName 이 존재 할 경우-->
                 Logged in as:<span id="user">{{socialMember.id}} </span>
-                <a href="/memberLogout" class="btn btn-info active" role="button">logout</a>
+                <a href="/memberLogout" class="btn btn-info active" role="button" id="logout">logout</a>
             {{/socialMember}}
             {{^socialMember}} <!--userName이 존재 하지 않을경우-->
                 {{#loginMember}}
-                    <a href="/memberLogout" class="btn btn-info active" role="button">logout</a>
+                    <a href="/memberLogout" class="btn btn-info active" role="button" id="logout">logout</a>
                     <a href="/myPage" class="btn btn-info active" role="button">my page</a>
                     {{^admin}}
                         <a href="/memberOut" class="btn btn-info active" role="button">회원 탈퇴</a>
@@ -70,69 +70,82 @@
 
             form.submit();
 
-             var memberId = $("#memberId").val();
-             console.log(memberId);
+
+              var memberId = $("#memberId").val();
+              console.log(memberId);
+
+              $.ajax({
+                    url : '/asset/assetChk',
+                    type: 'POST',
+                    data: memberId,
+                    contentType : "application/json; charset=UTF-8",
+                    success : function(result){
+                             console.log("from login mustache1:" + result);
+                            if(result == '1'){
+                                console.log("from login mustache2:" + result);
+                                sessionStorage.setItem("member_id", memberId);
+                            } else if(result == '0'){
+                                 console.log("from login mustache3:" + result);
+                                 sessionStorage.setItem("member_id", memberId);
+                        }
+                    },
+                    error: function(){
+                        console.log("fail");
+                    }
+             });
+
+        }
+
+
+             var msg = {{loginChk}};
+             var member_id = sessionStorage.getItem("member_id");
+
+             console.log(msg);
+             console.log("sessionStorage:" + member_id);
 
              var regBtn = $("#regBtn");
              var getBtn = $("#getBtn");
 
-                  $.ajax({
-                        url : '/asset/assetChk',
-                        type: 'POST',
-                        data: memberId,
-                        contentType : "application/json; charset=UTF-8",
-                        success : function(result){
-                                 console.log("from login mustache1:" + result);
-                                if(result == '1'){
-                                    console.log("from login mustache2:" + result);
-                                    regBtn.hide();
-                                } else if(result == '0'){
-                                     console.log("from login mustache3:" + result);
-                                     getBtn.hide();
-                                }
-                        },
-                        error: function(){
-                            console.log("fail");
-                        }
-                 });
-        }
 
-
-            var msg = {{loginChk}};
-            console.log(msg);
             window.onload = function() {
-                 if (msg == "2"){
-                    alert("로그인 실패!");
-                }
+
+                    if (msg == "2"){
+                        alert("로그인 실패!");
+
+                    }else if(msg =="1"){
+
+                         $.ajax({
+                                url : '/asset/assetChk',
+                                type: 'POST',
+                                data: member_id,
+                                contentType : "application/json; charset=UTF-8",
+                                success : function(result){
+                                         console.log("from login mustache4:" + result);
+                                        if(result == '1'){
+                                            console.log("from login mustache5:" + result);
+                                             $("#regBtn").remove();
+                                        } else if(result == '0'){
+                                             console.log("from login mustache6:" + result);
+                                              $("#getBtn").remove();
+                                        }
+                                },
+                                error: function(){
+                                    console.log("fail");
+                                }
+                         });
+
+                    }
+
+
             }
 
+           $("#logout").on("click", function(){
 
-     /*   $("#loginForm").submit(function(e, callback){
-              e.preventDefault();
-              var memberId = $("#memberId").val();
-              console.log(memberId);
-              $.ajax({
-                url : '/asset/assetChk',
-                type: 'POST',
-                data: memberId,
-                contentType : "application/json; charset=UTF-8",
-                success : function(result){
-                         console.log("from login mustache1:" + result);
-                        if(result == '1'){
-                            console.log("from login mustache2:" + result);
-                            // $('#regAsset').css("display", "none");
-                             $('#regAsset').hide();
-                        } else if(result == '0'){
-                             console.log("from login mustache3:" + result);
-                            //$('#getAsset').css("display", "none"); //이 부분 안먹음
-                              $('#getAsset').hide();
-                        }
-                },
-                error: function(){
-                    console.log("fail");
-                }
-             });
-        });     */
+                 sessionStorage.removeItem("member_id");
+            });
+
+
+
 
     </script>
 </body>

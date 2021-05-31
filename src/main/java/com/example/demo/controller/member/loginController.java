@@ -40,10 +40,10 @@ public class loginController {
         String loginChk = (String) model.getAttribute("loginChk");
 
         if( socialMember != null){
-            model.addAttribute("member",socialMember);
+            model.addAttribute("member", socialMember);
             model.addAttribute("loginChk","1");
         }else if(loginMember != null){
-            model.addAttribute("member",loginMember);
+            model.addAttribute("member", loginMember);
             model.addAttribute("loginChk","1");
         }else if(loginChk!=null && loginChk.equals("2")){
             model.addAttribute("loginChk","2");
