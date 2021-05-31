@@ -80,12 +80,9 @@
                     data: memberId,
                     contentType : "application/json; charset=UTF-8",
                     success : function(result){
-                             console.log("from login mustache1:" + result);
                             if(result == '1'){
-                                console.log("from login mustache2:" + result);
                                 sessionStorage.setItem("member_id", memberId);
                             } else if(result == '0'){
-                                 console.log("from login mustache3:" + result);
                                  sessionStorage.setItem("member_id", memberId);
                         }
                     },
@@ -120,12 +117,9 @@
                                 data: member_id,
                                 contentType : "application/json; charset=UTF-8",
                                 success : function(result){
-                                         console.log("from login mustache4:" + result);
-                                        if(result == '1'){
-                                            console.log("from login mustache5:" + result);
+                                         if(result == '1'){
                                              $("#regBtn").remove();
                                         } else if(result == '0'){
-                                             console.log("from login mustache6:" + result);
                                               $("#getBtn").remove();
                                         }
                                 },
