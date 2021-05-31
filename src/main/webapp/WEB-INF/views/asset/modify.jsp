@@ -51,32 +51,33 @@
 
                 for(i=0; i < stock_name.length; i++){
 
-                             if(!nameChk.test(stock_name[i].value)){
-                                alert("정확한 주식명을 입력해 주세요.");
-                                return false;
-                            }
-                            if(!priceChk.test(stock_price[i].value)){
-                                alert("정확한 주식 가격을 입력해 주세요.");
-                                return false;
-                            }
-                            if(!countChk.test(stock_count[i].value)){
-                                alert("정확한 주식 수량을 입력해 주세요.");
-                                return false;
-                            }
-
-                            if(stock_name[i].value == ''){
-                                alert("주식 이름을 입력해 주세요.");
-                                return false;
-
-                            } else if (stock_price[i].value == ''){
-                                alert("주식 가격을 입력해 주세요.");
-                                return false;
-
-                            }else if (stock_count[i].value == ''){
-                                alert("주식 수량을 입력해 주세요.");
-                                return false;
-                            }
+                     if(!nameChk.test(stock_name[i].value)){
+                        alert("정확한 주식명을 입력해 주세요.");
+                        return false;
                     }
+
+                          for(j=i+1; j < stock_name.length; j++){
+                                     if(stock_name[i].value == stock_name[j].value){
+                                        console.log([i]);
+                                        console.log([j]);
+
+                                        alert("동일한 주식명이 존재합니다.");
+                                        return false;
+                                    }
+                          }
+
+
+                    if(!priceChk.test(stock_price[i].value)){
+                        alert("정확한 주식 가격을 입력해 주세요.");
+                        return false;
+                    }
+                    if(!countChk.test(stock_count[i].value)){
+                        alert("정확한 주식 수량을 입력해 주세요.");
+                        return false;
+                    }
+
+
+                 }
 
 
                  form.submit();

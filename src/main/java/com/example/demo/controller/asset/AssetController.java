@@ -106,8 +106,8 @@ public class AssetController {
     @PostMapping("assetChk")
     @ResponseBody
     public String assetChk(@RequestBody String memberId){
-        System.out.println("memberId from mustache to controller "+ memberId);
-        System.out.println("from controller:" + service.assetChk(memberId));
+//        System.out.println("memberId from mustache to controller "+ memberId);
+//        System.out.println("from controller:" + service.assetChk(memberId));
         String result = service.assetChk(memberId);
         return result;
     }
