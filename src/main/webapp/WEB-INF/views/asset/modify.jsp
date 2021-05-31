@@ -15,24 +15,87 @@
             <label>주식명</label> <input class="form-control" name='stock_name' value='<c:out value="${asset.stock_name}"/>' >
             <label>1주당 가격</label> <input class="form-control" name='stock_price' value='<c:out value="${asset.stock_price}"/>' >
             <label>주식 수량</label> <input class="form-control" name='stock_count' value='<c:out value="${asset.stock_count}"/>' >
-            <button class='<c:out value="${asset.asset_no}"/>' type="submit" data-oper='remove' name="remove"> 삭제하기 </button>
+            <input type="button" name = "plus" id="plus" value="+">
+            <button class='<c:out value="${asset.asset_no}"/>' type="submit" data-oper='remove' name="button"> 삭제하기 </button>
             <input type="hidden" name='asset_no', id='asset_no' value='<c:out value="${asset.asset_no}"/>'>
 	</div>
 	<br>
 </c:forEach>
+      <div id="add">
+
+      </div>
 </form>
 
 
-<button type="submit" data-oper='modify'>수정하기</button>
-<button type="submit" data-oper='back' id="back">뒤로가기</button>
+<button type="submit" data-oper='modify' name="button">수정하기</button>
+<button type="submit" data-oper='back' id="back" name="button">뒤로가기</button>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
 
+      var totalCnt = 5;
+      var curCnt = $('input[name="stock_name"]').length;
+       console.log(curCnt);
+
+
+        $("#plus").on("click", function(){
+
+                if(curCnt < totalCnt) {
+
+                         var newDiv = document.getElementById("add");
+
+                         var output ="";
+
+                         output += "<label>주식명</label> <input class='required' name='stock_name' id='stock_name'>&nbsp;";
+                         output += "<label>1주당 가격</label> <input class='required' name='stock_price'  id='stock_price'>&nbsp;";
+                         output += "<label>주식 수량</label> <input class='required' name='stock_count'  id='stock_count'>&nbsp;";
+                         output += "<input type='hidden' name = 'member_id' value = '${member.id}'>";
+                         output += "<input type='button' name='cancel' value='삭제하기'>";
+                         output += "  </br></br>"
+
+                         var childDiv = document.createElement("div");
+
+                         childDiv.setAttribute("id", curCnt + 1);
+
+                         childDiv.innerHTML =output;
+                         newDiv.appendChild(childDiv);
+
+                        curCnt = curCnt + 1;
+                        console.log("curCnt" + curCnt);
+
+
+                 } else if(curCnt >= totalCnt){
+
+                      alert("최대 5개까지만 생성 가능합니다.");
+                      return false;
+                }
+
+      });
+
+
+
+        $(document).on("click", 'input[name="cancel"]', function(){
+            console.log("onclick작동");
+
+            var addDiv2 = $(this).closest("div");
+            var addDiv2Name = $(this).closest("div").attr('id');
+            console.log(addDiv2Name);
+
+            console.log("삭제될 번호: " + addDiv2Name);
+
+            addDiv2.remove();
+            curCnt = curCnt - 1;
+            console.log(curCnt);
+
+
+      });
+
+
+
     var form = $("form");
 
-    $('button').on("click" , function(e){
+    $('button[name="button"]').on("click" , function(e){
             e.preventDefault();
 
             var oper = $(this).data("oper");
@@ -46,8 +109,7 @@
             var stock_price =  $('input[name="stock_price"]')
             var stock_count =  $('input[name="stock_count"]')
 
-
-         if(oper === 'modify'){
+            if(oper === 'modify'){
 
                 for(i=0; i < stock_name.length; i++){
 
@@ -78,7 +140,6 @@
 
 
                  }
-
 
                  form.submit();
 
