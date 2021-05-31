@@ -1,10 +1,11 @@
 package com.example.bootWeb.controller;
 
+import com.example.bootWeb.domain.dto.stock.StockInfoDTO;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RequestMapping("/stock")
@@ -21,7 +22,10 @@ public class StockController {
     }
 
     @GetMapping("/stockDetail")
-    public void stockDetail(@RequestParam("stock_code") String stockCode){
-        System.out.println(stockCode);
+    public void stockDetail(@RequestParam("stock_code") String stockCode, @RequestParam("stock_name") String stockName
+                            ,@RequestParam("stock_price") String stockPrice,Model model){
+        System.out.println(stockCode + " " + stockName);
+        StockInfoDTO stockInfoDTO = new StockInfoDTO(stockName, stockCode,stockPrice);
+        model.addAttribute("stockInfo", stockInfoDTO);
     }
 }

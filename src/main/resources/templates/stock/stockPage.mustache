@@ -66,25 +66,31 @@ $(document).ready(function(){
         datatype:"JSON",
         contentType: "application/json; charset=UTF-8",
         success: function(result){
+            var appendStr = "";
+
             Object.keys(result).forEach(function (key){
-                console.log(result[key]);
-                $("#stock").append(
-                    "<tr><td>" + result[key][1] +"</td>"+
-                    "<td>" + result[key][0]+ "</td>"+
-                    "<td class='stock_code'>" + key + "</td>"+
-                    "<td>" + result[key][2] +"</td></tr>"
-                );
+
+                var str = "<tr class='stock_detail'><td>" + result[key][1] +"</td>"+
+                            "<td class ='stock_name'>" + result[key][0]+ "</td>"+
+                            "<td class='stock_code'>" + key + "</td>"+
+                            "<td class='stock_price'>" + result[key][2] +"</td></tr>";
+                appendStr += str;
             });
+            $("#stock").append(appendStr);
         }
    });
-
-   $(document).on('click','tr', function(){
-        var stock_code = $(this).find("td[class='stock_code']").val();
-        var link = "/stock/stockDetail?stock_code=" + stock_code ;
-        location.href=link;
-    });
 });
 
+$(document).on('click',"td[class='stock_name']",function(e){
+        var stock_code =$(this).closest("tr").children().eq(2).text();
+        console.log(stock_code);
+        var stock_name =$(this).text();
+        console.log(stock_name);
+        var stock_price =$(this).closest("tr").children().eq(3).text();
+        var link = "/stock/stockDetail?stock_code=" + stock_code +"&stock_name="+ stock_name
+                    +"&stock_price="+ stock_price;
+        location.href=link;
+});
 
 
 </script>

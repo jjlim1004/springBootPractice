@@ -8,6 +8,68 @@
     <title>Document</title>
 </head>
 <body>
-    this is stockDeatail
+    <form id="form">
+        <input type="date" value="">
+        <input type="submit" value="입력">
+    </form>
+    <div id="chart">
+
+    </div>
+    <div>
+        {{stockInfo.stockName}}
+
+    </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+
+    $("#form").submit(function(e){
+       e.preventDefault();
+        var date = $("#form input[type='date']").val();
+
+        if(date == ""){
+            var today = new Date();
+            var year = today.getFullYear()-3;
+            var month = today.getMonth() + 1;
+            var day = today.getDate();
+            date = year + "-" + month + "-" + day;
+            console.log('date는 : ' + date);
+        }
+
+        var stock_name = `{{stockInfo.stockName}}`;
+        var stock_code = {{stockInfo.stockCode}};
+        var stock_price = {{stockInfo.stockPrice}};
+        var data = {'date':date,
+                    'stock_name':stock_name ,
+                    'stock_code': stock_code};
+        $.ajax({
+            url:'http://127.0.0.1:8000/stock/stock_detail',
+            method:'GET',
+            data:data,
+            datatype:"JSON",
+            contentType: "application/json; charset=UTF-8",
+            success: function(result){
+
+            }
+        });
+    });
+
+    function getNews(){
+        var data =
+        $.ajax({
+            url:'http://127.0.0.1:8000/news/news',
+            method:'GET',
+            data: data,
+            success:function(result){
+                $("#news").append("")
+            },
+        });
+    }
+});
+
+
+
+</script>
 </html>
