@@ -45,7 +45,7 @@ public class AssetController {
 
             service.register(assetVO);
         }
-        String message = "자산이 등록되었습니다";
+        String message = "자산이 등록되었습니다.";
         rttr.addFlashAttribute("result", message);
 
         return "redirect:get";
@@ -109,7 +109,7 @@ public class AssetController {
             }
         }
 
-        String message = "자산이 수정되었습니다";
+        String message = "자산이 수정되었습니다.";
         rttr.addFlashAttribute("result", message);
 
         return "redirect:get";
@@ -120,7 +120,7 @@ public class AssetController {
         System.out.println("삭제된 번호" + asset_no );
         service.remove(asset_no);
 
-        String message = "자산이 삭제되었습니다";
+        String message = "자산이 삭제되었습니다.";
         rttr.addFlashAttribute("result", message);
 
         return "redirect:get";
