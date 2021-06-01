@@ -31,10 +31,13 @@ public class AssetServiceImpl implements AssetService{
         return mapper.read(member_id);
     }
 
+
     @Override
     public void modify(AssetVO asset) {
+
         mapper.modify(asset);
     }
+
 
     @Override
     public void remove(Long asset_no) {

@@ -20,6 +20,7 @@
         stock_price = #{stock_price},
         stock_count = #{stock_count}
         where asset_no = #{asset_no}
+
     </update>
 
     <delete id="delete">

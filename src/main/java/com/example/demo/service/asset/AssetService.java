@@ -12,6 +12,7 @@ public interface AssetService {
 
     public void modify(AssetVO asset);
 
+
     public void remove(Long asset_no);
 
     public List<AssetVO> getList();

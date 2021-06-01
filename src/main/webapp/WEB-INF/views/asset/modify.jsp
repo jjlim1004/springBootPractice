@@ -47,9 +47,9 @@
 
                          var output ="";
 
-                         output += "<label>주식명</label> <input class='required' name='stock_name' id='stock_name'>&nbsp;";
-                         output += "<label>1주당 가격</label> <input class='required' name='stock_price'  id='stock_price'>&nbsp;";
-                         output += "<label>주식 수량</label> <input class='required' name='stock_count'  id='stock_count'>&nbsp;";
+                         output += "<label>주식명</label> <input class='required' name='stock_name2' id='stock_name'>&nbsp;";
+                         output += "<label>1주당 가격</label> <input class='required' name='stock_price2'  id='stock_price'>&nbsp;";
+                         output += "<label>주식 수량</label> <input class='required' name='stock_count2'  id='stock_count'>&nbsp;";
                          output += "<input type='hidden' name = 'member_id' value = '${member.id}'>";
                          output += "<input type='button' name='cancel' value='삭제하기'>";
                          output += "  </br></br>"
@@ -170,6 +170,3 @@
 </script>
 
 </html>
-
-
-

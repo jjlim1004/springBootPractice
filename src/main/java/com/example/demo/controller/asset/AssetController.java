@@ -71,8 +71,10 @@ public class AssetController {
         SessionMember loginMember = (SessionMember) httpSession.getAttribute("loginMember");
 
         if (socialMember != null) {
+            model.addAttribute("member", socialMember);
             model.addAttribute("asset", service.get(socialMember.getId()) );
         } else if(loginMember != null) {
+            model.addAttribute("member", loginMember);
             model.addAttribute("asset", service.get(loginMember.getId()) );
         }
 
@@ -80,16 +82,29 @@ public class AssetController {
     }
 
     @PostMapping("modify")
-    public String modify(String[] stock_name, String[] stock_price, String[] stock_count, String[] asset_no, AssetVO assetVO){
+    public String modify(String[] stock_name, String[] stock_price, String[] stock_count, String[] asset_no,
+                         String[] stock_name2, String[] stock_price2, String[] stock_count2, String[] member_id, AssetVO assetVO){
 
         for (int i = 0; i < stock_name.length; i++) { // a[i] b[i] c[i]
             assetVO.setStock_name(stock_name[i]);
             assetVO.setStock_price(stock_price[i]);
             assetVO.setStock_count(stock_count[i]);
+
             long[] no = Arrays.stream(asset_no).mapToLong(Long::parseLong).toArray();
             assetVO.setAsset_no(no[i]);  //parse Long
 
             service.modify(assetVO);
+        }
+
+        if(stock_name2 !=null) {
+            for (int i = 0; i < stock_name2.length; i++) { // a[i] b[i] c[i]
+                assetVO.setStock_name(stock_name2[i]);
+                assetVO.setStock_price(stock_price2[i]);
+                assetVO.setStock_count(stock_count2[i]);
+                assetVO.setMember_id(member_id[i]);
+
+                service.register(assetVO);
+            }
         }
         return "redirect:get";
         }
