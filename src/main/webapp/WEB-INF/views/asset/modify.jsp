@@ -15,7 +15,6 @@
             <label>주식명</label> <input class="form-control" name='stock_name' value='<c:out value="${asset.stock_name}"/>' >
             <label>1주당 가격</label> <input class="form-control" name='stock_price' value='<c:out value="${asset.stock_price}"/>' >
             <label>주식 수량</label> <input class="form-control" name='stock_count' value='<c:out value="${asset.stock_count}"/>' >
-            <input type="button" name = "plus" id="plus" value="+">
             <button class='<c:out value="${asset.asset_no}"/>' type="submit" data-oper='remove' name="button"> 삭제하기 </button>
             <input type="hidden" name='asset_no', id='asset_no' value='<c:out value="${asset.asset_no}"/>'>
 	</div>
@@ -28,6 +27,7 @@
 
 
 <button type="submit" data-oper='modify' name="button">수정하기</button>
+<input type="button" name = "plus" id="plus" value="내 주식 추가하기">
 <button type="submit" data-oper='back' id="back" name="button">뒤로가기</button>
 
 </body>
@@ -165,6 +165,8 @@
         }
 
     });
+
+
 
 
 </script>

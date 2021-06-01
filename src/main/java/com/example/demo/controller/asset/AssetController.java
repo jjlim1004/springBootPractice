@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 
 @RequestMapping("/asset/")
-//@RestController
 @Controller
 public class AssetController {
 
@@ -36,7 +35,7 @@ public class AssetController {
     }
 
     @PostMapping("register")
-    public String register(String[] stock_name, String[] stock_price, String[] stock_count, String[] member_id, AssetVO assetVO) {
+    public String register(String[] stock_name, String[] stock_price, String[] stock_count, String[] member_id, AssetVO assetVO, RedirectAttributes rttr) {
 
         for (int i = 0; i < stock_name.length; i++) { // a[i] b[i] c[i]
             assetVO.setStock_name(stock_name[i]);
@@ -46,6 +45,9 @@ public class AssetController {
 
             service.register(assetVO);
         }
+        String message = "자산이 등록되었습니다";
+        rttr.addFlashAttribute("result", message);
+
         return "redirect:get";
     }
 
@@ -83,7 +85,7 @@ public class AssetController {
 
     @PostMapping("modify")
     public String modify(String[] stock_name, String[] stock_price, String[] stock_count, String[] asset_no,
-                         String[] stock_name2, String[] stock_price2, String[] stock_count2, String[] member_id, AssetVO assetVO){
+                         String[] stock_name2, String[] stock_price2, String[] stock_count2, String[] member_id, AssetVO assetVO, RedirectAttributes rttr){
 
         for (int i = 0; i < stock_name.length; i++) { // a[i] b[i] c[i]
             assetVO.setStock_name(stock_name[i]);
@@ -106,13 +108,20 @@ public class AssetController {
                 service.register(assetVO);
             }
         }
+
+        String message = "자산이 수정되었습니다";
+        rttr.addFlashAttribute("result", message);
+
         return "redirect:get";
         }
 
     @PostMapping("remove")
-    public String delete(Long asset_no){
+    public String delete(Long asset_no, RedirectAttributes rttr){
         System.out.println("삭제된 번호" + asset_no );
         service.remove(asset_no);
+
+        String message = "자산이 삭제되었습니다";
+        rttr.addFlashAttribute("result", message);
 
         return "redirect:get";
     }

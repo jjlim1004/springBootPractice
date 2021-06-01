@@ -21,6 +21,21 @@
 
 <a href="/asset/modify"> 수정 </a>
 <a href="/"> 뒤로가기 </a>
+
+<script>
+window.onload = function(){
+
+        var result ='${result}';
+
+        if(result != ''){
+            alert(result);
+            console.log(result);
+            return false;
+        }
+}
+
+</script>
+
 </body>
 </html>
 

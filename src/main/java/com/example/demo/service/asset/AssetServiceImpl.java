@@ -39,6 +39,7 @@ public class AssetServiceImpl implements AssetService{
     }
 
 
+
     @Override
     public void remove(Long asset_no) {
         mapper.delete(asset_no);
