@@ -29,7 +29,7 @@ window.onload = function(){
 
         if(result != ''){
             alert(result);
-            console.log(result);
+            //console.log(result);
             return false;
         }
 }
