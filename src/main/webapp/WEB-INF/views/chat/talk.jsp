@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -42,28 +42,6 @@
 		}
 	</style>
 </head>
-<script type="text/javascript">
-    var ws;
-
-    function wsOpen(){
-        ws = new WebSocket("ws://"+location.host+"/chating");
-        wsEvt();
-    }
-
-    function wsEvt(){
-        ws.onopen = function(data){
-
-        }
-        ws.onmessage = function(data){
-            var msg = data.data;
-            if(msg != null && msg.trim() !=''){
-                $("#chatting").append("<p>"+ msg +"</p>");
-            }
-        }
-
-
-    }
-
 
 <body>
 	<div id="container" class="container">
@@ -90,5 +68,37 @@
 			</table>
 		</div>
 	</div>
+
+<script type="text/javascript">
+    var ws;
+
+    function wsOpen(){
+        ws = new WebSocket("ws://" + location.host + "/chating");
+        wsEvt();
+    }
+
+    function wsEvt(){
+        ws.onopen = function(data){
+            //소켓이 열리면 초기화 세팅하기
+        }
+        ws.onmessage = function(data){
+            var msg = data.data;
+            if(msg != null && msg.trim() !=''){
+                $("#chatting").append("<p>"+ msg +"</p>");
+            }
+        }
+        document.addEventListener("keypress", function(e){
+            if(e.keyCode == 13){ //enter key
+                send();
+            }
+        });
+    }
+
+    function chatName(){
+        var userName == $("#userName").val();
+
+    }
+</script>
 </body>
+
 </html>
