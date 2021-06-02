@@ -1,4 +1,4 @@
-package com.example.demo.controller.board;
+package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class HomeController {
 
-    @RequestMapping("index")
-    public String index(){
+    @RequestMapping("main")
+    public String main(){
 
-        return "index";
+        return "main";
     }
 
     @RequestMapping("test")

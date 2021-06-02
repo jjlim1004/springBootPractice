@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false" contentType = "text/html; charset=UTF-8" %>
+<%@include file="../includes/boardHeader.jsp"%>
 
-<%@include file="../includes/header.jsp"%>
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">Tables</h1>
@@ -271,4 +271,4 @@
 
 </script>
 
-<%@include file="../includes/footer.jsp"%>
+<%@include file="../includes/boardFooter.jsp"%>

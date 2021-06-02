@@ -2,12 +2,49 @@
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@include file="../includes/header.jsp"%>
 
-<html>
-<head>
-    <meta charset="UTF-8">
-	<title>투자성향 테스트</title>
+
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/traders/images/bg_wave.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-2 bread">Test</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="/main">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Test <i class="ion-ios-arrow-forward"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-no-pt ftco-no-pb contact-section">
+    </div>
+    </div>
+
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+    <script src="/traders/js/jquery.min.js"></script>
+    <script src="/traders/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/traders/js/popper.min.js"></script>
+    <script src="/traders/js/bootstrap.	min.js"></script>
+    <script src="/traders/js/jquery.easing.1.3.js"></script>
+    <script src="/traders/js/jquery.waypoints.min.js"></script>
+    <script src="/traders/js/jquery.stellar.min.js"></script>
+    <script src="/traders/js/owl.carousel.min.js"></script>
+    <script src="/traders/js/jquery.magnific-popup.min.js"></script>
+    <script src="/traders/js/aos.js"></script>
+    <script src="/traders/js/jquery.animateNumber.min.js"></script>
+    <script src="/traders/js/bootstrap-datepicker.js"></script>
+    <script src="/traders/js/scrollax.min.js"></script>
+    <script src="/traders/js/main.js"></script>
+
+</section>
 </head>
+
 <body>
 <form name="investTest">
 	<h1>투자성향 테스트</h1>

@@ -13,9 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
-import java.util.Map;
 
 
 @Controller
@@ -68,7 +68,8 @@ public class loginController {
         if(sessionMember.getRole()== Role.ADMIN){
             httpSession.setAttribute("admin",sessionMember);
         }
-        return index(model,httpSession);
+        //return index(model,httpSession);
+        return "redirect:/main";
 
 
     }
@@ -112,14 +113,21 @@ public class loginController {
 
     //어짜피 회원 수정은 일반 로그인 회원 전용 기능
     @GetMapping({"/myPage", "/myPageModi"})
-    public void myPage(Model model, HttpSession httpSession){
+    public String myPage(Model model, HttpSession httpSession){
         SessionMember loginMember = (SessionMember) httpSession.getAttribute("loginMember");
 
         if(loginMember != null) {
             Member member = memberService.get(loginMember.getId());
 
             model.addAttribute("member", member);
+
+        }else if(loginMember == null){
+            String message = "로그인 후 이용해 주세요";
+            model.addAttribute("needLog", message);
+
+            return "redirect:login";
         }
+        return "myPage";
     }
 
     @PostMapping("/memberUpdate")
