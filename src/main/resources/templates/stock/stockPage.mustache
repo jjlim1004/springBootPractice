@@ -42,6 +42,12 @@
     </style>
 </head>
 <body>
+<span id="kospi">코스피</span>
+<span id="kosdaq">코스닥</span>
+<!--<div class="searchBox">-->
+<!--    <label>종목검색: <input type="text" id="search"/></label>-->
+<!--    <button>검색</button>=-->
+<!--</div>-->
     <table class="type09">
         <thead>
         <tr>
@@ -59,26 +65,33 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 
+function getStock(query){
+    $.ajax({
+            url:'http://127.0.0.1:8000/stock/stocklist',
+            method:'GET',
+            datatype:"JSON",
+            data:{'query':query},
+            contentType: "application/json; charset=UTF-8",
+            success: function(result){
+                var appendStr = "";
+
+                Object.keys(result).forEach(function (key){
+
+                    var str = "<tr class='stock_detail'><td>" + result[key][1] +"</td>"+
+                                "<td class ='stock_name'>" + result[key][0]+ "</td>"+
+                                "<td class='stock_code'>" + key + "</td>"+
+                                "<td class='stock_price'>" + result[key][2] +"</td></tr>";
+                    appendStr += str;
+                });
+                $("#stock").append(appendStr);
+            }
+    });
+}
+
+
+
 $(document).ready(function(){
-   $.ajax({
-        url:'http://127.0.0.1:8000/stock/stocklist',
-        method:'GET',
-        datatype:"JSON",
-        contentType: "application/json; charset=UTF-8",
-        success: function(result){
-            var appendStr = "";
-
-            Object.keys(result).forEach(function (key){
-
-                var str = "<tr class='stock_detail'><td>" + result[key][1] +"</td>"+
-                            "<td class ='stock_name'>" + result[key][0]+ "</td>"+
-                            "<td class='stock_code'>" + key + "</td>"+
-                            "<td class='stock_price'>" + result[key][2] +"</td></tr>";
-                appendStr += str;
-            });
-            $("#stock").append(appendStr);
-        }
-   });
+    getStock('1');
 });
 
 $(document).on('click',"td[class='stock_name']",function(e){
@@ -92,6 +105,33 @@ $(document).on('click',"td[class='stock_name']",function(e){
         location.href=link;
 });
 
+$("#kospi").on('click',function(e){
+    location.reload();
+    getStock('1');
+});
 
+$("#kosdaq").on('click',function(e){
+    $("#stock").children().remove();
+    getStock('2');
+});
+
+/*
+function filter(){
+    var search = $("#search").val().toLowerCase();
+    var listInner = $(".stock_detail");
+
+    for (let i = 0; i < listInner.length; i++) {
+          stockName = listInner[i].getElementsByClassName(".stock_name");
+          stockCode = listInner[i].getElementsByClassName(".stock_code");
+          if (stockName.innerHTML.toLowerCase().indexOf(search) != -1 ||
+            stockCode.innerHTML.toLowerCase().indexOf(search) != -1
+          ) {
+            listInner[i].style.display = "flex"
+          } else {
+            listInner[i].style.display = "none"
+          }
+    }
+}
+*/
 </script>
 </html>
