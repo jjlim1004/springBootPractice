@@ -112,7 +112,7 @@ public class loginController {
     }
 
     //어짜피 회원 수정은 일반 로그인 회원 전용 기능
-    @GetMapping({"/myPage", "/myPageModi"})
+    @GetMapping("/myPage")
     public String myPage(Model model, HttpSession httpSession){
         SessionMember loginMember = (SessionMember) httpSession.getAttribute("loginMember");
 
@@ -128,6 +128,19 @@ public class loginController {
             return "redirect:login";
         }
         return "myPage";
+    }
+
+    @GetMapping("/myPageModi")
+    public String myPageModi(Model model, HttpSession httpSession){
+        SessionMember loginMember = (SessionMember) httpSession.getAttribute("loginMember");
+
+        if(loginMember != null) {
+            Member member = memberService.get(loginMember.getId());
+
+            model.addAttribute("member", member);
+        }
+
+        return "myPageModi";
     }
 
     @PostMapping("/memberUpdate")

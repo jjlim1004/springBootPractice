@@ -47,10 +47,18 @@
 </section>
 
 <c:forEach items="${asset}" var="asset">
-	<div class="register">
-            <label>주식명</label> <input class="form-control" name='stock_name' value='<c:out value="${asset.stock_name}"/>' readonly>
-            <label>1주당 가격</label> <input class="form-control" name='stock_price' value='<c:out value="${asset.stock_price}"/>' readonly>
-            <label>주식 수량</label> <input class="form-control" name='stock_count' value='<c:out value="${asset.stock_count}"/>' readonly>
+	<div class="form-group row">
+        <div class="register">
+            <div class="col-xs-4">
+                <label>주식명</label> <input class="form-control" id="ex3" name='stock_name' value='<c:out value="${asset.stock_name}"/>' readonly>
+            </div>
+            <div class="col-xs-4">
+                <label>1주당 가격</label> <input class="form-control" id="ex3" name='stock_price' value='<c:out value="${asset.stock_price}"/>' readonly>
+            </div>
+            <div class="col-xs-4">
+                <label>주식 수량</label> <input class="form-control" id="ex3" name='stock_count' value='<c:out value="${asset.stock_count}"/>' readonly>
+            </div>
+        </div>
 	</div>
 	<br>
 </c:forEach>

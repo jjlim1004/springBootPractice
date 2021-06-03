@@ -3,11 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Traders</title>
+    <title>TRADERS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
     <link href="style.css">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -48,7 +52,18 @@
                 <li class="nav-item active"><a href="/test" class="nav-link">Test</a></li>
                 <li class="nav-item"><a href="blog.html" class="nav-link">News</a></li>
                 <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
-                <li class="nav-item"><a href="/myPage" class="nav-link">My Page</a></li>
+
+                <li class="dropdown nav-item"><a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">My Page <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/myPage">내 정보 변경</a></li>
+                        <li><a href="/asset/get">내 자산 조회</a></li>
+                        <li><a href="/asset/register">자산 등록</a></li>
+                        <li><a href="#">계좌 개설</a></li>
+                        <li><a href="#">계좌 조회</a></li>
+                    </ul>
+                </li>
+
+
                 <li class="nav-item"><a href="/" class="nav-link">Login</a></li>
             </ul>
         </div>
