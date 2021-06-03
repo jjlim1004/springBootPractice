@@ -5,55 +5,55 @@
 
 <head>
       <meta charset="UTF-8">
-        <title>로그인</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link href="style.css">
+            <title>TRADERS</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+            <link href="style.css">
 
-        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-        <link rel="stylesheet" href="/traders/css/open-iconic-bootstrap.min.css">
-        <link rel="stylesheet" href="/traders/css/animate.css">
+            <link rel="stylesheet" href="/traders/css/open-iconic-bootstrap.min.css">
+            <link rel="stylesheet" href="/traders/css/animate.css">
 
-        <link rel="stylesheet" href="/traders/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="/traders/css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="/traders/css/magnific-popup.css">
+            <link rel="stylesheet" href="/traders/css/owl.carousel.min.css">
+            <link rel="stylesheet" href="/traders/css/owl.theme.default.min.css">
+            <link rel="stylesheet" href="/traders/css/magnific-popup.css">
 
-        <link rel="stylesheet" href="/traders/css/aos.css">
+            <link rel="stylesheet" href="/traders/css/aos.css">
 
-        <link rel="stylesheet" href="/traders/css/ionicons.min.css">
+            <link rel="stylesheet" href="/traders/css/ionicons.min.css">
 
-        <link rel="stylesheet" href="/traders/css/bootstrap-datepicker.css">
-        <link rel="stylesheet" href="/traders/css/jquery.timepicker.css">
-
-
-        <link rel="stylesheet" href="/traders/css/flaticon.css">
-        <link rel="stylesheet" href="/traders/css/icomoon.css">
-        <link rel="stylesheet" href="/traders/css/style.css">
+            <link rel="stylesheet" href="/traders/css/bootstrap-datepicker.css">
+            <link rel="stylesheet" href="/traders/css/jquery.timepicker.css">
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="/main">TRADERS</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-            </button>
+            <link rel="stylesheet" href="/traders/css/flaticon.css">
+            <link rel="stylesheet" href="/traders/css/icomoon.css">
+            <link rel="stylesheet" href="/traders/css/style.css">
 
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="/main" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="/board/list" class="nav-link">Board</a></li>
-                    <li class="nav-item"><a href="services.html" class="nav-link">Information</a></li>
-                    <li class="nav-item active"><a href="/test" class="nav-link">Test</a></li>
-                    <li class="nav-item"><a href="blog.html" class="nav-link">News</a></li>
-                    <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
-                    <li class="nav-item"><a href="/myPage" class="nav-link">My Page</a></li>
-                    <li class="nav-item"><a href="/" class="nav-link">Login</a></li>
-                </ul>
+
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="/main">TRADERS</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="oi oi-menu"></span> Menu
+                </button>
+
+                <div class="collapse navbar-collapse" id="ftco-nav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a href="/main" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="/board/list" class="nav-link">Board</a></li>
+                        <li class="nav-item"><a href="services.html" class="nav-link">Information</a></li>
+                        <li class="nav-item active"><a href="/test" class="nav-link">Test</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">News</a></li>
+                        <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
+                        <li class="nav-item"><a href="/myPage" class="nav-link">My Page</a></li>
+                        <li class="nav-item"><a href="/" class="nav-link">Login</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 

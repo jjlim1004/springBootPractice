@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="../includes/header.jsp"%>
 
+
 </head>
 
 <body>
@@ -46,21 +47,21 @@
 
 <form action="/asset/register" method="post" id="form">
 
-	<div class="itr">
+	<div class="itr" id="asset">
             <label>주식명</label> <input class="required" name='stock_name' id="stock_name">
             <label>1주당 가격</label> <input class="required" name='stock_price' id="stock_price">
             <label>주식 수량</label> <input class="required" name='stock_count' id="stock_count">
            <input type="hidden" name= "member_id" value = "${member.id}">
 	</div>
 	</br>
-	<div class="itr">
+	<div class="itr" id="asset">
             <label>주식명</label> <input class="required" name='stock_name' id="stock_name">
             <label>1주당 가격</label> <input class="required" name='stock_price' id="stock_price">
             <label>주식 수량</label> <input class="required" name='stock_count' id="stock_count">
             <input type="hidden" name = "member_id" value = "${member.id}">
 	</div>
 	</br>
-	<div class="itr">
+	<div class="itr" id="asset">
             <label>주식명</label> <input class="required" name='stock_name' id="stock_name">
             <label>1주당 가격</label> <input class="required" name='stock_price' id="stock_price">
             <label>주식 수량</label> <input class="required" name='stock_count' id="stock_count">
@@ -70,7 +71,7 @@
 	</div>
 	</br>
 
-    <div id="add">
+    <div id="add" id="asset">
 
     </div>
 <input type="submit" value="등록하기">

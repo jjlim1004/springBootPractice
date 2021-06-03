@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../includes/header.jsp"%>
 
+
 </head>
 
 <body>
@@ -48,7 +49,7 @@
 
 <form action="/asset/modify" method="post" id="form">
 <c:forEach items="${asset}" var="asset">
-	<div>
+	<div class="modify">
             <label>주식명</label> <input class="form-control" name='stock_name' value='<c:out value="${asset.stock_name}"/>' >
             <label>1주당 가격</label> <input class="form-control" name='stock_price' value='<c:out value="${asset.stock_price}"/>' >
             <label>주식 수량</label> <input class="form-control" name='stock_count' value='<c:out value="${asset.stock_count}"/>' >
@@ -57,7 +58,7 @@
 	</div>
 	<br>
 </c:forEach>
-      <div id="add">
+      <div id="add" class="modify">
 
       </div>
 </form>
