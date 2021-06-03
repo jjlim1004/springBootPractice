@@ -1,5 +1,8 @@
 package com.example.demo.config;
 
+import jdk.nashorn.internal.parser.JSONParser;
+import jdk.nashorn.internal.runtime.ParserException;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -8,6 +11,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import java.util.HashMap;
 
+//웹소켓 구현체
 @Component
 public class SocketHandler extends TextWebSocketHandler {
 
@@ -31,7 +35,7 @@ public class SocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        //소켓 연결
+        //소켓 연결되면 동작
         super.afterConnectionEstablished(session);
         sessionMap.put(session.getId(), session);
         //map의 put이 뭔지 찾기
@@ -39,9 +43,22 @@ public class SocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        //소켓 종료
+        //소켓 종료되면 동작
         sessionMap.remove(session.getId());
         super.afterConnectionClosed(session, status);
+    }
+
+    @Override
+    private static JSONObject JsonToObjectParser(String jsonStr){
+        JSONParser parser = new JSONParser();
+        JSONObject obj = null;
+        try{
+            obj = (JSONObject) parser.parse(jsonStr);
+        }catch (ParserException e){
+            e.printStackTrace();
+        }
+        return obj;
+
     }
 
 }

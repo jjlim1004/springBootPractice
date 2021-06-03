@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/chat/")
 public class chatController {
 
-    @GetMapping("talk")
-    public String talk(){
-        return "chat/talk";
+    @GetMapping("chat")
+    public String chat(){
+
+        return "chat/chat";
     }
 }
