@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-                <h1 class="mb-2 bread">Board</h1>
+                <p class="mb-2 bread" style="font-size:45px;">Board</p>
                 <p class="breadcrumbs"><span class="mr-2"><a href="/main">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Board <i class="ion-ios-arrow-forward"></i></span></p>
             </div>
         </div>
