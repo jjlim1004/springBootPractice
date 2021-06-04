@@ -14,8 +14,33 @@
         <input type="date" value="">
         <input type="submit" value="입력">
     </form>
+    <div>주식차트</div>
     <div id="chart">
-        <script>
+
+    </div>
+    <div>
+        주식 이름: {{stockInfo.stockName}}
+        주식 코드: {{stockInfo.stockCode}}
+        주식 가격: {{stockInfo.stockPrice}}
+    </div>
+    <div id="predict">
+        예측현황
+        <div id="1">
+
+        </div>
+        <div id="5">
+
+        </div>
+        <div id="10">
+
+        </div>
+    </div>
+    <div>관련 뉴스</div><span><a href="/stock/stockNews">더보기</a></span>
+    <div id="news">
+
+    </div>
+</body>
+<script>
             $("#form").submit(function(e){
 
                 e.preventDefault();
@@ -42,23 +67,30 @@
                     data:data,
                     contentType: "application/json; charset=UTF-8",
                     success: function(result){
-                        Plotly.plot('chart',
-                        JSON.parse(result.stockGraph)
-                        ,{});
+                            Plotly.plot('chart',
+                            JSON.parse(result.stockGraph)
+                            ,{});
+                    },
+                });
+
+                var data_for_predict = {'stock_code': stock_code , 'stock_name': stock_name};
+
+                $.ajax({
+                    url:'http://127.0.0.1:8000/stock/stock_predict',
+                    method:'GET',
+                    data:data_for_predict,
+                    contentType: "application/json; charset=UTF-8",
+                    success: function(result){
+                            console.log(result);
+                            /*
+                            Plotly.plot('chart',
+                            JSON.parse(result.stockGraph)
+                            ,{});
+                            */
                     },
                 });
             });
         </script>
-    </div>
-    <div>
-        {{stockInfo.stockName}}
-        {{stockInfo.stockCode}}
-        {{stockInfo.stockPrice}}
-    </div>
-    <div id="news">
-
-    </div>
-</body>
 <script>
     $(document).ready(function(){
         data = {'keyword':`{{stockInfo.stockName}}` ,
@@ -68,7 +100,7 @@
             method:'GET',
             data: data,
             success:function(result){
-                console.log(result);
+                //console.log(result);
                 var str = '';
                 Object.keys(result).forEach(function(key){
                     str += '<div id="news"><div class="content'+ key + '">' +
@@ -79,7 +111,6 @@
             },
         });
     });
-
 </script>
 
 </html>
