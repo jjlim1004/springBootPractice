@@ -51,8 +51,9 @@
     var ws;
 
     function wsOpen(){
-        ws = new WebSocket("ws://" + location.host + "/chating");       //socketHandler
+        ws = new WebSocket("ws://" + location.host + "/chating/" +$("#roomNo").val());       //socketHandler
         wsEvt();
+        console.log("name" + `${roomName}`);
     }
 
     function wsEvt(){
@@ -78,7 +79,7 @@
                                             $("#chating").append("<p class='others'>"+ d.userName + " : " + d.msg +"</p>"); //msg - 사용자: 메세지내용
                                     }
                             }else{
-                                     console.log("unknown type");
+                                     console.warn("unknown type");
                             }
 
                        }
@@ -106,6 +107,7 @@
     function send(){
         var option ={
             type: "message",    //메세지를 보낼때 타입 - message
+            roomNo: $("#roomNo").val(),
             sessionId: $("#sessionId").val(),
             userName: $("#userName").val(),
             msg: $("#chatting").val()
@@ -120,8 +122,9 @@
 
 <body>
 	<div id="container" class="container">
-		<h1>STock Talk!</h1>
+		<h1>${roomName}</h1>
 		<input type="hidden" id="sessionId" value="">
+		<input type="hidden" id="roomNo" value="${roomNo}">
 
 		<div id="chating" class="chating">
 

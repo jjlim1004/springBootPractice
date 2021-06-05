@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/")
-public class chatController {
+public class ChatController {
 
     //DB에 저장하는게 아니라서 방의 정보를 담아둘 List<Room> 컬렉션을 생성
     List<RoomVO> roomList = new ArrayList<RoomVO>();
@@ -58,18 +58,23 @@ public class chatController {
         return roomList;
     }
 
-    @RequestMapping("moveChating")
-    public String chating(@RequestParam HashMap<Object, Object> params, ModelAndView model){
+
+    @RequestMapping("movechating")
+    public ModelAndView chating(@RequestParam HashMap<Object, Object> params){
+        ModelAndView mv = new ModelAndView();
         int roomNo = Integer.parseInt((String) params.get("roomNo"));
+        System.out.println(roomNo);
+        System.out.println(params.get("roomName"));
 
         List<RoomVO> newList = roomList.stream().filter(o->o.getRoomNo() == roomNo).collect(Collectors.toList());
         if(newList != null && newList.size() >0){
-            model.addObject("roomName", params.get("roomName"));
-            model.addObject("roomNo", params.get("roomNumber"));
-            return "chat/chat";
+            mv.addObject("roomName", params.get("roomName"));
+            mv.addObject("roomNo", params.get("roomNo"));
+            mv.setViewName("chat/chat");
         }else{
-            return "chat/room";
+            mv.setViewName("chat/room");
         }
+            return mv;
     }
 
 

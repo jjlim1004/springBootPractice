@@ -120,11 +120,11 @@
     }
 
     function goRoom(number, name){
-        location.href="/movechating?roomName="+name+"&"+"roomNo"+number;
+        location.href="/movechating?roomName="+name+"&"+"roomNo="+number; //url이동
     }
 
     function createChatingRoom(result){
-        if(result != null){
+        if(result != null){             //roomList가 널이 아니면
             var tag = "<tr><th class='num'>순서</th><th class='room'>방 이름</th><th class='go'></th></tr>";
             result.forEach(function(d, idx){
                 var roomName = d.roomName.trim();
@@ -135,7 +135,7 @@
                             "<td class='go'><button type='button' onclick='goRoom(\"" + roomNo + "\", \""+ roomName + "\")'>참여</button></td>"+
                        "</tr>";
             });
-            $("#roomList").empty().append(tag);
+            $("#roomList").empty().append(tag);     // roomList에 추가
         }
     }
 
@@ -144,7 +144,7 @@
             url: url,
             data: parameter,
             type: type,
-            contentType: contentType != null?contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+            contentType: contentType != null? contentType:'application/x-www-form-urlencoded; charset=UTF-8',
             success: function(result){
                 callback(result);
             },
