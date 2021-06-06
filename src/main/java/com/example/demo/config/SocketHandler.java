@@ -15,7 +15,6 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 
-
 //웹소켓 구현체
 @Component
 public class SocketHandler extends TextWebSocketHandler {
@@ -29,20 +28,20 @@ public class SocketHandler extends TextWebSocketHandler {
         String msg = message.getPayload(); //문자열
         JSONObject obj = jsonToObjectParser(msg); //jsonToObjectParser 호출 (jsonObject로 파싱처리를 해주는 함수)
 
-        String rn = (String) obj.get("roomNo");
+        String rn = (String) obj.get("roomNo");     //obj의 roomNo를 가져옴
         HashMap<String, Object> temp = new HashMap<String, Object>();
 
         if(rls.size() > 0){
             for(int i=0; i < rls.size(); i++){
-                String roomNo = (String) rls.get(i).get("roomNo");
-                if(roomNo.equals(rn)){
-                    temp = rls.get(i);
+                String roomNo = (String) rls.get(i).get("roomNo");      //roomListSession에 있는 roomNo를 가져옴
+                if(roomNo.equals(rn)){      //obj의 roomNo와 기존에 있던 list의 roomNo가 같다면 (같은 값의 방번호가 존재한다면)
+                    temp = rls.get(i);  //해당 번호의 object값을 temp에 넣어줌
                     break;
                 }
             }
-
+        //해당 방의 세션만 찾아서 메세지를 발송한다
             for(String k : temp.keySet()){
-                if(k.equals("roomNo")){
+                if(k.equals("roomNo")){ // 방번호는 건너뜀
                     continue;
                 }
 
