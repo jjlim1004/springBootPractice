@@ -61,5 +61,16 @@
 
         console.log('ajax end');
       });
+
+       var count = 0;
+
+      var newsNum = $("news_num").val();
+      windcow.onscroll = function(e){
+        if(window.innerHeight + window.scrollY) >= document.body.offsetHeight){
+            count++;
+            var addContent = '';
+            $().appned(addContent);
+        }
+      }
 </script>
 </html>
