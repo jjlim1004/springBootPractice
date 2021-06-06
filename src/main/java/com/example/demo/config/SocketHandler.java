@@ -66,23 +66,24 @@ public class SocketHandler extends TextWebSocketHandler {
         boolean flag = false;
         String url = session.getUri().toString();
         System.out.println(url);
-        String roomNo = url.split("/chating/")[1];
+        String roomNo = url.split("/chating/")[1]; //roomNo 추출
         int idx = rls.size();
-        if(rls.size() > 0){
+        if(rls.size() > 0){     //기존에 있던 방인지 체크
             for(int i=0; i < rls.size(); i++){
-                String rn= (String) rls.get(i).get("roomNo");
-                if(rn.equals(roomNo)){
+                String rn= (String) rls.get(i).get("roomNo"); //i번째의 roomNo를 가져온다.
+                if(rn.equals(roomNo)){  //rn과 url의 roomNo가 일치하면 true를 주고 그에 일치하는 i를 idx에 넣어준다.
                     flag = true;
                     idx = i;
                     break;
                 }
             }
         }
-        if(flag){
-            HashMap<String, Object> map = rls.get(idx);
-            map.put(session.getId(), session);
-        } else {
 
+        if(flag){       //rn과 roomNo가 같다면 (이미 존재하는 방이라면 세션만 추가 )
+            HashMap<String, Object> map = rls.get(idx);  //roomlistSession의 idx를 가져와 map에 넣어줌
+            map.put(session.getId(), session);  //map에 sessionId를 넣어줌
+
+        } else {        //처음 생성된 방이라면 (기존에 없던 방이라면 ) 세션과 roomNo를 추가 & roomListSession에 추가
             HashMap<String, Object> map = new HashMap<String,Object>();
             map.put("roomNo", roomNo);
             map.put(session.getId(), session);
@@ -90,9 +91,9 @@ public class SocketHandler extends TextWebSocketHandler {
         }
 
         JSONObject obj = new JSONObject();
-        obj.put("type", "firstId");   //생성된 세션을 저장하면 '발신 메세지'의 타입은 getId로 명시 후 (클라이언트단에서 type으로 메세지와 초기 설정값 구분)
+        obj.put("type", "firstId");   //생성된 세션을 저장하면 '발신 메세지'의 타입은 firstId 명시 후 (클라이언트단에서 type으로 메세지와 초기 설정값 구분)
         obj.put("sessionId", session.getId());  //생성된 세션 ID값을 클라이언트단으로 발송한다.
-        session.sendMessage(new TextMessage(obj.toJSONString()));
+        session.sendMessage(new TextMessage(obj.toJSONString())); //(type과 sessionId) 클라이언트 단으로 전송한다.
     }
 
     @Override

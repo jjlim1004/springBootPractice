@@ -48,13 +48,17 @@
 </head>
 
 <script type="text/javascript">
+
     var ws;
+
     function wsOpen(){
         ws = new WebSocket("ws://" + location.host + "/chating/" +$("#roomNo").val());       //socketHandler
         wsEvt();
         console.log("name" + `${roomName}`);
     }
+
     function wsEvt(){
+
             ws.onopen = function(data){
                 //소켓이 열리면 초기화 세팅하기 (이벤트 소스와의 연결이 열릴 때 이벤트 발생 )
             }
