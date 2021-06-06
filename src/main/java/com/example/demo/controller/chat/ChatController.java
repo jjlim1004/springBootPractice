@@ -30,6 +30,12 @@ public class ChatController {
         return "chat/chat";
     }
 
+    @RequestMapping("chat2")
+    public String chat2(){
+
+        return "chat/chat2";
+    }
+
     @RequestMapping("room")
     public String room(){
 
