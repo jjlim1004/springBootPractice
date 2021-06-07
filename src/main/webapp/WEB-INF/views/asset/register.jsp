@@ -95,7 +95,7 @@
                             output += "<label>1주당 가격</label> <input class='required' name='stock_price'  id='stock_price'>&nbsp;";
                             output += "<label>주식 수량</label> <input class='required' name='stock_count'  id='stock_count'>&nbsp;";
                             output += "<input type='hidden' name = 'member_id' value = '${member.id}'>";
-                            output += "  </br></br>"
+                            output += "</br></br>"
 
 
                             var childDiv = document.createElement("div");
