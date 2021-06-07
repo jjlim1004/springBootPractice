@@ -44,7 +44,7 @@
 
 </section>
 
-<div class="row">
+<div class="row" style="margin-top:50px; margin-left:300px;" width="350px">
   <div class="col-lg-12">
   </div>
   <!-- /.col-lg-12 -->

@@ -1,79 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<meta charset="UTF-8">
-<title>ChatRooms</title>
-<style>
-		*{
-			margin:0;
-			padding:0;
-		}
-		.container{
-			width: 500px;
-			margin: 0 auto;
-			padding: 25px
-		}
-		.container h1{
-			text-align: left;
-			padding: 5px 5px 5px 15px;
-			color: #FFBB00;
-			border-left: 3px solid #FFBB00;
-			margin-bottom: 20px;
-		}
-		.roomContainer{
-			background-color: #F6F6F6;
-			width: 500px;
-			height: 500px;
-			overflow: auto;
-		}
-		.roomList{
-			border: none;
-		}
-		.roomList th{
-			border: 1px solid #FFBB00;
-			background-color: #fff;
-			color: #FFBB00;
-		}
-		.roomList td{
-			border: 1px solid #FFBB00;
-			background-color: #fff;
-			text-align: left;
-			color: #FFBB00;
-		}
-		.roomList .num{
-			width: 75px;
-			text-align: center;
-		}
-		.roomList .room{
-			width: 350px;
-		}
-		.roomList .go{
-			width: 71px;
-			text-align: center;
-		}
-		button{
-			background-color: #FFBB00;
-			font-size: 14px;
-			color: #000;
-			border: 1px solid #000;
-			border-radius: 5px;
-			padding: 3px;
-			margin: 3px;
-		}
-		.inputTable th{
-			padding: 5px;
-		}
-		.inputTable input{
-			width: 330px;
-			height: 25px;
-		}
-	</style>
-</head>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@include file="../includes/talkHeader.jsp"%>
+
+
 <body>
-    <div class = "container">
+    <div class = "container" style="margin-top:50px; margin-left:300px;" width="350px">
         <h1>STock Talk!</h1>
         <div id="roomContainer" class="roomContainer">
             <table id="roomList" class="roomList">

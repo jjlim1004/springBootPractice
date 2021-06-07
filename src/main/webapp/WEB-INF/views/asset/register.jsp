@@ -45,7 +45,7 @@
 
 </section>
 
-<form action="/asset/register" method="post" id="form">
+<form action="/asset/register" method="post" id="form" style="margin-top:50px; margin-left:300px;">
 
 	<div class="itr" id="asset">
             <label>주식명</label> <input class="required" name='stock_name' id="stock_name">

@@ -1,6 +1,7 @@
 package com.example.demo.controller.chat;
 
 
+import com.example.demo.config.SessionMember;
 import com.example.demo.domain.chat.RoomVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,14 +32,16 @@ public class ChatController {
         return "chat/chat";
     }
 
-    @RequestMapping("chat2")
-    public String chat2(){
-
-        return "chat/chat2";
-    }
 
     @RequestMapping("room")
-    public String room(){
+    public String room(HttpSession httpSession){
+
+        SessionMember socialMember = (SessionMember) httpSession.getAttribute("socialMember");
+        SessionMember loginMember = (SessionMember) httpSession.getAttribute("loginMember");
+
+        if(loginMember == null && socialMember == null){
+            return "redirect:/login";
+       }
 
         return "chat/room";
     }

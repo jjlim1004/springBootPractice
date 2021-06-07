@@ -45,24 +45,24 @@
 </section>
 
 
-<form name="investTest" id="investTest">
+<form name="investTest" id="investTest" style="margin-top:50px; margin-left:300px;" width="350px">
 	<h1>투자성향 테스트</h1>
 	<h3>1. 당신의 연령대는 어떻게 됩니까?</h3>
 	<div>
-		<p><input class="test" type="radio" name="age" value="12.5">19세 이하</p>
-		<p><input class="test" type="radio" name="age" value="12.5">20세 ~ 40세</p>
-		<p><input class="test" type="radio" name="age" value="9.3">41세 ~ 50세</p>
-		<p><input class="test" type="radio" name="age" value="6.2">51세 ~ 60세</p>
-		<p><input class="test" type="radio" name="age" value="3.1">60세 이상 </p>
+		<p><input class="test" type="radio" name="age" value="12.5"> 19세 이하</p>
+		<p><input class="test" type="radio" name="age" value="12.5"> 20세 ~ 40세</p>
+		<p><input class="test" type="radio" name="age" value="9.3"> 41세 ~ 50세</p>
+		<p><input class="test" type="radio" name="age" value="6.2"> 51세 ~ 60세</p>
+		<p><input class="test" type="radio" name="age" value="3.1"> 60세 이상 </p>
 	</div>
 	</br>
 	<h3>2. 투자하고자 하는 자금의 투자가능 기간은 얼마나 됩니까?</h3>
     	<div>
-    		<p><input class="test" type="radio" name="period" value="3.1">6개월 이내</p>
-    		<p><input class="test" type="radio" name="period" value="6.2">6개월 이상 ~ 1년 이내</p>
-    		<p><input class="test" type="radio" name="period" value="9.3">1년 이상 ~ 2년 이내</p>
-    		<p><input class="test" type="radio" name="period" value="12.5">2년 ~ 3년 이내</p>
-    		<p><input class="test" type="radio" name="period" value="15.6">3년 이상</p>
+    		<p><input class="test" type="radio" name="period" value="3.1"> 6개월 이내</p>
+    		<p><input class="test" type="radio" name="period" value="6.2"> 6개월 이상 ~ 1년 이내</p>
+    		<p><input class="test" type="radio" name="period" value="9.3"> 1년 이상 ~ 2년 이내</p>
+    		<p><input class="test" type="radio" name="period" value="12.5"> 2년 ~ 3년 이내</p>
+    		<p><input class="test" type="radio" name="period" value="15.6"> 3년 이상</p>
     	</div>
       </br>
         <h3>3. 다음 중 투자경험과 가장 가까운 것은 어느 것입니까? (중복가능)</h3>

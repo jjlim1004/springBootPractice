@@ -1,5 +1,11 @@
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html lang="ko">
+
+ <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+ <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <head>
     <meta charset="UTF-8">
@@ -7,8 +13,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,6 +29,9 @@
 
     <link rel="stylesheet" href="/traders/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="/traders/css/animate.css">
+
+     <link rel="stylesheet" href="/traders/css/room.css">
+     <link rel="stylesheet" href="/traders/css/chat.css">
 
     <link rel="stylesheet" href="/traders/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/traders/css/owl.theme.default.min.css">
@@ -36,9 +48,6 @@
     <link rel="stylesheet" href="/traders/css/flaticon.css">
     <link rel="stylesheet" href="/traders/css/icomoon.css">
     <link rel="stylesheet" href="/traders/css/style.css">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-
 
 
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -60,23 +69,20 @@
                 <li class="dropdown nav-item"><a class="nav-link" data-toggle="dropdown" href="#">My Page <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="/myPage">내 정보 변경</a></li>
-                        <li id="getBtn"><a href="/asset/get">내 자산 조회</a></li>
-                        <li id="regBtn"><a href="/asset/register">자산 등록</a></li>
+                        <li><a href="/asset/get">내 자산 조회</a></li>
+                        <li><a href="/asset/register">자산 등록</a></li>
                         <li><a href="#">계좌 개설</a></li>
                         <li><a href="#">계좌 조회</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a href="/adminPage" class="nav-link">admin page</a></li>
                 <li class="nav-item"><a href="/" class="nav-link">Login</a></li>
-                <li class="nav-item"><a href="/memberLogout" class="nav-link">Logout</a></li>
             </ul>
         </div>
     </div>
 </nav>
-<script>
 
 
-</script>
+
 
 </head>
-<!-- END nav -->
+

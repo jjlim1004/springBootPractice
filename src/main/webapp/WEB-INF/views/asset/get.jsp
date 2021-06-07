@@ -45,7 +45,7 @@
 </section>
 
 <c:forEach items="${asset}" var="asset">
-	<div class="form-group row">
+	<div class="form-group row" style="margin-top:50px; margin-left:300px;">
         <div class="register">
             <div class="col-xs-4">
                 <label>주식명</label> <input class="form-control" id="ex3" name='stock_name' value='<c:out value="${asset.stock_name}"/>' readonly>
@@ -62,7 +62,7 @@
 </c:forEach>
 
 <div>
-    <canvas id="myChart" width="650" height="650"></canvas>
+    <canvas id="myChart" width="650" height="650" style="margin-top:50px; margin-left:300px;"></canvas>
 </div>
 
 

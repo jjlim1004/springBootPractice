@@ -45,26 +45,19 @@
             <div class="col-md-7 col-lg-5">
                 <div class="login-wrap p-4 p-md-5">
 
-                    {{#socialMember}} <!--userName 이 존재 할 경우-->
-                        Logged in as:<span id="user">{{socialMember.id}} </span>
-                        <a href="/memberLogout" class="btn btn-info active" role="button">logout</a>
+                    {{#socialMember}} <!--소셜멤버다 -->
 
                     {{/socialMember}}
 
-                    {{^socialMember}} <!--userName이 존재 하지 않을경우-->
+                    {{^socialMember}} <!--소셜멤버가 아니다-->
 
-                        {{#loginMember}}
-                            <a href="/board/list" role="button" class="btn btn-primary">글 등록</a>
-                            <a href="/memberLogout" class="btn btn-info active" role="button">logout</a>
-                            <a href="/myPage" class="btn btn-info active" role="button">my page</a>
-                            {{^admin}}
-                                <a href="/memberOut" class="btn btn-info active" role="button">회원 탈퇴</a>
-                                <a href="/test" class="btn btn-info active" role="button">투자성향 테스트</a>
-                                <a href="/asset/register" class="btn btn-info active" role="button" id="regBtn">자산 등록</a>
-                                <a href="/asset/get" class="btn btn-info active" role="button" id="getBtn">내 자산 조회</a>
+                        {{#loginMember}}     <!--로그인멤버다-->
+
+                            {{^admin}}       <!--관리자가 아니다 (일반 사용자)-->
+
                             {{/admin}}
-                            {{#admin}}
-                                <a href="/adminPage" class="btn btn-info active" role="button">admin page</a>
+                            {{#admin}}       <!--관리자다-->
+
                             {{/admin}}
 
                         {{/loginMember}}
@@ -160,6 +153,8 @@
 
         var regBtn = $("#regBtn");
         var getBtn = $("#getBtn");
+        console.log("regBtn"+ regBtn);
+        console.log("getBtn"+ getBtn);
 
 
     window.onload = function() {
@@ -169,6 +164,7 @@
 
         }else if(msg =="1"){
 
+/*
             $.ajax({
                 url : '/asset/assetChk',
                 type: 'POST',
@@ -184,16 +180,9 @@
                 error: function(){
                 console.log("fail");
                 }
-             });
-
+            });
+*/
         }
-
-
-
-
-
-
-
     }
 
     $("#logout").on("click", function(){

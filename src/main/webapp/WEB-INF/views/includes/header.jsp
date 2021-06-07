@@ -52,11 +52,10 @@
                 <li class="nav-item"><a href="/main" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="/board/list" class="nav-link">Board</a></li>
-                <li class="nav-item"><a href="services.html" class="nav-link">Information</a></li>
-                <li class="nav-item active"><a href="/test" class="nav-link">Test</a></li>
+                <li class="nav-item"><a href="services.html" class="nav-link">Gallery</a></li>
                 <li class="nav-item"><a href="blog.html" class="nav-link">News</a></li>
-                <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
-
+                <li class="nav-item"><a href="/room" class="nav-link">STockTalk</a></li>
+                <li class="nav-item active"><a href="/test" class="nav-link">Test</a></li>
                 <li class="dropdown nav-item"><a class="nav-link" data-toggle="dropdown" href="#">My Page <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="/myPage">내 정보 변경</a></li>
@@ -66,8 +65,6 @@
                         <li><a href="#">계좌 조회</a></li>
                     </ul>
                 </li>
-
-
                 <li class="nav-item"><a href="/" class="nav-link">Login</a></li>
             </ul>
         </div>

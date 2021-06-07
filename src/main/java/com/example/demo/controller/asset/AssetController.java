@@ -29,7 +29,10 @@ public class AssetController {
             model.addAttribute("member", socialMember);
         } else if(loginMember != null) {
             model.addAttribute("member", loginMember);
+        } else if(loginMember == null && socialMember == null){
+            return "redirect:/login";
         }
+
         return "asset/register";
 
     }
@@ -60,6 +63,8 @@ public class AssetController {
             model.addAttribute("asset", service.get(socialMember.getId()) );
         } else if(loginMember != null) {
             model.addAttribute("asset", service.get(loginMember.getId()) );
+        } else if(loginMember == null && socialMember == null){
+            return "redirect:/login";
         }
 //        System.out.println("-------------" + service.get(loginMember.getId()).getMember_id());
 
