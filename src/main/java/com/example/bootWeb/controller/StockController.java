@@ -28,9 +28,5 @@ public class StockController {
         StockInfoDTO stockInfoDTO = new StockInfoDTO(stockName, stockCode,stockPrice);
         model.addAttribute("stockInfo", stockInfoDTO);
     }
-
-    @GetMapping("/stockNews")
-    public void stockNews(){
-
-    }
+    
 }

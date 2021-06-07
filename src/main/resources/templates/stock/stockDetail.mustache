@@ -35,32 +35,39 @@
 
         </div>
     </div>
-    <div>관련 뉴스</div><span><a href="/stock/stockNews">더보기</a></span>
+    <div>관련 뉴스</div><span><a href="/stock/news">더보기</a></span>
     <div id="news">
 
     </div>
 </body>
 <script>
             $("#form").submit(function(e){
-
                 e.preventDefault();
+
+                //model 에서 가져온 주식 이름
+                var stock_name = `{{stockInfo.stockName}}`;
+                //model 에서 가져온 주식 코드
+                var stock_code = {{stockInfo.stockCode}};
+                //model 에서 가져온 주식 가격
+                var stock_price = {{stockInfo.stockPrice}};
+                //입력된 날짜
                 var date = $("#form input[type='date']").val();
 
+                //아무것도 없을때 default 날짜 설정
                 if(date == ""){
                     var today = new Date();
                     var year = today.getFullYear()-3;
                     var month = today.getMonth() + 1;
                     var day = today.getDate();
                     date = year + "-" + month + "-" + day;
-                    //console.log('date는 : ' + date);
                 }
 
-                var stock_name = `{{stockInfo.stockName}}`;
-                var stock_code = {{stockInfo.stockCode}};
-                var stock_price = {{stockInfo.stockPrice}};
+                //종가기준 주식 차트의 ajax 데이터 설정
                 var data = {'date':date,
                             'stock_name':stock_name ,
                             'stock_code': stock_code};
+
+                //종가기준 주식 차트 ajax
                 $.ajax({
                     url:'http://127.0.0.1:8000/stock/stock_detail',
                     method:'GET',
@@ -73,8 +80,10 @@
                     },
                 });
 
+                //주식 예측 요청 ajax 를 위한 데이터 설정
                 var data_for_predict = {'stock_code': stock_code , 'stock_name': stock_name};
 
+                //주식 예측 요청을 하는 ajax
                 $.ajax({
                     url:'http://127.0.0.1:8000/stock/stock_predict',
                     method:'GET',
@@ -82,28 +91,27 @@
                     contentType: "application/json; charset=UTF-8",
                     success: function(result){
                             console.log(result);
-                            /*
                             Plotly.plot('chart',
                             JSON.parse(result.stockGraph)
                             ,{});
-                            */
                     },
                 });
             });
-        </script>
+</script>
 <script>
+    //뉴스 정보를 가져오기 위한 코드
     $(document).ready(function(){
         data = {'keyword':`{{stockInfo.stockName}}` ,
-                'news_num': 5 };
+                'news_num': 5,
+                 'start_num' = 1};
         $.ajax({
             url:'http://127.0.0.1:8000/news/news',
             method:'GET',
             data: data,
             success:function(result){
-                //console.log(result);
                 var str = '';
                 Object.keys(result).forEach(function(key){
-                    str += '<div id="news"><div class="content'+ key + '">' +
+                    str += '<div class="news"><div class="content'+ key + '">' +
                     '<a href="'+ result[key]['url'] +'">'+ result[key]['title'] +
                     '</a></div><div class="text">'+ result[key]['text'] +'</div></div>';
                 });

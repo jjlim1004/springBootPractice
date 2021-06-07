@@ -11,7 +11,7 @@
     this is newsPage! <!-- 나중에 지워야 할 것-->
 
     <form id="newsForm">
-        <input type="text" name='keyword' placeholder="검색어">
+        <input type="text" id="keyword" name='keyword' placeholder="검색어">
         <label for="news_num">글 개수</label>
         <select id="news_num" name="news_num">
             <option value="10">10</option>
@@ -21,56 +21,76 @@
         <input type="submit" value="입력">
     </form>
     <div id="news">
-        <table>
-            <thead>
-            <tr>
-                <th>헤드라인</th>
-                <th>아이디</th>
-            </tr>
-            </thead>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-        </table>
     </div>
-
+    <button id="moreNews" class="2" style="display:none;">더 보기</button>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
+
+//전체적 변수 설정
+    var keyword;
+    var news_num;
+    var start_num = 1;
+    //ajax로 전송될 data 설정
+    var data = {'keyword': keyword,'news_num':news_num, 'start_num': start_num};
+
+    //개수 선택 누르면 새로고침
+    $("#news_num").on('change',function(){
+        $("#news").children().remove();
+         $("#moreNews").css("display","none");
+    });
+
+    // form 의 submit을 할 때 뉴스를 요청하는 ajax
     $("#newsForm").submit(function(e){
         e.preventDefault();
-
-        var keyword = $("input[name='keyword']").val();
-        var news_num = $("#news_num option:selected").val();
-        var page_count = $().val();
+        $("#news").children().remove();
+        //1.검색할 뉴스 키워드
+        keyword = $("input[name='keyword']").val();
+        //2.검색할 뉴스의 개수
+        news_num = $("#news_num option:selected").val();
+        // 1,2 의 값 가져왔는지 확인
         console.log(keyword);
         console.log(news_num);
+        //data의 keyword 와 news_num 의 값 수정
+        data['keyword'] = keyword;
+        data['news_num'] = news_num;
 
-        var data = {'keyword': keyword,'news_num':news_num,'page_count':page_count};
-
-
+        //ajax로 요청
         $.ajax({
             url:'http://127.0.0.1:8000/news/news',
             method:'GET',
             data: data,
             success:function(result){
-                $("#news").append("")
+                var str = '';
+                Object.keys(result).forEach(function(key){
+                    str += '<div class="news"><div class="content'+ key + '">' +
+                    '<a href="'+ result[key]['url'] +'">'+ result[key]['title'] +
+                    '</a></div><div class="text">'+ result[key]['text'] +'</div></div>';
+                });
+                $("#news").append(str);
+                $("#moreNews").css("display","block");
             },
         });
-
-        console.log('ajax end');
       });
 
-       var count = 0;
+    //뉴스 더보기를 눌렀을때 추가 뉴스를 로딩하기
+    $("#moreNews").on('click',function(e){
+         data['start_num'] += Number($("#news_num option:selected").val());
+         $.ajax({
+            url:'http://127.0.0.1:8000/news/news',
+            method:'GET',
+            data: data,
+            success:function(result){
+                var str = '';
+                Object.keys(result).forEach(function(key){
+                    str += '<div class="news"><div class="content'+ key + '">' +
+                    '<a href="'+ result[key]['url'] +'">'+ result[key]['title'] +
+                    '</a></div><div class="text">'+ result[key]['text'] +'</div></div>';
+                });
+                $("#news").append(str);
+            },
+        });
+    });
 
-      var newsNum = $("news_num").val();
-      windcow.onscroll = function(e){
-        if(window.innerHeight + window.scrollY) >= document.body.offsetHeight){
-            count++;
-            var addContent = '';
-            $().appned(addContent);
-        }
-      }
 </script>
 </html>
