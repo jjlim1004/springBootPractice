@@ -252,7 +252,7 @@
              .sent_msg p {
                   background: #FFE6CB none repeat scroll 0 0;
                   border-radius: 3px;
-                  font-size: 16px;
+                  font-size: 18px;
                   margin: 15px;
                   color:#C48843;
                   padding: 5px 10px 5px 12px;
