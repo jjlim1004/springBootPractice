@@ -71,8 +71,8 @@
                         <li><a href="/myPage">내 정보 변경</a></li>
                         <li><a href="/asset/get">내 자산 조회</a></li>
                         <li><a href="/asset/register">자산 등록</a></li>
-                        <li><a href="#">계좌 개설</a></li>
-                        <li><a href="#">계좌 조회</a></li>
+                        <li><a href="/account/register">계좌 개설</a></li>
+                        <li><a href="/account/get">계좌 조회</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a href="/" class="nav-link">Login</a></li>
