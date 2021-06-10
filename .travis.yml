@@ -5,7 +5,7 @@ jdk: openjdk8
 
 branches:
   only:
-    - team ask
+    - master
 
 before_install:
   - chmod +x gradlew
