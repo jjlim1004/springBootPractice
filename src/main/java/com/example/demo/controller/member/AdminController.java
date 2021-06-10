@@ -7,9 +7,9 @@ import com.example.demo.domain.member.dto.MemberDTO;
 import com.example.demo.domain.member.entity.Member;
 import com.example.demo.service.member.MemberService;
 import com.google.gson.JsonObject;
-import com.sun.media.jfxmedia.Media;
+
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

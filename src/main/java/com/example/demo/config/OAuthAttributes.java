@@ -10,7 +10,7 @@ import java.util.Map;
 
 
 // of -> ofNaver -> OAuthAttributes 생성
-
+@SuppressWarnings("unchecked")
 @Getter
 public class OAuthAttributes {
     private Map<String,Object> attributes;
