@@ -16,6 +16,7 @@ configurations {
 
 repositories {
 	mavenCentral()
+	mavenLocal()
 }
 
 dependencies {
@@ -51,6 +52,9 @@ dependencies {
 	compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
 	compile group: 'commons-io', name: 'commons-io', version: '2.6'
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+
+	compile fileTree(dir:'src/main/webapp/lib', include:['*.jar'])
+
 
 	implementation 'junit:junit:4.12'
 	implementation 'org.springframework.boot:spring-boot-starter-mustache'
