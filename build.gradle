@@ -14,7 +14,6 @@ sourceCompatibility = '1.8'
 repositories {
     mavenCentral()
     mavenLocal()
-
 }
 
 dependencies {
@@ -35,6 +34,8 @@ dependencies {
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+    //ojdbc8 추가
+    //https://hye0-log.tistory.com/24
     compile fileTree(dir:'src/main/webapp/lib', include:['*.jar'])
 
 }
